@@ -72,14 +72,6 @@ export default function HomeScreen() {
             progress={0}
             onPress={() => router.push('/chapter3')}
           />
-
-          <ChapterCard
-            number={4}
-            title="Preservação e Soluções"
-            description="Estratégias sustentáveis para redução de impactos negativos."
-            progress={0}
-            onPress={() => router.push('/chapter4')}
-          />
         </ScrollView>
       </SafeAreaView>
     </LinearGradient>
@@ -89,61 +81,81 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: Colors.darkBackground,
   },
+
   safeArea: {
     flex: 1,
   },
+
   scrollContent: {
     paddingBottom: 80,
   },
+
   header: {
     height: 220,
     justifyContent: 'flex-end',
+    paddingHorizontal: 16,
+    paddingBottom: 16,
+    borderBottomLeftRadius: 12,
+    borderBottomRightRadius: 12,
+    overflow: 'hidden',
   },
+
   headerImage: {
-  overflow: 'hidden',
-    width: '100%',  
+    overflow: 'hidden',
+    width: '100%',
+    borderRadius: 8,
   },
 
   title: {
     fontFamily: 'Inter-Bold',
     fontSize: 28,
-    color: Colors.white,
+    color: Colors.text,
     marginBottom: 8,
+    fontWeight: '700',
   },
+
   subtitle: {
     fontFamily: 'Inter-Regular',
     fontSize: 16,
-    color: Colors.lightText,
+    color: Colors.textSecondary,
     lineHeight: 22,
   },
+
   introContainer: {
-    backgroundColor: Colors.white,
+    backgroundColor: Colors.cardBackground,
     borderRadius: 12,
     padding: 20,
     margin: 16,
-    shadowColor: '#000',
+    borderLeftWidth: 4,
+    borderLeftColor: Colors.primary,
+    shadowColor: Colors.shadowColor,
     shadowOffset: {
       width: 0,
       height: 2,
     },
-    shadowOpacity: 0.1,
+    shadowOpacity: 0.3,
     shadowRadius: 4,
-    elevation: 3,
+    elevation: 5,
   },
+
   sectionTitle: {
     fontFamily: 'Inter-Bold',
     fontSize: 20,
     color: Colors.text,
     marginBottom: 12,
+    fontWeight: '600',
   },
+
   introText: {
     fontFamily: 'Inter-Regular',
     fontSize: 15,
-    color: Colors.text,
+    color: Colors.textSecondary,
     lineHeight: 22,
     marginBottom: 20,
   },
+
   startButton: {
     backgroundColor: Colors.primary,
     borderRadius: 8,
@@ -153,12 +165,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+
   startButtonText: {
     fontFamily: 'Inter-Bold',
     fontSize: 16,
-    color: Colors.white,
+    color: Colors.text,
     marginRight: 8,
+    fontWeight: '600',
   },
+
   chaptersTitle: {
     fontFamily: 'Inter-Bold',
     fontSize: 20,
@@ -166,5 +181,6 @@ const styles = StyleSheet.create({
     marginTop: 8,
     marginBottom: 12,
     marginHorizontal: 16,
+    fontWeight: '600',
   },
 });

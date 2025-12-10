@@ -58,22 +58,27 @@ export const ChapterCard = memo(function ChapterCard({
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: Colors.white,
+    backgroundColor: Colors.cardBackground,
     borderRadius: 12,
     marginHorizontal: 16,
     marginBottom: 16,
     padding: 16,
     flexDirection: 'row',
     alignItems: 'center',
+    borderWidth: 1,
+    borderColor: Colors.border,
+    borderLeftWidth: 4,
+    borderLeftColor: Colors.primary,
     shadowColor: Colors.shadowColor,
     shadowOffset: {
       width: 0,
       height: 2,
     },
-    shadowOpacity: 0.1,
+    shadowOpacity: 0.3,
     shadowRadius: 4,
-    elevation: 3,
+    elevation: 5,
   },
+
   numberCircle: {
     width: 40,
     height: 40,
@@ -83,44 +88,54 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginRight: 16,
   },
+
   number: {
     fontFamily: 'Inter-Bold',
     fontSize: 18,
-    color: Colors.white,
+    color: Colors.text,
+    fontWeight: '700',
   },
+
   content: {
     flex: 1,
   },
+
   title: {
     fontFamily: 'Inter-Bold',
     fontSize: 16,
     color: Colors.text,
     marginBottom: 4,
+    fontWeight: '600',
   },
+
   description: {
     fontFamily: 'Inter-Regular',
     fontSize: 14,
-    color: Colors.text,
-    opacity: 0.8,
+    color: Colors.textSecondary,
     marginBottom: 8,
   },
+
   progressBarContainer: {
     height: 6,
     backgroundColor: Colors.lightBackground,
     borderRadius: 3,
     marginBottom: 4,
+    overflow: 'hidden',
   },
+
   progressBar: {
     height: '100%',
     backgroundColor: Colors.primary,
     borderRadius: 3,
   },
+
   progressText: {
     fontFamily: 'Inter-Regular',
     fontSize: 12,
-    color: Colors.primary,
+    color: Colors.textTertiary,
   },
+
   arrow: {
-    marginLeft: 8,
+    marginLeft: 12,
   },
 });

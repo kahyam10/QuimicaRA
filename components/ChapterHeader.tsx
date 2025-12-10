@@ -56,8 +56,9 @@ const styles = StyleSheet.create({
     paddingVertical: 16,
     borderBottomWidth: 1,
     borderBottomColor: Colors.border,
-    backgroundColor: Colors.white,
+    backgroundColor: Colors.background,
   },
+
   backButton: {
     width: 40,
     height: 40,
@@ -67,18 +68,23 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.lightBackground,
     marginRight: 12,
   },
+
   titleContainer: {
     flex: 1,
   },
+
   chapterNumber: {
     fontFamily: 'Inter-Bold',
     fontSize: 14,
     color: Colors.primary,
     marginBottom: 2,
+    fontWeight: '600',
   },
+
   title: {
     fontFamily: 'Inter-Bold',
     fontSize: 18,
     color: Colors.text,
+    fontWeight: '600',
   },
 });

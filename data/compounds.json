@@ -1,0 +1,504 @@
+{
+  "capitulos": [
+    {
+      "id": "cap1",
+      "numero": 1,
+      "titulo": "Composição Atmosférica",
+      "descricao": "Estude os principais gases que compõem nossa atmosfera e suas características químicas.",
+      "compostos": [
+        {
+          "id": "n2",
+          "nome": "Nitrogênio",
+          "nomeCurto": "N₂",
+          "formula": "N₂",
+          "formulaDisplay": "N₂",
+          "geometria": "Linear",
+          "polaridade": "Apolar",
+          "anguloLigacao": "180°",
+          "ligacoes": "Tripla ligação N≡N",
+          "informacoes": "A molécula de gás nitrogênio representa 78% da composição química da atmosfera. É uma molécula diatômica, apresenta uma ligação tripla entre os átomos de nitrogênio.",
+          "percentualAtmosfera": "78%",
+          "fonte": "Natural",
+          "efeitos": "Essencial para vida e ciclo biogeoquímico",
+          "capitulo": 1,
+          "ordem": 1,
+          "ativo": true,
+          "modelo3D": {
+            "pathGLB": "assets/models/ejemplo.glb",
+            "nomeArquivo": "nitrogen_molecule.glb",
+            "escala": 1.0,
+            "rotacaoInicial": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "posicao": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "animacao": {
+              "tipo": "rotacao",
+              "velocidade": 4,
+              "eixo": "y"
+            },
+            "cor": "#78E3F8",
+            "transparencia": 1.0,
+            "brilho": 1.2,
+            "formato": "GLB",
+            "tamanhoArquivo": 256,
+            "descricao": "Visualização 3D da molécula de nitrogênio com dupla rotação"
+          }
+        },
+        {
+          "id": "o2",
+          "nome": "Oxigênio",
+          "nomeCurto": "O₂",
+          "formula": "O₂",
+          "formulaDisplay": "O₂",
+          "geometria": "Linear",
+          "polaridade": "Apolar",
+          "anguloLigacao": "180°",
+          "ligacoes": "Duas ligações duplas O=O",
+          "informacoes": "O gás oxigênio é o segundo componente em maior quantidade presente na atmosfera, cerca de 21%. Apresenta-se sob a forma de uma molécula diatômica, formada por uma ligação dupla entre os átomos de oxigênio. O gás oxigênio reage com algumas substâncias dando origem a óxidos como CO₂, SO₂ e NO₂.",
+          "percentualAtmosfera": "21%",
+          "fonte": "Natural",
+          "efeitos": "Essencial para respiração aeróbica",
+          "capitulo": 1,
+          "ordem": 2,
+          "ativo": true,
+          "modelo3D": {
+            "pathGLB": "assets/models/ejemplo.glb",
+            "nomeArquivo": "oxygen_molecule.glb",
+            "escala": 1.0,
+            "rotacaoInicial": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "posicao": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "animacao": {
+              "tipo": "rotacao",
+              "velocidade": 3,
+              "eixo": "y"
+            },
+            "cor": "#FF6B6B",
+            "transparencia": 1.0,
+            "brilho": 1.1,
+            "formato": "GLB",
+            "tamanhoArquivo": 256,
+            "descricao": "Visualização 3D da molécula de oxigênio"
+          }
+        },
+        {
+          "id": "ar",
+          "nome": "Argônio",
+          "nomeCurto": "Ar",
+          "formula": "Ar",
+          "formulaDisplay": "Ar",
+          "geometria": "Átomo único",
+          "polaridade": "Não aplicável",
+          "anguloLigacao": "Não aplicável",
+          "ligacoes": "Nenhuma - gás nobre",
+          "informacoes": "O argônio é uma substância gasosa presente na atmosfera com 0,093% da sua composição. É um gás nobre e por apresentar camada de valência completa é inerte.",
+          "percentualAtmosfera": "0,093%",
+          "fonte": "Natural",
+          "efeitos": "Inerte - sem efeitos biológicos diretos",
+          "capitulo": 1,
+          "ordem": 3,
+          "ativo": true,
+          "modelo3D": {
+            "pathGLB": "assets/models/ejemplo.glb",
+            "nomeArquivo": "argon_atom.glb",
+            "escala": 0.8,
+            "rotacaoInicial": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "posicao": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "animacao": {
+              "tipo": "oscilacao",
+              "velocidade": 2,
+              "amplitude": 0.5
+            },
+            "cor": "#9D84B7",
+            "transparencia": 1.0,
+            "brilho": 1.0,
+            "formato": "GLB",
+            "tamanhoArquivo": 128,
+            "descricao": "Visualização 3D do átomo de argônio"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cap2",
+      "numero": 2,
+      "titulo": "Compostos Químicos e Seus Impactos",
+      "descricao": "Explore os poluentes atmosféricos e seus efeitos sobre a qualidade do ar.",
+      "compostos": [
+        {
+          "id": "so2",
+          "nome": "Dióxido de Enxofre",
+          "nomeCurto": "SO₂",
+          "formula": "SO₂",
+          "formulaDisplay": "SO₂",
+          "geometria": "Angular",
+          "polaridade": "Polar",
+          "anguloLigacao": "119°",
+          "ligacoes": "Duas ligações duplas S=O",
+          "informacoes": "O dióxido de enxofre gasoso possui concentração variável na atmosfera e é produzido diretamente a partir da queima de combustíveis fósseis como gasolina, assim como de erupções vulcânicas. Apresenta o enxofre como átomo central e liga-se a dois átomos de oxigênio para formar a molécula.",
+          "fonte": "Antropogênica e Natural",
+          "efeitos": "Causa chuva ácida e problemas respiratórios",
+          "capitulo": 2,
+          "ordem": 1,
+          "ativo": true,
+          "modelo3D": {
+            "pathGLB": "assets/models/ejemplo.glb",
+            "nomeArquivo": "sulfur_dioxide.glb",
+            "escala": 1.1,
+            "rotacaoInicial": {
+              "x": 0,
+              "y": 45,
+              "z": 0
+            },
+            "posicao": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "animacao": {
+              "tipo": "rotacao",
+              "velocidade": 3,
+              "eixo": "xyz"
+            },
+            "cor": "#FFD700",
+            "transparencia": 1.0,
+            "brilho": 1.3,
+            "formato": "GLB",
+            "tamanhoArquivo": 280,
+            "descricao": "Visualização 3D da molécula de dióxido de enxofre angular"
+          }
+        },
+        {
+          "id": "no2",
+          "nome": "Dióxido de Nitrogênio",
+          "nomeCurto": "NO₂",
+          "formula": "NO₂",
+          "formulaDisplay": "NO₂",
+          "geometria": "Angular",
+          "polaridade": "Polar",
+          "anguloLigacao": "134°",
+          "ligacoes": "Uma ligação dupla N=O e uma simples N-O",
+          "informacoes": "O dióxido de nitrogênio gasoso não possui concentração fixa na atmosfera, sendo maior em áreas urbanas e pode ter origem natural ou artificial. Quando dissolvido na água presente na atmosfera, forma o ácido nítrico (HNO₃).",
+          "fonte": "Antropogênica e Natural",
+          "efeitos": "Contribui para smog fotoquímico e chuva ácida",
+          "capitulo": 2,
+          "ordem": 2,
+          "ativo": true,
+          "modelo3D": {
+            "pathGLB": "assets/models/ejemplo.glb",
+            "nomeArquivo": "nitrogen_dioxide.glb",
+            "escala": 1.1,
+            "rotacaoInicial": {
+              "x": 0,
+              "y": 45,
+              "z": 0
+            },
+            "posicao": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "animacao": {
+              "tipo": "rotacao",
+              "velocidade": 2,
+              "eixo": "xyz"
+            },
+            "cor": "#FF6B6B",
+            "transparencia": 1.0,
+            "brilho": 1.2,
+            "formato": "GLB",
+            "tamanhoArquivo": 280,
+            "descricao": "Visualização 3D da molécula de dióxido de nitrogênio angular"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cap3",
+      "numero": 3,
+      "titulo": "Efeitos na Atmosfera",
+      "descricao": "Compreenda os gases causadores do efeito estufa e destruição da camada de ozônio.",
+      "compostos": [
+        {
+          "id": "co2",
+          "nome": "Dióxido de Carbono",
+          "nomeCurto": "CO₂",
+          "formula": "CO₂",
+          "formulaDisplay": "CO₂",
+          "geometria": "Linear",
+          "polaridade": "Apolar",
+          "anguloLigacao": "180°",
+          "ligacoes": "Duas ligações duplas C=O",
+          "informacoes": "O dióxido de carbono é o principal gás causador do efeito estufa. Originário principalmente da queima de combustíveis fósseis, representa o maior desafio ambiental do século XXI. Molécula linear e apolar.",
+          "fonte": "Antropogênica e Natural",
+          "efeitos": "Principal causador do aquecimento global",
+          "capitulo": 3,
+          "ordem": 1,
+          "ativo": true,
+          "modelo3D": {
+            "pathGLB": "assets/models/ejemplo.glb",
+            "nomeArquivo": "carbon_dioxide.glb",
+            "escala": 1.0,
+            "rotacaoInicial": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "posicao": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "animacao": {
+              "tipo": "rotacao",
+              "velocidade": 3,
+              "eixo": "y"
+            },
+            "cor": "#4CAF50",
+            "transparencia": 1.0,
+            "brilho": 1.1,
+            "formato": "GLB",
+            "tamanhoArquivo": 256,
+            "descricao": "Visualização 3D da molécula de dióxido de carbono linear"
+          }
+        },
+        {
+          "id": "ch4",
+          "nome": "Metano",
+          "nomeCurto": "CH₄",
+          "formula": "CH₄",
+          "formulaDisplay": "CH₄",
+          "geometria": "Tetraédrica",
+          "polaridade": "Apolar",
+          "anguloLigacao": "109,5°",
+          "ligacoes": "Quatro ligações simples C-H",
+          "informacoes": "O metano é um potente gás de efeito estufa, com poder de retenção de calor 25 vezes maior que o CO₂. Originário de fermentação anaeróbica, criação de gado e vazamentos de gás natural.",
+          "fonte": "Antropogênica e Natural",
+          "efeitos": "Gás de efeito estufa altamente potente",
+          "capitulo": 3,
+          "ordem": 2,
+          "ativo": true,
+          "modelo3D": {
+            "pathGLB": "assets/models/ejemplo.glb",
+            "nomeArquivo": "methane.glb",
+            "escala": 1.2,
+            "rotacaoInicial": {
+              "x": 45,
+              "y": 45,
+              "z": 0
+            },
+            "posicao": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "animacao": {
+              "tipo": "rotacao",
+              "velocidade": 2,
+              "eixo": "xyz"
+            },
+            "cor": "#8BC34A",
+            "transparencia": 1.0,
+            "brilho": 1.15,
+            "formato": "GLB",
+            "tamanhoArquivo": 300,
+            "descricao": "Visualização 3D da molécula de metano tetraédrica"
+          }
+        },
+        {
+          "id": "n2o",
+          "nome": "Óxido Nitroso",
+          "nomeCurto": "N₂O",
+          "formula": "N₂O",
+          "formulaDisplay": "N₂O",
+          "geometria": "Linear",
+          "polaridade": "Polar",
+          "anguloLigacao": "180°",
+          "ligacoes": "Duas ligações duplas N=N e N=O",
+          "informacoes": "O óxido nitroso é um gás de efeito estufa com potencial 310 vezes maior que o CO₂. Principal fonte antropogênica é o uso de fertilizantes nitrogenados em agricultura.",
+          "fonte": "Antropogênica e Natural",
+          "efeitos": "Potente gás de efeito estufa e destroi ozônio",
+          "capitulo": 3,
+          "ordem": 3,
+          "ativo": true,
+          "modelo3D": {
+            "pathGLB": "assets/models/ejemplo.glb",
+            "nomeArquivo": "nitrous_oxide.glb",
+            "escala": 1.0,
+            "rotacaoInicial": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "posicao": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "animacao": {
+              "tipo": "rotacao",
+              "velocidade": 3,
+              "eixo": "y"
+            },
+            "cor": "#FF9800",
+            "transparencia": 1.0,
+            "brilho": 1.2,
+            "formato": "GLB",
+            "tamanhoArquivo": 268,
+            "descricao": "Visualização 3D da molécula de óxido nitroso linear"
+          }
+        },
+        {
+          "id": "h2o",
+          "nome": "Água",
+          "nomeCurto": "H₂O",
+          "formula": "H₂O",
+          "formulaDisplay": "H₂O",
+          "geometria": "Angular",
+          "polaridade": "Polar",
+          "anguloLigacao": "104,5°",
+          "ligacoes": "Duas ligações simples O-H",
+          "informacoes": "A molécula de água é polar e forma-se pela combinação de hidrogênio com oxigênio. Na atmosfera, o vapor de água é um gás de efeito estufa natural fundamental. Seu ciclo hidrológico é crucial para o clima terrestre.",
+          "fonte": "Natural",
+          "efeitos": "Gás de efeito estufa natural essencial",
+          "capitulo": 3,
+          "ordem": 4,
+          "ativo": true,
+          "modelo3D": {
+            "pathGLB": "assets/models/ejemplo.glb",
+            "nomeArquivo": "water.glb",
+            "escala": 0.9,
+            "rotacaoInicial": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "posicao": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "animacao": {
+              "tipo": "oscilacao",
+              "velocidade": 2,
+              "amplitude": 0.3
+            },
+            "cor": "#2196F3",
+            "transparencia": 0.8,
+            "brilho": 1.0,
+            "formato": "GLB",
+            "tamanhoArquivo": 240,
+            "descricao": "Visualização 3D da molécula de água angular"
+          }
+        },
+        {
+          "id": "o3",
+          "nome": "Ozônio",
+          "nomeCurto": "O₃",
+          "formula": "O₃",
+          "formulaDisplay": "O₃",
+          "geometria": "Angular/Trigonal",
+          "polaridade": "Polar",
+          "anguloLigacao": "~117°",
+          "ligacoes": "Uma ligação dupla O=O e uma simples O-O com ressonância",
+          "informacoes": "O ozônio é uma forma alotrópica do oxigênio. Na estratosfera, protege a Terra da radiação UV. Ao nível do solo, é um poluente prejudicial. Estrutura com elétrons deslocalizados.",
+          "fonte": "Natural",
+          "efeitos": "Na estratosfera protege da UV; ao nível do solo é prejudicial",
+          "capitulo": 3,
+          "ordem": 5,
+          "ativo": true,
+          "modelo3D": {
+            "pathGLB": "assets/models/ejemplo.glb",
+            "nomeArquivo": "ozone.glb",
+            "escala": 1.15,
+            "rotacaoInicial": {
+              "x": 30,
+              "y": 30,
+              "z": 0
+            },
+            "posicao": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "animacao": {
+              "tipo": "rotacao",
+              "velocidade": 2,
+              "eixo": "xyz"
+            },
+            "cor": "#00BCD4",
+            "transparencia": 1.0,
+            "brilho": 1.25,
+            "formato": "GLB",
+            "tamanhoArquivo": 272,
+            "descricao": "Visualização 3D da molécula de ozônio angular"
+          }
+        },
+        {
+          "id": "cfc11",
+          "nome": "Clorofluorcarboneto (CFC-11)",
+          "nomeCurto": "CFC-11",
+          "formula": "CFCl₃",
+          "formulaDisplay": "CFCl₃",
+          "geometria": "Tetraédrica",
+          "polaridade": "Polar",
+          "anguloLigacao": "109,5°",
+          "ligacoes": "Ligações C-F, C-Cl simples",
+          "informacoes": "O CFC-11 é um clorofluorcarboneto que foi amplamente utilizado em refrigeração e aerossóis. Sua libertação na atmosfera causa destruição da camada de ozônio. Atualmente banido pelo Protocolo de Montreal.",
+          "fonte": "Antropogênica",
+          "efeitos": "Destrói a camada de ozônio estratosférico",
+          "capitulo": 3,
+          "ordem": 6,
+          "ativo": true,
+          "modelo3D": {
+            "pathGLB": "assets/models/ejemplo.glb",
+            "nomeArquivo": "cfc11.glb",
+            "escala": 1.3,
+            "rotacaoInicial": {
+              "x": 45,
+              "y": 45,
+              "z": 45
+            },
+            "posicao": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "animacao": {
+              "tipo": "rotacao",
+              "velocidade": 2,
+              "eixo": "xyz"
+            },
+            "cor": "#673AB7",
+            "transparencia": 1.0,
+            "brilho": 1.2,
+            "formato": "GLB",
+            "tamanhoArquivo": 320,
+            "descricao": "Visualização 3D da molécula de CFC-11 tetraédrica"
+          }
+        }
+      ]
+    }
+  ]
+}

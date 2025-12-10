@@ -1,6 +1,6 @@
 import { Tabs } from 'expo-router';
 import { StyleSheet } from 'react-native';
-import { Atom, BookOpen, Home, Lightbulb, Microscope } from 'lucide-react-native';
+import { Atom, BookOpen, Home, Microscope } from 'lucide-react-native';
 import Colors from '@/constants/Colors';
 
 /**
@@ -32,7 +32,7 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: Colors.primary,
-        tabBarInactiveTintColor: Colors.secondary,
+        tabBarInactiveTintColor: Colors.textSecondary,
         tabBarStyle: styles.tabBar,
         tabBarLabelStyle: styles.tabBarLabel,
         headerShown: false,
@@ -49,7 +49,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="chapter1"
         options={{
-          title: 'Chapter 1',
+          title: 'Capítulo 1',
           tabBarIcon: ({ color, size }) => (
             <BookOpen color={color} size={size} />
           ),
@@ -58,7 +58,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="chapter2"
         options={{
-          title: 'Chapter 2',
+          title: 'Capítulo 2',
           tabBarIcon: ({ color, size }) => (
             <Atom color={color} size={size} />
           ),
@@ -67,18 +67,9 @@ export default function TabLayout() {
       <Tabs.Screen
         name="chapter3"
         options={{
-          title: 'Chapter 3',
+          title: 'Capítulo 3',
           tabBarIcon: ({ color, size }) => (
             <Microscope color={color} size={size} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="chapter4"
-        options={{
-          title: 'Chapter 4',
-          tabBarIcon: ({ color, size }) => (
-            <Lightbulb color={color} size={size} />
           ),
         }}
       />
@@ -90,7 +81,7 @@ const styles = StyleSheet.create({
   tabBar: {
     backgroundColor: Colors.background,
     borderTopWidth: 1,
-    borderTopColor: 'rgba(0, 0, 0, 0.1)',
+    borderTopColor: Colors.border,
     height: 60,
     paddingBottom: 5,
   },

@@ -1,184 +1,115 @@
-import { useState } from 'react';
-import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Dimensions } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { ChevronLeft, ChevronRight, ZoomIn, ZoomOut, RotateCw } from 'lucide-react-native';
+import { StyleSheet, View, Dimensions, Text, ScrollView } from 'react-native';
+import { useState, useCallback } from 'react';
 import Colors from '@/constants/Colors';
+import { capitulo1, Molecula } from '@/constants/ChapterContent';
 import { ChapterHeader } from '@/components/ChapterHeader';
+import { MoleculaSelector } from '@/components/MoleculaSelector';
+import { MoleculaCard } from '@/components/MoleculaCard';
 import { ModelViewer } from '@/components/ModelViewer';
-import { InfoPanel } from '@/components/InfoPanel';
+import { CompoundModelViewer } from '@/components/CompoundModelViewer';
 
-const { width } = Dimensions.get('window');
+const { height } = Dimensions.get('window');
 
 export default function Chapter1Screen() {
-  const [zoomLevel, setZoomLevel] = useState(1);
-  const [currentSection, setCurrentSection] = useState(0);
+  const [selectedMolecula, setSelectedMolecula] = useState<Molecula>(capitulo1.moleculas[0]);
 
-  const sections = [
-    {
-      title: 'Composição da Atmosfera',
-      content: 'A atmosfera da Terra é composta principalmente de nitrogênio (78%), oxigênio (21%), argônio (0,9%) e outros gases em pequenas quantidades como dióxido de carbono, metano e vapor de água.',
-      modelInfo: {
-        type: 'atmosphere',
-        description: 'Representação das camadas da atmosfera terrestre.',
-      }
-    },
-    {
-      title: 'Camadas Atmosféricas',
-      content: 'A atmosfera é dividida em troposfera, estratosfera, mesosfera, termosfera e exosfera. Cada camada tem características próprias de temperatura, pressão e composição.',
-      modelInfo: {
-        type: 'layers',
-        description: 'Modelo das diferentes camadas atmosféricas.',
-      }
-    },
-    {
-      title: 'Variações na Composição',
-      content: 'A composição da atmosfera varia com a altitude. A troposfera contém a maior parte do vapor d\'água e aerossóis, enquanto as camadas superiores contêm mais gases ionizados.',
-      modelInfo: {
-        type: 'composition',
-        description: 'Variação dos gases atmosféricos com a altitude.',
-      }
-    }
-  ];
-  
-  const currentSectionData = sections[currentSection];
-
-  const handleZoomIn = () => {
-    if (zoomLevel < 2) setZoomLevel(zoomLevel + 0.25);
-  };
-
-  const handleZoomOut = () => {
-    if (zoomLevel > 0.5) setZoomLevel(zoomLevel - 0.25);
-  };
-
-  const handleNextSection = () => {
-    if (currentSection < sections.length - 1) {
-      setCurrentSection(currentSection + 1);
-    }
-  };
-
-  const handlePrevSection = () => {
-    if (currentSection > 0) {
-      setCurrentSection(currentSection - 1);
-    }
-  };
+  const handleSelectMolecula = useCallback((molecula: Molecula) => {
+    setSelectedMolecula(molecula);
+  }, []);
 
   return (
-    <SafeAreaView style={styles.container}>
-      <ChapterHeader title="Composição Atmosférica" chapterNumber={1} />
-      
-      <View style={styles.contentContainer}>
-        <View style={styles.modelContainer}>
-          <ModelViewer 
-            modelType={currentSectionData.modelInfo.type} 
-            zoomLevel={zoomLevel}
-          />
-          
-          <View style={styles.controlsContainer}>
-            <TouchableOpacity style={styles.controlButton} onPress={handleZoomIn}>
-              <ZoomIn color={Colors.white} size={24} />
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.controlButton} onPress={handleZoomOut}>
-              <ZoomOut color={Colors.white} size={24} />
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.controlButton}>
-              <RotateCw color={Colors.white} size={24} />
-            </TouchableOpacity>
+    <View style={styles.container}>
+      <ChapterHeader chapterNumber={capitulo1.numero} title={capitulo1.titulo} />
+
+      <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
+        <View style={styles.viewerContainer}>
+          <ModelViewer modelType={selectedMolecula?.id} zoomLevel={1} />
+        </View>
+
+        <View style={styles.selectorSection}>
+          <Text style={styles.selectorLabel}>Selecione uma Molécula</Text>
+          <View style={styles.selectorContainer}>
+            <MoleculaSelector
+              moleculas={capitulo1.moleculas}
+              selectedId={selectedMolecula?.id}
+              onSelectMolecula={handleSelectMolecula}
+            />
           </View>
         </View>
-        
-        <InfoPanel 
-          title={currentSectionData.title}
-          content={currentSectionData.content}
-          modelDescription={currentSectionData.modelInfo.description}
-        />
-      </View>
-      
-      <View style={styles.navigationContainer}>
-        <TouchableOpacity 
-          style={[styles.navButton, currentSection === 0 && styles.disabledButton]} 
-          onPress={handlePrevSection}
-          disabled={currentSection === 0}
-        >
-          <ChevronLeft color={currentSection === 0 ? Colors.lightGray : Colors.primary} size={24} />
-          <Text style={[styles.navButtonText, currentSection === 0 && styles.disabledText]}>Anterior</Text>
-        </TouchableOpacity>
-        
-        <Text style={styles.pageIndicator}>{currentSection + 1}/{sections.length}</Text>
-        
-        <TouchableOpacity 
-          style={[styles.navButton, currentSection === sections.length - 1 && styles.disabledButton]} 
-          onPress={handleNextSection}
-          disabled={currentSection === sections.length - 1}
-        >
-          <Text style={[styles.navButtonText, currentSection === sections.length - 1 && styles.disabledText]}>Próximo</Text>
-          <ChevronRight color={currentSection === sections.length - 1 ? Colors.lightGray : Colors.primary} size={24} />
-        </TouchableOpacity>
-      </View>
-    </SafeAreaView>
+
+        {/* Visualizador 3D em AR */}
+        <View style={styles.arViewerSection}>
+          <Text style={styles.arViewerLabel}>Explorar em Realidade Aumentada</Text>
+          <CompoundModelViewer
+            compoundName={selectedMolecula.nome}
+            modelPath="assets/models/exemplo.glb"
+            size="medium"
+            buttonText="🔍 VER EM AR"
+          />
+        </View>
+
+        <View style={styles.infoContainer}>
+          <MoleculaCard molecula={selectedMolecula} />
+        </View>
+      </ScrollView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Colors.background,
-  },
-  contentContainer: {
-    flex: 1,
-    padding: 16,
-  },
-  modelContainer: {
-    height: width * 0.7,
     backgroundColor: Colors.darkBackground,
-    borderRadius: 12,
-    overflow: 'hidden',
-    position: 'relative',
-    marginBottom: 16,
   },
-  controlsContainer: {
-    position: 'absolute',
-    bottom: 16,
-    right: 16,
-    flexDirection: 'row',
+  content: {
+    flex: 1,
+    flexDirection: 'column',
   },
-  controlButton: {
-    width: 44,
-    height: 44,
-    borderRadius: 22,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginLeft: 8,
+  viewerContainer: {
+    height: height * 0.25,
+    backgroundColor: Colors.darkBackground,
+    borderBottomWidth: 1,
+    borderBottomColor: '#3A3A3A',
   },
-  navigationContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+  selectorSection: {
+    backgroundColor: '#282828',
     paddingHorizontal: 16,
-    paddingVertical: 12,
+    paddingTop: 16,
+    borderBottomWidth: 2,
+    borderBottomColor: Colors.primary || '#2196F3',
+  },
+  selectorLabel: {
+    fontSize: 14,
+    fontWeight: '600',
+    color: Colors.primary || '#2196F3',
+    marginBottom: 12,
+    letterSpacing: 0.5,
+    fontFamily: 'Inter-Bold',
+  },
+  selectorContainer: {
+    height: 110,
+  },
+  arViewerSection: {
+    backgroundColor: Colors.cardBackground,
+    paddingHorizontal: 16,
+    paddingVertical: 16,
+    marginVertical: 8,
     borderTopWidth: 1,
     borderTopColor: Colors.border,
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.border,
   },
-  navButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    padding: 8,
-  },
-  navButtonText: {
-    fontFamily: 'Inter-Bold',
-    fontSize: 16,
-    color: Colors.primary,
-    marginHorizontal: 4,
-  },
-  disabledButton: {
-    opacity: 0.5,
-  },
-  disabledText: {
-    color: Colors.lightGray,
-  },
-  pageIndicator: {
-    fontFamily: 'Inter-Regular',
+  arViewerLabel: {
     fontSize: 14,
+    fontWeight: '700',
     color: Colors.text,
+    marginBottom: 12,
+    letterSpacing: 0.3,
+  },
+  infoContainer: {
+    flex: 1,
+    backgroundColor: Colors.darkBackground,
+    paddingHorizontal: 16,
+    paddingVertical: 16,
   },
 });
