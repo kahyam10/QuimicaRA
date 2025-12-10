@@ -4,7 +4,7 @@ import { StyleSheet } from 'react-native';
 /**
  * ESTILOS GLOBAIS - QuímicaAPp
  *
- * Tema dark mode profissional com paleta coerente
+ * Tema light com branco e azul
  * Otimizado para educação e leitura
  */
 
@@ -13,12 +13,12 @@ export const AppStyle = StyleSheet.create({
 
   container: {
     flex: 1,
-    backgroundColor: Colors.darkBackground,
+    backgroundColor: Colors.darkBackground, // Branco
   },
 
   safeArea: {
     flex: 1,
-    backgroundColor: Colors.darkBackground,
+    backgroundColor: Colors.darkBackground, // Branco
   },
 
   scrollContent: {
@@ -28,7 +28,7 @@ export const AppStyle = StyleSheet.create({
 
   backgroundOverlay: {
     padding: 16,
-    backgroundColor: Colors.background,
+    backgroundColor: Colors.background, // Cinza muito claro
     height: '100%',
   },
 
@@ -41,7 +41,7 @@ export const AppStyle = StyleSheet.create({
     paddingBottom: 16,
     overflow: 'hidden',
     width: '100%',
-    backgroundColor: Colors.primary,
+    backgroundColor: Colors.primary, // Azul
     borderBottomLeftRadius: 12,
     borderBottomRightRadius: 12,
   },

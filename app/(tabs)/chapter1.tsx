@@ -59,7 +59,7 @@ export default function Chapter1Screen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Colors.darkBackground,
+    backgroundColor: Colors.darkBackground, // Branco puro
   },
   content: {
     flex: 1,
@@ -67,21 +67,21 @@ const styles = StyleSheet.create({
   },
   viewerContainer: {
     height: height * 0.25,
-    backgroundColor: Colors.darkBackground,
+    backgroundColor: Colors.background, // Cinza muito claro
     borderBottomWidth: 1,
-    borderBottomColor: '#3A3A3A',
+    borderBottomColor: Colors.border,
   },
   selectorSection: {
-    backgroundColor: '#282828',
+    backgroundColor: Colors.darkBackground, // Branco
     paddingHorizontal: 16,
     paddingTop: 16,
     borderBottomWidth: 2,
-    borderBottomColor: Colors.primary || '#2196F3',
+    borderBottomColor: Colors.primary, // Azul
   },
   selectorLabel: {
     fontSize: 14,
     fontWeight: '600',
-    color: Colors.primary || '#2196F3',
+    color: Colors.primary, // Azul
     marginBottom: 12,
     letterSpacing: 0.5,
     fontFamily: 'Inter-Bold',
@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
     height: 110,
   },
   arViewerSection: {
-    backgroundColor: Colors.cardBackground,
+    backgroundColor: Colors.cardBackground, // Cinza claro
     paddingHorizontal: 16,
     paddingVertical: 16,
     marginVertical: 8,
@@ -102,13 +102,13 @@ const styles = StyleSheet.create({
   arViewerLabel: {
     fontSize: 14,
     fontWeight: '700',
-    color: Colors.text,
+    color: Colors.text, // Escuro
     marginBottom: 12,
     letterSpacing: 0.3,
   },
   infoContainer: {
     flex: 1,
-    backgroundColor: Colors.darkBackground,
+    backgroundColor: Colors.darkBackground, // Branco
     paddingHorizontal: 16,
     paddingVertical: 16,
   },

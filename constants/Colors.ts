@@ -1,9 +1,9 @@
 /**
- * TEMA PROFISSIONAL - QuímicaAPp
+ * TEMA BRANCO E AZUL - QuímicaAPp
  *
- * Paleta de cores coerente e moderna
- * Inspirada em design science/education
- * Otimizada para leitura e acessibilidade
+ * Paleta de cores profissional e moderna
+ * Tema light com azul como cor primária
+ * Otimizado para leitura e acessibilidade
  */
 
 const Colors = {
@@ -26,28 +26,28 @@ const Colors = {
 
   // ========== BACKGROUND & SUPERFÍCIES ==========
 
-  // Background: Muito escuro (tema dark profissional)
-  darkBackground: '#121212', // Preto profundo (Material Design 3)
-  background: '#1E1E1E', // Cinza muito escuro
-  surfaceBackground: '#2D2D2D', // Cinza escuro (surface)
-  cardBackground: '#272727', // Cinza para cards
-  lightBackground: '#3A3A3A', // Cinza claro (hover)
+  // Background: Tema Light profissional
+  darkBackground: '#FFFFFF', // Branco puro (background principal)
+  background: '#F5F7FA', // Cinza muito claro (backgrounds alternativos)
+  surfaceBackground: '#FFFFFF', // Branco (surface principal)
+  cardBackground: '#F5F7FA', // Cinza claro (cards)
+  lightBackground: '#E3F2FD', // Azul muito claro (hover/highlighted)
 
   // ========== TEXTO ==========
 
-  // Texto: Cores claras para dark mode
-  text: '#FFFFFF', // Branco puro
-  textSecondary: '#B3B3B3', // Cinza claro
-  textTertiary: '#808080', // Cinza médio
-  lightText: '#FFFFFF', // Alias para branco
+  // Texto: Cores escuras para light mode
+  text: '#1A1A1A', // Cinza muito escuro (quase preto)
+  textSecondary: '#616161', // Cinza médio
+  textTertiary: '#9E9E9E', // Cinza claro
+  lightText: '#1A1A1A', // Alias para escuro
 
   // ========== CORES ESTRUTURAIS ==========
 
   white: '#FFFFFF',
   black: '#000000',
-  border: '#404040', // Borda dark mode
-  lightGray: '#505050', // Cinza light
-  divider: '#2D2D2D', // Divisor dark
+  border: '#E0E0E0', // Borda cinza claro
+  lightGray: '#BDBDBD', // Cinza light
+  divider: '#EEEEEE', // Divisor claro
 
   // ========== CORES DE STATUS ==========
 
@@ -75,13 +75,13 @@ const Colors = {
 
   // ========== SOMBRAS & EFEITOS ==========
 
-  shadowColor: 'rgba(0, 0, 0, 0.5)', // Sombra escura
-  shadowColorLight: 'rgba(255, 255, 255, 0.1)', // Sombra clara (highlights)
+  shadowColor: 'rgba(0, 0, 0, 0.15)', // Sombra suave (light mode)
+  shadowColorLight: 'rgba(25, 118, 210, 0.1)', // Sombra azul clara (highlights)
 
-  // ========== TRANSPARÊNCIAS (Para dark mode) ==========
+  // ========== TRANSPARÊNCIAS (Para light mode) ==========
 
-  overlay: 'rgba(0, 0, 0, 0.7)', // Overlay escuro
-  overlayLight: 'rgba(255, 255, 255, 0.1)', // Overlay claro
+  overlay: 'rgba(0, 0, 0, 0.3)', // Overlay escuro suave
+  overlayLight: 'rgba(25, 118, 210, 0.1)', // Overlay azul claro
 };
 
 export default Colors;
