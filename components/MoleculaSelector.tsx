@@ -50,11 +50,11 @@ const MoleculaButton = memo(function MoleculaButton({
       onPress={onPress}
       activeOpacity={0.7}
     >
-      <Text style={[styles.buttonFormula, isSelected && styles.buttonFormulaActive]}>
-        {molecula.formula}
-      </Text>
       <Text style={[styles.buttonNome, isSelected && styles.buttonNomeActive]}>
         {molecula.nome}
+      </Text>
+      <Text style={[styles.buttonFormula, isSelected && styles.buttonFormulaActive]}>
+        {molecula.formula}
       </Text>
     </TouchableOpacity>
   );
@@ -63,27 +63,27 @@ const MoleculaButton = memo(function MoleculaButton({
 const styles = StyleSheet.create({
   container: {
     backgroundColor: Colors.primary, // Fundo azul
-    flexGrow: 0,
+    flex: 1, // Ocupa 100% da largura disponível
   },
 
   content: {
     paddingHorizontal: 0,
     paddingVertical: 0,
     gap: 0,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: 'space-around',
+    alignItems: 'stretch',
   },
 
   button: {
-    paddingHorizontal: 16,
-    paddingVertical: 16,
+    paddingHorizontal: 12,
+    paddingVertical: 14,
     borderRadius: 0,
     borderWidth: 0,
     borderColor: 'transparent',
     backgroundColor: '#D3D3D3', // Cinza claro (não selecionado)
     marginRight: 0,
-    minWidth: 100,
-    flex: 1,
+    minWidth: 0,
+    flex: 1, // Cada botão ocupa espaço igual
     justifyContent: 'center',
     alignItems: 'center',
     shadowColor: 'transparent',
@@ -101,25 +101,26 @@ const styles = StyleSheet.create({
     elevation: 0,
   },
 
+  buttonNome: {
+    fontSize: 13,
+    color: '#AAAAAA', // Cinza mais claro (não selecionado)
+    marginBottom: 2,
+    fontFamily: 'Inter-Regular',
+    fontWeight: '600',
+  },
+
+  buttonNomeActive: {
+    color: Colors.primary, // Azul (selecionado)
+  },
+
   buttonFormula: {
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: '700',
     color: '#999999', // Cinza escuro (não selecionado)
     fontFamily: 'Inter-Bold',
   },
 
   buttonFormulaActive: {
-    color: Colors.primary, // Azul (selecionado)
-  },
-
-  buttonNome: {
-    fontSize: 12,
-    color: '#AAAAAA', // Cinza mais claro (não selecionado)
-    marginTop: 4,
-    fontFamily: 'Inter-Regular',
-  },
-
-  buttonNomeActive: {
     color: Colors.primary, // Azul (selecionado)
   },
 });
