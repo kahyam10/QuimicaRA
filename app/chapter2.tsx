@@ -68,10 +68,10 @@ const styles = StyleSheet.create({
     marginBottom: 0,
     borderTopWidth: 0,
     borderTopColor: 'transparent',
-    minHeight: 60,
+    minHeight: 85,
   },
   selectorContainer: {
-    minHeight: 60,
+    minHeight: 85,
   },
   infoContainer: {
     flex: 1,
