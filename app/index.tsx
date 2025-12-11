@@ -101,7 +101,6 @@ const styles = StyleSheet.create({
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
-    paddingHorizontal: 16,
     marginHorizontal: 0,
     overflow: 'hidden',
   },

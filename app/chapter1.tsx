@@ -1,4 +1,4 @@
-import { StyleSheet, View, Dimensions, Text, ScrollView, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Dimensions, Text, ScrollView, TouchableOpacity, StatusBar } from 'react-native';
 import { useState, useCallback } from 'react';
 import Colors from '@/constants/Colors';
 import { capitulo1, Molecula } from '@/constants/ChapterContent';
@@ -29,7 +29,8 @@ export default function Chapter1Screen() {
     );
   }
 
-  return (
+    return (
+        <>
     <View style={styles.container}>
       <ChapterHeader chapterNumber={capitulo1.numero} title={capitulo1.titulo} />
 
@@ -62,7 +63,8 @@ export default function Chapter1Screen() {
           />
         </View>
       </View>
-    </View>
+            </View>
+            </>
   );
 }
 
@@ -92,11 +94,10 @@ const styles = StyleSheet.create({
     marginBottom: 0,
     borderTopWidth: 0,
     borderTopColor: 'transparent',
-    height: 'auto',
+    minHeight: 60,
   },
   selectorContainer: {
-    height: 'auto',
-    flex: 1,
+    minHeight: 60,
   },
   arButton: {
     backgroundColor: Colors.primary,
