@@ -68,12 +68,13 @@ const styles = StyleSheet.create({
 
   button: {
     paddingHorizontal: 8,
-    paddingVertical: 12,
+    paddingVertical: 8,
     borderRadius: 0,
     borderWidth: 0,
     borderColor: 'transparent',
     backgroundColor: '#D3D3D3', // Cinza claro (não selecionado)
     marginRight: 0,
+    marginBottom: 0,
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',

@@ -65,12 +65,13 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.primary,
     paddingHorizontal: 0,
     paddingVertical: 0,
+    marginBottom: 0,
     borderTopWidth: 0,
     borderTopColor: 'transparent',
-    height: 70,
+    height: 'auto',
   },
   selectorContainer: {
-    height: 70,
+    height: 'auto',
     flex: 1,
   },
   infoContainer: {
