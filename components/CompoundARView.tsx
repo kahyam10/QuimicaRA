@@ -12,7 +12,7 @@ import { X } from 'lucide-react-native';
 import Colors from '@/constants/Colors';
 
 interface CompoundARViewProps {
-  objectPath: string;
+  objectModel: any;
   onClose: () => void;
 }
 
@@ -21,10 +21,10 @@ interface CompoundARViewProps {
  * Renderiza diretamente sem Modal para compatibilidade com Viro
  * 
  * Implementação baseada em exemplo oficial Viro
- * Usa path de string estática para carregamento correto de arquivos GLB
+ * Carrega o modelo GL B passado como prop
  */
-export function CompoundARView({ objectPath, onClose }: CompoundARViewProps) {
-  const renderScene = () => <HelloWorldSceneAR onClose={onClose} objectPath={objectPath} />;
+export function CompoundARView({ objectModel, onClose }: CompoundARViewProps) {
+  const renderScene = () => <HelloWorldSceneAR onClose={onClose} objectModel={objectModel} />;
 
   return (
     <View style={styles.container}>
@@ -45,17 +45,8 @@ export function CompoundARView({ objectPath, onClose }: CompoundARViewProps) {
  * Cena AR com implementação correta
  * Baseada no exemplo HelloWorldSceneAR oficial
  */
-const HelloWorldSceneAR = ({ onClose, objectPath }: { onClose: () => void; objectPath?: string }) => {
+const HelloWorldSceneAR = ({ onClose, objectModel }: { onClose: () => void; objectModel: any }) => {
   const [text, setText] = useState("Inicializando AR...");
-  
-  // Carregar o modelo usando require() - funciona melhor com Viro
-  let objectModel;
-  try {
-    objectModel = require('../assets/models/exemplo.glb');
-  } catch (e) {
-    console.warn('Modelo não encontrado:', e);
-    objectModel = require('../assets/models/exemplo.glb');
-  }
 
   const onInitialized = (state: any, reason: ViroTrackingReason) => {
     console.log("AR tracking state:", state, reason);

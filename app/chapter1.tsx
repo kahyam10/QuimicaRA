@@ -19,6 +19,9 @@ import { Play } from 'lucide-react-native';
 
 const { height } = Dimensions.get('window');
 
+// Carregar o modelo GLB
+const objectModel = require('../assets/models/exemplo.glb');
+
 export default function Chapter1Screen() {
   const [selectedMolecula, setSelectedMolecula] = useState<Molecula>(
     capitulo1.moleculas[0]
@@ -33,8 +36,7 @@ export default function Chapter1Screen() {
   if (showAR) {
     return (
       <CompoundARView
-        objectPath="src/obj/exemplo.glb"
-        // objectPath="assets/models/exemplo.glb"
+        objectModel={objectModel}
         onClose={() => setShowAR(false)}
       />
     );
