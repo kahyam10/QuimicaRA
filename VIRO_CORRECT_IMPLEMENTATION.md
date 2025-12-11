@@ -7,6 +7,7 @@ TypeError: Cannot read property 'setJSMaterials' of null
 ```
 
 **Causa Real:** Forma incorreta de carregar arquivo GLB
+
 - Usar `{ uri: objectPath }` com caminho string
 - Viro precisa do arquivo carregado via `require()`
 
@@ -16,17 +17,11 @@ TypeError: Cannot read property 'setJSMaterials' of null
 
 ```tsx
 // ❌ ERRADO - Causa erro setJSMaterials
-<Viro3DObject
-  source={{ uri: objectPath }}
-  type="GLB"
-/>
+<Viro3DObject source={{ uri: objectPath }} type="GLB" />;
 
 // ✅ CORRETO - Usa require()
 const objectModel = require('@/assets/models/exemplo.glb');
-<Viro3DObject
-  source={objectModel}
-  type="GLB"
-/>
+<Viro3DObject source={objectModel} type="GLB" />;
 ```
 
 ### Implementação Completa
@@ -37,19 +32,19 @@ const objectModel = require('@/assets/models/exemplo.glb');
  * Baseada no exemplo HelloWorldSceneAR oficial
  */
 const HelloWorldSceneAR = ({ onClose }: { onClose: () => void }) => {
-  const [text, setText] = useState("Inicializando AR...");
-  
+  const [text, setText] = useState('Inicializando AR...');
+
   // ✅ USAR require() - Carregamento correto
   const objectModel = require('@/assets/models/exemplo.glb');
 
   const onInitialized = (state: any, reason: ViroTrackingReason) => {
-    console.log("AR tracking state:", state, reason);
+    console.log('AR tracking state:', state, reason);
     if (state === ViroTrackingStateConstants.TRACKING_NORMAL) {
-      setText("AR Pronto!");
+      setText('AR Pronto!');
     } else if (state === ViroTrackingStateConstants.TRACKING_UNAVAILABLE) {
-      setText("AR Indisponível");
+      setText('AR Indisponível');
     } else {
-      setText("Inicializando AR...");
+      setText('Inicializando AR...');
     }
   };
 
@@ -98,7 +93,7 @@ const [showAR, setShowAR] = useState(false);
 
 if (showAR) {
   return (
-    <CompoundARView 
+    <CompoundARView
       objectPath="assets/models/exemplo.glb"
       onClose={() => setShowAR(false)}
     />
@@ -108,33 +103,36 @@ if (showAR) {
 
 ## 📊 Comparação: Antes vs Depois
 
-| Aspecto | Antes (Erro) | Depois (Correto) |
-|---------|--------------|------------------|
-| **Carregamento** | `{ uri: path }` | `require()` |
-| **ViroCore** | ❌ Não inicia | ✅ Inicia |
-| **setJSMaterials** | ❌ Null | ✅ Funciona |
-| **Rendering** | ❌ Falha | ✅ Sucesso |
-| **Material loading** | ❌ Erro | ✅ Correto |
+| Aspecto              | Antes (Erro)    | Depois (Correto) |
+| -------------------- | --------------- | ---------------- |
+| **Carregamento**     | `{ uri: path }` | `require()`      |
+| **ViroCore**         | ❌ Não inicia   | ✅ Inicia        |
+| **setJSMaterials**   | ❌ Null         | ✅ Funciona      |
+| **Rendering**        | ❌ Falha        | ✅ Sucesso       |
+| **Material loading** | ❌ Erro         | ✅ Correto       |
 
 ## 🔧 Debugging Tips
 
 Se ainda houver erro:
 
 1. **Verificar arquivo GLB existe**
+
    ```bash
    ls -la e:\PROJECT\MILI\assets\models\exemplo.glb
    ```
 
 2. **Verificar require path**
+
    ```tsx
    const objectModel = require('@/assets/models/exemplo.glb');
    console.log('Modelo carregado:', objectModel);
    ```
 
 3. **Verificar ViroTrackingState**
+
    ```tsx
-   console.log("State:", state);
-   console.log("Reason:", reason);
+   console.log('State:', state);
+   console.log('Reason:', reason);
    ```
 
 4. **Limpar cache Expo**
@@ -154,6 +152,7 @@ Se ainda houver erro:
 ## 📚 Referência Oficial
 
 Baseado no exemplo HelloWorldSceneAR do Viro:
+
 - Usar `require()` para assets locais
 - `ViroTrackingReason` para validar estado
 - `onTrackingUpdated` callback essencial
