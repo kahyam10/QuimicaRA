@@ -48,8 +48,9 @@ export function CompoundARView({ objectPath, onClose }: CompoundARViewProps) {
 const HelloWorldSceneAR = ({ onClose }: { onClose: () => void }) => {
   const [text, setText] = useState("Inicializando AR...");
   
-  // Usar require() para carregamento correto do arquivo GLB
-  const objectModel = require('@/assets/models/exemplo.glb');
+  // Usar require() com path relativo para carregamento correto do arquivo GLB
+  // Path relativo: components -> .. (root) -> assets/models/exemplo.glb
+  const objectModel = require('../assets/models/exemplo.glb');
 
   const onInitialized = (state: any, reason: ViroTrackingReason) => {
     console.log("AR tracking state:", state, reason);
