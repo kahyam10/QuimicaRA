@@ -3,7 +3,7 @@
 ## ❌ Erro de Build
 
 ```
-Platform declaration clash: The following declarations have the same JVM signature 
+Platform declaration clash: The following declarations have the same JVM signature
 (getJSMainModuleName()Ljava/lang/String;):
     fun getJSMainModuleName(): String defined in com.kssoft.quimica_ra.MainApplication
     fun getJSMainModuleName(): String defined in com.kssoft.quimica_ra.MainApplication
@@ -31,11 +31,13 @@ override fun getJSMainModuleName(): String = ".expo/.virtual-metro-entry"
 ## 📝 Por Quê?
 
 ### Por Que Duas Declarações?
+
 - Provavelmente durante `expo prebuild`, o arquivo foi gerado com ambas
 - A primeira (`"index"`) é o padrão do React Native
 - A segunda (`".expo/.virtual-metro-entry"`) é o padrão do Expo Router
 
 ### Qual Usar?
+
 - ✅ **`.expo/.virtual-metro-entry`** - Necessária para Expo Router funcionar
 - ❌ **`index`** - Redundante, remove-se
 
@@ -63,11 +65,11 @@ override fun getJSMainModuleName(): String = ".expo/.virtual-metro-entry"
 
 ## 📊 Configuração Final
 
-| Aspecto | Valor |
-|---------|-------|
-| Método | `getJSMainModuleName()` |
-| Módulo | `.expo/.virtual-metro-entry` |
-| Status | ✅ Único e correto |
+| Aspecto | Valor                        |
+| ------- | ---------------------------- |
+| Método  | `getJSMainModuleName()`      |
+| Módulo  | `.expo/.virtual-metro-entry` |
+| Status  | ✅ Único e correto           |
 
 ## 🚀 Próximas Etapas
 
@@ -79,6 +81,7 @@ Build agora deve passar sem este erro. Se houver outros erros, verificar:
 4. ✅ Configuração do SDK do Android
 
 ---
+
 **Commit**: `44e91ad`  
 **Data**: 11 de dezembro de 2025  
 **Status**: ✅ RESOLVIDO
