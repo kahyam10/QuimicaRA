@@ -1,5 +1,5 @@
 import { StyleSheet, View, Text, ScrollView, TouchableOpacity, Animated } from 'react-native';
-import { memo, useState } from 'react';
+import { memo, useState, useRef, useEffect } from 'react';
 import { ChevronDown } from 'lucide-react-native';
 import Colors from '@/constants/Colors';
 import { Molecula } from '@/constants/ChapterContent';
@@ -70,17 +70,15 @@ const PropertyCard = memo(function PropertyCard({
   isExpanded, 
   onPress 
 }: PropertyCardProps) {
-  const slideAnim = new Animated.Value(isExpanded ? 0 : -100);
+  const slideAnim = useRef(new Animated.Value(0)).current;
 
-  if (isExpanded) {
+  useEffect(() => {
     Animated.timing(slideAnim, {
-      toValue: 0,
+      toValue: isExpanded ? 0 : -100,
       duration: 300,
       useNativeDriver: true,
     }).start();
-  } else {
-    slideAnim.setValue(-100);
-  }
+  }, [isExpanded, slideAnim]);
 
   return (
     <TouchableOpacity 

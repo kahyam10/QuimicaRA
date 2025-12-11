@@ -34,10 +34,6 @@ export const ChapterCard = memo(function ChapterCard({
       <View style={styles.content}>
         <Text style={styles.title}>{title}</Text>
         <Text style={styles.description}>{description}</Text>
-        <View style={styles.progressBarContainer}>
-          <View style={[styles.progressBar, { width: `${progress}%` }]} />
-        </View>
-        <Text style={styles.progressText}>{progress}% Completo</Text>
       </View>
       <View style={styles.arrow}>
         <ChevronRight color={Colors.primary} size={24} />
@@ -112,27 +108,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Inter-Regular',
     fontSize: 14,
     color: Colors.textSecondary,
-    marginBottom: 8,
-  },
-
-  progressBarContainer: {
-    height: 6,
-    backgroundColor: Colors.lightBackground,
-    borderRadius: 3,
-    marginBottom: 4,
-    overflow: 'hidden',
-  },
-
-  progressBar: {
-    height: '100%',
-    backgroundColor: Colors.primary,
-    borderRadius: 3,
-  },
-
-  progressText: {
-    fontFamily: 'Inter-Regular',
-    fontSize: 12,
-    color: Colors.textTertiary,
+    marginBottom: 0,
   },
 
   arrow: {
