@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text, ScrollView, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Text, ScrollView, TouchableOpacity, Animated } from 'react-native';
 import { memo, useState } from 'react';
 import { ChevronDown } from 'lucide-react-native';
 import Colors from '@/constants/Colors';
@@ -70,6 +70,18 @@ const PropertyCard = memo(function PropertyCard({
   isExpanded, 
   onPress 
 }: PropertyCardProps) {
+  const slideAnim = new Animated.Value(isExpanded ? 0 : -100);
+
+  if (isExpanded) {
+    Animated.timing(slideAnim, {
+      toValue: 0,
+      duration: 300,
+      useNativeDriver: true,
+    }).start();
+  } else {
+    slideAnim.setValue(-100);
+  }
+
   return (
     <TouchableOpacity 
       style={[styles.propertyCard, isExpanded && styles.propertyCardExpanded]}
@@ -86,9 +98,14 @@ const PropertyCard = memo(function PropertyCard({
       </View>
       
       {isExpanded && (
-        <View style={styles.propertyContent}>
+        <Animated.View 
+          style={[
+            styles.propertyContent,
+            { transform: [{ translateX: slideAnim }] }
+          ]}
+        >
           <Text style={styles.propertyValue}>{value}</Text>
-        </View>
+        </Animated.View>
       )}
     </TouchableOpacity>
   );
@@ -157,6 +174,7 @@ const styles = StyleSheet.create({
     paddingVertical: 14,
     borderWidth: 1,
     borderColor: Colors.border,
+    overflow: 'hidden',
   },
 
   propertyCardExpanded: {
