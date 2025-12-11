@@ -90,13 +90,28 @@ export function ViroARViewer({
 
 /**
  * Componente da Cena AR
- * Renderiza o objeto 3D com iluminação
+ * Renderiza o objeto 3D com iluminação dentro do ViroARSceneNavigator
  */
 function ARSceneComponent({ objectPath, onClose }: { objectPath: string; onClose: () => void }) {
-  const [trackingState, setTrackingState] = useState(ViroTrackingStateConstants.TRACKING_NORMAL);
+  // Função que retorna a cena AR
+  const renderScene = () => <ARScene objectPath={objectPath} onClose={onClose} />;
+
+  return (
+    <ViroARSceneNavigator
+      initialScene={{ scene: renderScene }}
+      style={{ flex: 1 }}
+    />
+  );
+}
+
+/**
+ * Cena AR Principal
+ * Define o que será renderizado na cena de realidade aumentada
+ */
+const ARScene = ({ objectPath, onClose }: { objectPath: string; onClose: () => void }) => {
 
   const onInitialized = (state: any, reason: any) => {
-    console.log('AR Tracking:', state, 'Reason:', reason);
+    console.log('AR Scene Initialized:', state, 'Reason:', reason);
   };
 
   return (
@@ -115,18 +130,9 @@ function ARSceneComponent({ objectPath, onClose }: { objectPath: string; onClose
         onLoadEnd={() => console.log('Modelo carregado com sucesso')}
         onError={(error: any) => console.log('Erro ao carregar modelo:', error)}
       />
-
-      {/* Botão flutuante para fechar a visualização AR */}
-      <TouchableOpacity
-        style={styles.arCloseButton}
-        onPress={onClose}
-        activeOpacity={0.7}
-      >
-        <X color={Colors.text} size={20} />
-      </TouchableOpacity>
     </ViroARScene>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
