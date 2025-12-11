@@ -1,4 +1,12 @@
-import { StyleSheet, View, Dimensions, Text, ScrollView, TouchableOpacity, StatusBar } from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Dimensions,
+  Text,
+  ScrollView,
+  TouchableOpacity,
+  StatusBar,
+} from 'react-native';
 import { useState, useCallback } from 'react';
 import Colors from '@/constants/Colors';
 import { capitulo1, Molecula } from '@/constants/ChapterContent';
@@ -12,7 +20,9 @@ import { Play } from 'lucide-react-native';
 const { height } = Dimensions.get('window');
 
 export default function Chapter1Screen() {
-  const [selectedMolecula, setSelectedMolecula] = useState<Molecula>(capitulo1.moleculas[0]);
+  const [selectedMolecula, setSelectedMolecula] = useState<Molecula>(
+    capitulo1.moleculas[0]
+  );
   const [showAR, setShowAR] = useState(false);
 
   const handleSelectMolecula = useCallback((molecula: Molecula) => {
@@ -22,49 +32,52 @@ export default function Chapter1Screen() {
   // Se AR está visível, mostrar apenas o viewer AR
   if (showAR) {
     return (
-      <CompoundARView 
+      <CompoundARView
         objectPath="assets/models/exemplo.glb"
         onClose={() => setShowAR(false)}
       />
     );
   }
 
-    return (
-        <>
-    <View style={styles.container}>
-      <ChapterHeader chapterNumber={capitulo1.numero} title={capitulo1.titulo} />
+  return (
+    <>
+      <View style={styles.container}>
+        <ChapterHeader
+          chapterNumber={capitulo1.numero}
+          title={capitulo1.titulo}
+        />
 
-      {/* Visualizador 3D / Botão AR */}
-      <View style={styles.viewerContainer}>
-        <ModelViewer modelType={selectedMolecula?.id} zoomLevel={1} />
-        <TouchableOpacity 
-          style={styles.arButton}
-          onPress={() => setShowAR(true)}
-        >
-          <Play color={Colors.white} size={24} />
-          <Text style={styles.arButtonText}>VER EM AR</Text>
-        </TouchableOpacity>
-      </View>
-
-      {/* Conteúdo scrollável (descrição) */}
-      <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
-        <View style={styles.infoContainer}>
-          <MoleculaCard molecula={selectedMolecula} />
+        {/* Visualizador 3D / Botão AR */}
+        <View style={styles.viewerContainer}>
+          <ModelViewer modelType={selectedMolecula?.id} zoomLevel={1} />
+          <TouchableOpacity
+            style={styles.arButton}
+            onPress={() => setShowAR(true)}
+          >
+            <Play color={Colors.white} size={24} />
+            <Text style={styles.arButtonText}>VER EM AR</Text>
+          </TouchableOpacity>
         </View>
-      </ScrollView>
 
-      {/* Carousel fixo na base */}
-      <View style={styles.selectorSection}>
-        <View style={styles.selectorContainer}>
-          <MoleculaSelector
-            moleculas={capitulo1.moleculas}
-            selectedId={selectedMolecula?.id}
-            onSelectMolecula={handleSelectMolecula}
-          />
+        {/* Conteúdo scrollável (descrição) */}
+        <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
+          <View style={styles.infoContainer}>
+            <MoleculaCard molecula={selectedMolecula} />
+          </View>
+        </ScrollView>
+
+        {/* Carousel fixo na base */}
+        <View style={styles.selectorSection}>
+          <View style={styles.selectorContainer}>
+            <MoleculaSelector
+              moleculas={capitulo1.moleculas}
+              selectedId={selectedMolecula?.id}
+              onSelectMolecula={handleSelectMolecula}
+            />
+          </View>
         </View>
       </View>
-            </View>
-            </>
+    </>
   );
 }
 
@@ -88,13 +101,11 @@ const styles = StyleSheet.create({
     position: 'relative',
   },
   selectorSection: {
-    backgroundColor: Colors.primary,
     paddingHorizontal: 0,
     paddingVertical: 0,
     marginBottom: 0,
     borderTopWidth: 0,
     borderTopColor: 'transparent',
-    minHeight: 85,
   },
   selectorContainer: {
     minHeight: 85,

@@ -20,6 +20,12 @@ export const MoleculaCard = memo(function MoleculaCard({ molecula }: MoleculaCar
           )}
         </View>
 
+        {/* Informações Gerais */}
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Informações Gerais</Text>
+          <Text style={styles.informacoes}>{molecula.informacoes}</Text>
+        </View>
+
         {/* Propriedades */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Propriedades Moleculares</Text>
@@ -28,12 +34,6 @@ export const MoleculaCard = memo(function MoleculaCard({ molecula }: MoleculaCar
           <PropertyRow label="Geometria Molecular" value={molecula.geometria} />
           <PropertyRow label="Polaridade" value={molecula.polaridade} />
           <PropertyRow label="Ângulos de Ligação" value={molecula.anguloLigacao} />
-        </View>
-
-        {/* Informações Gerais */}
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Informações Gerais</Text>
-          <Text style={styles.informacoes}>{molecula.informacoes}</Text>
         </View>
       </View>
     </ScrollView>
