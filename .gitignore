@@ -33,13 +33,3 @@ yarn-error.*
 
 # typescript
 *.tsbuildinfo
-
-# 3D models - large binary files
-# Store locally, don't commit to git
-*.glb
-*.gltf
-*.obj
-*.mtl
-*.fbx
-*.dae
-
