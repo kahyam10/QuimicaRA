@@ -86,15 +86,15 @@ const styles = StyleSheet.create({
     position: 'relative',
   },
   selectorSection: {
-    backgroundColor: Colors.darkBackground,
-    paddingHorizontal: 16,
-    paddingVertical: 12,
-    borderTopWidth: 1,
-    borderTopColor: Colors.border,
-    height: 130,
+    backgroundColor: Colors.primary,
+    paddingHorizontal: 0,
+    paddingVertical: 0,
+    borderTopWidth: 0,
+    borderTopColor: 'transparent',
+    height: 'auto',
   },
   selectorContainer: {
-    height: 100,
+    height: 'auto',
   },
   arButton: {
     backgroundColor: Colors.primary,

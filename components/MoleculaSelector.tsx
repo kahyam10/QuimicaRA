@@ -62,60 +62,64 @@ const MoleculaButton = memo(function MoleculaButton({
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: Colors.background,
+    backgroundColor: Colors.primary, // Fundo azul
+    flexGrow: 0,
   },
 
   content: {
-    padding: 16,
-    gap: 12,
-    paddingBottom: 24,
+    paddingHorizontal: 0,
+    paddingVertical: 0,
+    gap: 0,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 
   button: {
-    paddingHorizontal: 20,
-    paddingVertical: 14,
-    borderRadius: 12,
-    borderWidth: 2,
-    borderColor: Colors.border,
-    backgroundColor: Colors.surfaceBackground,
-    marginRight: 8,
-    minWidth: 110,
+    paddingHorizontal: 16,
+    paddingVertical: 16,
+    borderRadius: 0,
+    borderWidth: 0,
+    borderColor: 'transparent',
+    backgroundColor: '#D3D3D3', // Cinza claro (não selecionado)
+    marginRight: 0,
+    minWidth: 100,
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    shadowColor: Colors.shadowColor,
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.3,
-    shadowRadius: 3.84,
-    elevation: 3,
+    shadowColor: 'transparent',
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0,
+    shadowRadius: 0,
+    elevation: 0,
   },
 
   buttonActive: {
-    borderColor: Colors.primary,
-    backgroundColor: Colors.primary,
-    shadowColor: Colors.primary,
-    shadowOpacity: 0.5,
-    elevation: 6,
+    borderColor: 'transparent',
+    backgroundColor: Colors.white, // Branco (selecionado)
+    shadowColor: 'transparent',
+    shadowOpacity: 0,
+    elevation: 0,
   },
 
   buttonFormula: {
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: '700',
-    color: Colors.textSecondary,
+    color: '#999999', // Cinza escuro (não selecionado)
     fontFamily: 'Inter-Bold',
   },
 
   buttonFormulaActive: {
-    color: Colors.text,
+    color: Colors.primary, // Azul (selecionado)
   },
 
   buttonNome: {
-    fontSize: 13,
-    color: Colors.textTertiary,
-    marginTop: 6,
+    fontSize: 12,
+    color: '#AAAAAA', // Cinza mais claro (não selecionado)
+    marginTop: 4,
     fontFamily: 'Inter-Regular',
   },
 
   buttonNomeActive: {
-    color: Colors.text,
+    color: Colors.primary, // Azul (selecionado)
   },
 });
