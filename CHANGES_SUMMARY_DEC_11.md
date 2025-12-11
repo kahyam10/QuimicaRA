@@ -3,11 +3,13 @@
 ## ✅ Implementadas
 
 ### 1. ✅ Botão "VER EM AR" no Frame Superior
+
 - **Antes**: Botão dentro do ScrollView com label
 - **Depois**: Botão em posição absoluta no canto inferior direito do viewer container
 - **Arquivo**: `app/chapter1.tsx`
 
 ### 2. ✅ Migração para Stack Navigation
+
 - **Antes**: Tab navigation com bottom bar
 - **Depois**: Stack navigation limpa, sem bottom bar
 - **Mudanças**:
@@ -19,6 +21,7 @@
   - Criado `app/introduction.tsx`
 
 ### 3. ✅ Imagem Inicial Centralizada
+
 - **Antes**: Imagem no topo com altura pequena
 - **Depois**: Imagem centralizada, ocupando espaço máximo (280px)
 - **Arquivo**: `app/index.tsx`
@@ -33,6 +36,7 @@
   ```
 
 ### 4. ✅ Texto com Tonalidade Clara
+
 - **Antes**: Texto em `Colors.text` (cinza escuro)
 - **Depois**: Texto em branco puro (`#FFFFFF`)
 - **Arquivos**:
@@ -40,6 +44,7 @@
   - Subtítulo: `fontSize: 16, color: '#FFFFFF'`
 
 ### 5. ✅ Remover Labels de Seleção
+
 - **Antes**: "Selecione uma Molécula" aparecia em cada capítulo
 - **Depois**: Label removido
 - **Arquivos**:
@@ -48,6 +53,7 @@
   - `app/chapter3.tsx`
 
 ### 6. ✅ Corrigir Carregamento do Modelo GLB em AR
+
 - **Antes**: `{ uri: 'assets/models/exemplo.glb' }` (não funciona em Viro)
 - **Depois**: `require('../assets/models/exemplo.glb')`
 - **Arquivo**: `components/CompoundARView.tsx`
@@ -56,11 +62,13 @@
 ## ⏳ Próximas Tarefas
 
 ### [ ] Carousel de Moléculas na Parte Inferior
+
 - Mover selector para fora do ScrollView
 - Posicionar fixo na parte inferior
 - Fazer scroll horizontal apenas do carousel
 
 ### [ ] Remover Chapter 4
+
 - Deletar `app/(tabs)/chapter4.tsx`
 - Remover referências em tabs navigation
 
@@ -99,18 +107,19 @@ app/
 
 ## 🎨 Ajustes Visuais Feitos
 
-| Elemento | Antes | Depois |
-|----------|-------|--------|
-| Navigation | Tab bar inferior | Stack sem bar |
-| Botão AR | No scroll | Posição absoluta |
-| Imagem Home | Pequena | Centralizada 280px |
-| Texto Home | `Colors.text` | `#FFFFFF` |
-| Label Selector | Visível | Removido |
-| Modelo GLB | `{ uri: '...' }` | `require('...')` |
+| Elemento       | Antes            | Depois             |
+| -------------- | ---------------- | ------------------ |
+| Navigation     | Tab bar inferior | Stack sem bar      |
+| Botão AR       | No scroll        | Posição absoluta   |
+| Imagem Home    | Pequena          | Centralizada 280px |
+| Texto Home     | `Colors.text`    | `#FFFFFF`          |
+| Label Selector | Visível          | Removido           |
+| Modelo GLB     | `{ uri: '...' }` | `require('...')`   |
 
 ## 🚀 Próximos Passos
 
 1. **Testar em dispositivo**:
+
    ```bash
    npx expo run:android
    # ou
@@ -118,6 +127,7 @@ app/
    ```
 
 2. **Verificar pontos**:
+
    - ✅ Home com imagem centralizada
    - ✅ Stack navigation funciona
    - ✅ Botão AR está posicionado
@@ -136,5 +146,6 @@ app/
 - Texto branco: use `color: '#FFFFFF'` ao invés de `Colors.white`
 
 ---
+
 **Status**: 5 de 8 tarefas completas (62%)  
 **Data**: 11 de dezembro de 2025
