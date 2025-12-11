@@ -63,13 +63,14 @@ const MoleculaButton = memo(function MoleculaButton({
 const styles = StyleSheet.create({
   container: {
     backgroundColor: Colors.primary, // Fundo azul
-    flex: 1, // Ocupa 100% da largura disponível
+    height: 'auto',
   },
 
   content: {
     paddingHorizontal: 0,
     paddingVertical: 0,
     gap: 0,
+    flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'stretch',
   },

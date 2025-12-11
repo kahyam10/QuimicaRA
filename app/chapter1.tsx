@@ -91,10 +91,11 @@ const styles = StyleSheet.create({
     paddingVertical: 0,
     borderTopWidth: 0,
     borderTopColor: 'transparent',
-    height: 'auto',
+    height: 70,
   },
   selectorContainer: {
-    height: 'auto',
+    height: 70,
+    flex: 1,
   },
   arButton: {
     backgroundColor: Colors.primary,
