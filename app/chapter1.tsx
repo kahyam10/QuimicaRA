@@ -19,8 +19,33 @@ import { Play } from 'lucide-react-native';
 
 const { height } = Dimensions.get('window');
 
-// Carregar o modelo GLB
-const objectModel = require('../assets/models/exemplo.glb');
+// Carregar o modelo GLB com tratamento de erro
+let objectModel: any = null;
+let modelLoadError: string | null = null;
+
+try {
+  // Verificar e carregar o modelo
+  const modelPath = require.resolve('../assets/models/exemplo.glb');
+  console.log('✅ Arquivo do modelo encontrado em:', modelPath);
+  
+  // Listar arquivos na pasta de modelos
+  try {
+    const fs = require('fs');
+    const modelsPath = require.resolve('../assets/models');
+    const filesInModelDir = fs.readdirSync(modelsPath);
+    console.log('📁 Arquivos na pasta models:', filesInModelDir);
+  } catch (fsError) {
+    console.log('⚠️ Não foi possível listar arquivos (fs não disponível em RN):', fsError);
+  }
+  
+  objectModel = require('../assets/models/exemplo.glb');
+  console.log('✅ Modelo GLB carregado com sucesso:', objectModel);
+} catch (error) {
+  const errorMessage = error instanceof Error ? error.message : String(error);
+  modelLoadError = `Erro ao carregar modelo GLB: ${errorMessage}`;
+  console.error('❌ ' + modelLoadError);
+  console.error('Verifique se o arquivo existe em: assets/models/exemplo.glb');
+}
 
 export default function Chapter1Screen() {
   const [selectedMolecula, setSelectedMolecula] = useState<Molecula>(
@@ -34,6 +59,29 @@ export default function Chapter1Screen() {
 
   // Se AR está visível, mostrar apenas o viewer AR
   if (showAR) {
+    if (modelLoadError || !objectModel) {
+      return (
+        <View style={styles.container}>
+          <ChapterHeader
+            chapterNumber={capitulo1.numero}
+            title={capitulo1.titulo}
+          />
+          <View style={styles.errorContainer}>
+            <Text style={styles.errorTitle}>⚠️ Erro ao carregar modelo AR</Text>
+            <Text style={styles.errorMessage}>
+              {modelLoadError || 'Modelo GLB não disponível'}
+            </Text>
+            <TouchableOpacity 
+              style={styles.errorButton}
+              onPress={() => setShowAR(false)}
+            >
+              <Text style={styles.errorButtonText}>Fechar</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      );
+    }
+    
     return (
       <CompoundARView
         objectModel={objectModel}
@@ -137,5 +185,38 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.darkBackground,
     paddingHorizontal: 16,
     paddingVertical: 16,
+  },
+  errorContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 20,
+    paddingVertical: 20,
+    backgroundColor: Colors.darkBackground,
+  },
+  errorTitle: {
+    fontSize: 20,
+    fontWeight: '700',
+    color: Colors.white,
+    marginBottom: 12,
+    textAlign: 'center',
+  },
+  errorMessage: {
+    fontSize: 14,
+    color: '#ccc',
+    marginBottom: 24,
+    textAlign: 'center',
+    lineHeight: 20,
+  },
+  errorButton: {
+    backgroundColor: Colors.primary,
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    borderRadius: 8,
+  },
+  errorButtonText: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: Colors.white,
   },
 });
