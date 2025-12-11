@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { View, StyleSheet, TouchableOpacity } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, StyleSheet, TouchableOpacity, LogBox } from 'react-native';
 import {
   ViroARScene,
   ViroAmbientLight,
@@ -10,6 +10,12 @@ import {
 } from '@reactvision/react-viro';
 import { X } from 'lucide-react-native';
 import Colors from '@/constants/Colors';
+
+// Suprimir logs desnecessários do Viro
+LogBox.ignoreLogs([
+  'ErrorTracker initialized',
+  'ViroCore:',
+]);
 
 interface CompoundARViewProps {
   objectModel: any;
@@ -68,8 +74,8 @@ const HelloWorldSceneAR = ({ onClose, objectModel }: { onClose: () => void; obje
       <Viro3DObject
         source={objectModel}
         type="GLB"
-        position={[0, -0.5, 0]}
-        scale={[0.001, 0.001, 0.001]}
+        position={[0, 0, 0]}
+        scale={[0.01, 0.01, 0.01]}
         onLoadStart={() => console.log('🔄 Carregando modelo 3D...')}
         onLoadEnd={() => console.log('✅ Modelo carregado com sucesso')}
         onError={(error: any) => {
