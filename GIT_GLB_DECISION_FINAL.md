@@ -3,6 +3,7 @@
 ## 📖 A História
 
 ### Fase 1: Erro do Metro Bundler ❌
+
 ```
 Problema: Unable to resolve "../assets/models/exemplo.glb"
 Causa: require() não funciona com arquivos binários
@@ -10,6 +11,7 @@ Solução: Usar string path { uri: 'assets/models/exemplo.glb' }
 ```
 
 ### Fase 2: Decisão Errada ❌
+
 ```
 Pensamento: "Arquivo binário grande não deve estar no Git"
 Ação: Remover .glb do repositório
@@ -18,6 +20,7 @@ Commit: aa0b023
 ```
 
 ### Fase 3: Percebimento ⚠️
+
 ```
 Você perguntou: "Se o arquivo não foi no git na hora da build,
                  ele não vai ser anexado ao app"
@@ -25,6 +28,7 @@ Resposta: CORRETO! 🎯
 ```
 
 ### Fase 4: Correção ✅
+
 ```
 Revertido: Commit aa0b023
 Adicionado: Arquivos .glb novamente ao repositório
@@ -82,31 +86,34 @@ Status: Arquivo novamente commitado
 
 ## 📊 Comparação de Decisões
 
-| Aspecto | ❌ Remover do Git | ✅ Manter no Git |
-|---------|------------------|-----------------|
-| Arquivo no repositório | Não | Sim |
-| Tamanho repo | Pequeno (~0.5 MB) | Grande (~45 MB) |
-| Build funciona | Não ❌ | Sim ✅ |
-| APK contém modelo | Não ❌ | Sim ✅ |
-| App pronto para usar | Não ❌ | Sim ✅ |
-| Qualidade de código | OK | OK |
-| Pronto para produção | Não ❌ | Sim ✅ |
+| Aspecto                | ❌ Remover do Git | ✅ Manter no Git |
+| ---------------------- | ----------------- | ---------------- |
+| Arquivo no repositório | Não               | Sim              |
+| Tamanho repo           | Pequeno (~0.5 MB) | Grande (~45 MB)  |
+| Build funciona         | Não ❌            | Sim ✅           |
+| APK contém modelo      | Não ❌            | Sim ✅           |
+| App pronto para usar   | Não ❌            | Sim ✅           |
+| Qualidade de código    | OK                | OK               |
+| Pronto para produção   | Não ❌            | Sim ✅           |
 
 ## 🎯 Decisão Final
 
 **✅ MANTER ARQUIVO .GLB NO GIT**
 
 ### Por Quê?
+
 1. ✅ Build precisa do arquivo
 2. ✅ APK precisa incluir modelo
 3. ✅ App funciona em produção
 4. ✅ Desenvolvedor consegue compilar facilmente
 
 ### Trade-off
+
 - ⚠️ Repositório fica maior (~45 MB)
 - ⚠️ Clone/Pull mais lento
 
 ### Quando Otimizar?
+
 - 🔄 Médio prazo: Usar Git LFS
 - 🚀 Longo prazo: Usar CDN
 

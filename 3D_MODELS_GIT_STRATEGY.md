@@ -5,6 +5,7 @@
 **✅ ARQUIVOS .GLB PERMANECEM NO GIT**
 
 ### Por Quê?
+
 O arquivo precisa estar no repositório para que o build funcione:
 
 ```
@@ -19,6 +20,7 @@ APK pronto com modelo 3D            ← ✅ Funciona em produção
 ```
 
 **Se removêssemos do Git:**
+
 ```
 git clone                           ← ❌ SEM arquivo
 ↓
@@ -29,22 +31,24 @@ APK compilado SEM modelo           ← ❌ App quebra em produção
 
 ## 📊 Situação Atual
 
-| Aspecto | Status | Arquivo |
-|---------|--------|---------|
-| Git rastreia .glb? | ✅ SIM | `assets/models/exemplo.glb` |
-| Incluído no APK? | ✅ SIM | Compilado no build |
-| Tamanho repo | ⚠️ ~45 MB | Maior, mas necessário |
-| Funciona em produção? | ✅ SIM | App funciona |
+| Aspecto               | Status    | Arquivo                     |
+| --------------------- | --------- | --------------------------- |
+| Git rastreia .glb?    | ✅ SIM    | `assets/models/exemplo.glb` |
+| Incluído no APK?      | ✅ SIM    | Compilado no build          |
+| Tamanho repo          | ⚠️ ~45 MB | Maior, mas necessário       |
+| Funciona em produção? | ✅ SIM    | App funciona                |
 
 ## 🔧 Configuração Correta
 
 ### .gitignore
+
 ```bash
 # ❌ NÃO adicionamos *.glb ao .gitignore
 # ✅ Mantemos arquivo normal no Git
 ```
 
 ### Arquivo Local
+
 ```
 assets/models/exemplo.glb   ← Commitado, faz parte do build
 src/obj/exemplo.glb         ← Commitado, backup
@@ -53,12 +57,14 @@ src/obj/exemplo.glb         ← Commitado, backup
 ## 🎯 Quando Otimizar
 
 ### Curto Prazo (Agora)
+
 - ✅ Manter arquivo no Git
 - ✅ Build funciona normalmente
 - ✅ App pronto para testar
 - ⚠️ Repo é grande, mas OK para desenvolvimento
 
 ### Médio Prazo (Quando app ficar grande)
+
 ```
 Opção 1: Git LFS
 - git lfs track "*.glb"
@@ -72,6 +78,7 @@ Opção 2: Arquivo comprimido
 ```
 
 ### Longo Prazo (Em produção)
+
 ```
 Opção: CDN + Download em runtime
 - Repo sem arquivo binário
@@ -95,16 +102,16 @@ git status
 
 ## 📝 Resumo
 
-| Decisão Anterior | ❌ ERRADA |
-|------------------|----------|
-| Remover .glb do Git | ❌ App não compilava com modelo |
-| Adicionar ao .gitignore | ❌ Build falhava |
+| Decisão Anterior        | ❌ ERRADA                       |
+| ----------------------- | ------------------------------- |
+| Remover .glb do Git     | ❌ App não compilava com modelo |
+| Adicionar ao .gitignore | ❌ Build falhava                |
 
-| Decisão Atual | ✅ CORRETA |
-|-------------|-----------|
-| Manter .glb no Git | ✅ Build funciona |
-| .gitignore sem *.glb | ✅ Arquivo incluído no APK |
-| Otimizar depois | ✅ Prioridade: funcionar |
+| Decisão Atual         | ✅ CORRETA                 |
+| --------------------- | -------------------------- |
+| Manter .glb no Git    | ✅ Build funciona          |
+| .gitignore sem \*.glb | ✅ Arquivo incluído no APK |
+| Otimizar depois       | ✅ Prioridade: funcionar   |
 
 ## 🚀 Próximos Passos
 
@@ -113,6 +120,7 @@ git status
 3. ⏳ **Em produção**: Considerar CDN
 
 ---
+
 **Status**: ✅ CORRIGIDO  
 **Arquivo .glb**: ✅ NO GIT  
 **Build**: ✅ FUNCIONA
