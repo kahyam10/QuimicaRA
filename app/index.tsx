@@ -13,7 +13,7 @@ import { ChevronRight } from 'lucide-react-native';
 import Colors from '@/constants/Colors';
 import { ChapterCard } from '@/components/ChapterCard';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { backgroundImage, cap1Image } from '@/constants/Images';
+import { backgroundImage, cap1Image, cap2Image, cap3Image } from '@/constants/Images';
 
 export default function HomeScreen() {
   const router = useRouter();
@@ -69,7 +69,7 @@ export default function HomeScreen() {
             title="Compostos Químicos e Impactos"
             description="Análise dos principais compostos químicos e seus efeitos."
             progress={0}
-            backgroundImage={cap1Image}
+            backgroundImage={cap2Image}
             onPress={() => router.push('/chapter2')}
           />
 
@@ -78,7 +78,7 @@ export default function HomeScreen() {
             title="Efeitos na Atmosfera"
             description="Compreensão dos impactos dos compostos nas mudanças atmosféricas."
             progress={0}
-            backgroundImage={cap1Image}
+            backgroundImage={cap3Image}
             onPress={() => router.push('/chapter3')}
           />
         </ScrollView>
