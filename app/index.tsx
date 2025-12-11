@@ -5,6 +5,7 @@ import {
   ScrollView,
   TouchableOpacity,
   ImageBackground,
+  StatusBar,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
@@ -12,7 +13,7 @@ import { ChevronRight } from 'lucide-react-native';
 import Colors from '@/constants/Colors';
 import { ChapterCard } from '@/components/ChapterCard';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { backgroundImage } from '@/constants/Images';
+import { backgroundImage, cap1Image } from '@/constants/Images';
 
 export default function HomeScreen() {
   const router = useRouter();
@@ -22,6 +23,7 @@ export default function HomeScreen() {
       colors={[Colors.gradientStart, Colors.gradientEnd]}
       style={styles.container}
     >
+      <StatusBar hidden={true} />
       <SafeAreaView style={styles.safeArea}>
         <ScrollView
           contentContainerStyle={styles.scrollContent}
@@ -58,6 +60,7 @@ export default function HomeScreen() {
             title="Composição Atmosférica"
             description="Estudo da estrutura e composição das camadas atmosféricas."
             progress={0}
+            backgroundImage={cap1Image}
             onPress={() => router.push('/chapter1')}
           />
 
@@ -66,6 +69,7 @@ export default function HomeScreen() {
             title="Compostos Químicos e Impactos"
             description="Análise dos principais compostos químicos e seus efeitos."
             progress={0}
+            backgroundImage={cap1Image}
             onPress={() => router.push('/chapter2')}
           />
 
@@ -74,6 +78,7 @@ export default function HomeScreen() {
             title="Efeitos na Atmosfera"
             description="Compreensão dos impactos dos compostos nas mudanças atmosféricas."
             progress={0}
+            backgroundImage={cap1Image}
             onPress={() => router.push('/chapter3')}
           />
         </ScrollView>

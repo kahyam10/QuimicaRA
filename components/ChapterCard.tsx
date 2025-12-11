@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, ImageBackground, ImageSourcePropType } from 'react-native';
 import { ChevronRight } from 'lucide-react-native';
 import Colors from '@/constants/Colors';
 
@@ -9,6 +9,7 @@ interface ChapterCardProps {
   description: string;
   progress: number;
   onPress: () => void;
+  backgroundImage?: ImageSourcePropType;
 }
 
 /**
@@ -24,21 +25,32 @@ export const ChapterCard = memo(function ChapterCard({
   title, 
   description, 
   progress, 
-  onPress 
+  onPress,
+  backgroundImage
 }: ChapterCardProps) {
   return (
-    <TouchableOpacity style={styles.card} onPress={onPress}>
-      <View style={styles.numberCircle}>
-        <Text style={styles.number}>{number}</Text>
-      </View>
-      <View style={styles.content}>
-        <Text style={styles.title}>{title}</Text>
-        <Text style={styles.description}>{description}</Text>
-      </View>
-      <View style={styles.arrow}>
-        <ChevronRight color={Colors.primary} size={24} />
-      </View>
-    </TouchableOpacity>
+    <ImageBackground 
+      source={backgroundImage}
+      style={styles.card}
+      imageStyle={styles.cardImage}
+      resizeMode="cover"
+    >
+      {/* Overlay para melhorar contraste do texto */}
+      <View style={styles.overlay} />
+      
+      <TouchableOpacity style={styles.cardContent} onPress={onPress}>
+        <View style={styles.numberCircle}>
+          <Text style={styles.number}>{number}</Text>
+        </View>
+        <View style={styles.content}>
+          <Text style={styles.title}>{title}</Text>
+          <Text style={styles.description}>{description}</Text>
+        </View>
+        <View style={styles.arrow}>
+          <ChevronRight color={Colors.primary} size={24} />
+        </View>
+      </TouchableOpacity>
+    </ImageBackground>
   );
 }, (prevProps, nextProps) => {
   // Custom equality check to optimize memo comparison
@@ -48,19 +60,20 @@ export const ChapterCard = memo(function ChapterCard({
     prevProps.title === nextProps.title &&
     prevProps.description === nextProps.description &&
     prevProps.progress === nextProps.progress &&
+    prevProps.onPress === nextProps.onPress &&
+    prevProps.backgroundImage === nextProps.backgroundImage
+  );
+});
     prevProps.onPress === nextProps.onPress
   );
 });
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: Colors.cardBackground,
     borderRadius: 12,
     marginHorizontal: 16,
     marginBottom: 16,
-    padding: 16,
-    flexDirection: 'row',
-    alignItems: 'center',
+    overflow: 'hidden',
     borderWidth: 1,
     borderColor: Colors.border,
     borderLeftWidth: 4,
@@ -73,6 +86,23 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 4,
     elevation: 5,
+  },
+
+  cardImage: {
+    borderRadius: 12,
+  },
+
+  overlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    borderRadius: 12,
+  },
+
+  cardContent: {
+    padding: 16,
+    flexDirection: 'row',
+    alignItems: 'center',
+    flex: 1,
   },
 
   numberCircle: {
