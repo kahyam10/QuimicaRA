@@ -3,49 +3,50 @@
 ## Cores em Uso
 
 ### Paleta Principal
+
 ```typescript
 import Colors from '@/constants/Colors';
 
 // Backgrounds
-Colors.darkBackground    // #FFFFFF (Branco principal)
-Colors.background        // #F5F7FA (Cinza claro)
-Colors.cardBackground    // #F5F7FA (Cinza para cards)
-Colors.lightBackground   // #E3F2FD (Azul muito claro)
-Colors.surfaceBackground // #FFFFFF (Surface principal)
+Colors.darkBackground; // #FFFFFF (Branco principal)
+Colors.background; // #F5F7FA (Cinza claro)
+Colors.cardBackground; // #F5F7FA (Cinza para cards)
+Colors.lightBackground; // #E3F2FD (Azul muito claro)
+Colors.surfaceBackground; // #FFFFFF (Surface principal)
 
 // Texto
-Colors.text              // #1A1A1A (Texto principal)
-Colors.textSecondary     // #616161 (Texto secundário)
-Colors.textTertiary      // #9E9E9E (Texto terciário)
-Colors.lightText         // #1A1A1A (Alias para escuro)
-Colors.white             // #FFFFFF (Branco para ícones)
+Colors.text; // #1A1A1A (Texto principal)
+Colors.textSecondary; // #616161 (Texto secundário)
+Colors.textTertiary; // #9E9E9E (Texto terciário)
+Colors.lightText; // #1A1A1A (Alias para escuro)
+Colors.white; // #FFFFFF (Branco para ícones)
 
 // Estrutural
-Colors.border            // #E0E0E0 (Borda clara)
-Colors.primary           // #1976D2 (Azul primária)
-Colors.secondary         // #388E3C (Verde)
-Colors.accent            // #F57C00 (Laranja)
+Colors.border; // #E0E0E0 (Borda clara)
+Colors.primary; // #1976D2 (Azul primária)
+Colors.secondary; // #388E3C (Verde)
+Colors.accent; // #F57C00 (Laranja)
 
 // Efeitos
-Colors.shadowColor       // rgba(0,0,0,0.15) (Sombra suave)
-Colors.overlay           // rgba(0,0,0,0.3) (Overlay)
-Colors.overlayLight      // rgba(25,118,210,0.1) (Overlay azul)
+Colors.shadowColor; // rgba(0,0,0,0.15) (Sombra suave)
+Colors.overlay; // rgba(0,0,0,0.3) (Overlay)
+Colors.overlayLight; // rgba(25,118,210,0.1) (Overlay azul)
 
 // Status
-Colors.success           // #66BB6A (Verde - sucesso)
-Colors.warning           // #FFA726 (Laranja - aviso)
-Colors.error             // #EF5350 (Vermelho - erro)
-Colors.info              // #42A5F5 (Azul - informação)
+Colors.success; // #66BB6A (Verde - sucesso)
+Colors.warning; // #FFA726 (Laranja - aviso)
+Colors.error; // #EF5350 (Vermelho - erro)
+Colors.info; // #42A5F5 (Azul - informação)
 
 // Moléculas (Química)
-Colors.nitrogen          // #3498DB (N₂ - Azul)
-Colors.oxygen            // #E74C3C (O₂ - Vermelho)
-Colors.argon             // #95A5A6 (Ar - Cinza)
-Colors.carbon            // #2C3E50 (C - Cinza escuro)
-Colors.hydrogen          // #ECF0F1 (H - Branco)
-Colors.sulfur            // #F39C12 (S - Amarelo)
-Colors.nitrogen_oxide    // #E67E22 (NO₂ - Laranja)
-Colors.ozone             // #8E44AD (O₃ - Roxo)
+Colors.nitrogen; // #3498DB (N₂ - Azul)
+Colors.oxygen; // #E74C3C (O₂ - Vermelho)
+Colors.argon; // #95A5A6 (Ar - Cinza)
+Colors.carbon; // #2C3E50 (C - Cinza escuro)
+Colors.hydrogen; // #ECF0F1 (H - Branco)
+Colors.sulfur; // #F39C12 (S - Amarelo)
+Colors.nitrogen_oxide; // #E67E22 (NO₂ - Laranja)
+Colors.ozone; // #8E44AD (O₃ - Roxo)
 ```
 
 ---
@@ -53,6 +54,7 @@ Colors.ozone             // #8E44AD (O₃ - Roxo)
 ## 📱 Componentes Principais
 
 ### Backgrounds
+
 ```tsx
 // Branco puro (principal)
 <View style={{ backgroundColor: Colors.darkBackground }} />
@@ -65,6 +67,7 @@ Colors.ozone             // #8E44AD (O₃ - Roxo)
 ```
 
 ### Texto
+
 ```tsx
 // Texto principal (escuro)
 <Text style={{ color: Colors.text }}>Texto principal</Text>
@@ -77,39 +80,48 @@ Colors.ozone             // #8E44AD (O₃ - Roxo)
 ```
 
 ### Botões
+
 ```tsx
-<TouchableOpacity style={{
-  backgroundColor: Colors.primary,
-  borderRadius: 8,
-  padding: 12
-}}>
+<TouchableOpacity
+  style={{
+    backgroundColor: Colors.primary,
+    borderRadius: 8,
+    padding: 12,
+  }}
+>
   <Text style={{ color: Colors.white }}>Ação</Text>
 </TouchableOpacity>
 ```
 
 ### Cards
+
 ```tsx
-<View style={{
-  backgroundColor: Colors.cardBackground,
-  borderColor: Colors.border,
-  borderWidth: 1,
-  borderRadius: 12,
-  padding: 16,
-  shadowColor: Colors.shadowColor,
-  shadowOffset: { width: 0, height: 2 },
-  shadowOpacity: 0.15,
-  shadowRadius: 3,
-  elevation: 3
-}} />
+<View
+  style={{
+    backgroundColor: Colors.cardBackground,
+    borderColor: Colors.border,
+    borderWidth: 1,
+    borderRadius: 12,
+    padding: 16,
+    shadowColor: Colors.shadowColor,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.15,
+    shadowRadius: 3,
+    elevation: 3,
+  }}
+/>
 ```
 
 ### Divisores
+
 ```tsx
-<View style={{
-  height: 1,
-  backgroundColor: Colors.border,
-  marginVertical: 12
-}} />
+<View
+  style={{
+    height: 1,
+    backgroundColor: Colors.border,
+    marginVertical: 12,
+  }}
+/>
 ```
 
 ---
@@ -117,6 +129,7 @@ Colors.ozone             // #8E44AD (O₃ - Roxo)
 ## 🎯 Padrões de Uso
 
 ### Containers
+
 ```tsx
 // Container principal (branco)
 <View style={{ flex: 1, backgroundColor: Colors.darkBackground }} />
@@ -134,30 +147,34 @@ Colors.ozone             // #8E44AD (O₃ - Roxo)
 ```
 
 ### Headers
+
 ```tsx
-<View style={{
-  backgroundColor: Colors.primary,
-  paddingVertical: 16,
-  paddingHorizontal: 16,
-  borderBottomColor: Colors.border,
-  borderBottomWidth: 1
-}}>
-  <Text style={{ color: Colors.white, fontWeight: 'bold' }}>
-    Título
-  </Text>
+<View
+  style={{
+    backgroundColor: Colors.primary,
+    paddingVertical: 16,
+    paddingHorizontal: 16,
+    borderBottomColor: Colors.border,
+    borderBottomWidth: 1,
+  }}
+>
+  <Text style={{ color: Colors.white, fontWeight: 'bold' }}>Título</Text>
 </View>
 ```
 
 ### Formulários
+
 ```tsx
-<TextInput style={{
-  backgroundColor: Colors.background,
-  borderColor: Colors.border,
-  borderWidth: 1,
-  borderRadius: 8,
-  padding: 12,
-  color: Colors.text
-}} />
+<TextInput
+  style={{
+    backgroundColor: Colors.background,
+    borderColor: Colors.border,
+    borderWidth: 1,
+    borderRadius: 8,
+    padding: 12,
+    color: Colors.text,
+  }}
+/>
 ```
 
 ---
@@ -165,6 +182,7 @@ Colors.ozone             // #8E44AD (O₃ - Roxo)
 ## 🔍 Validações de Contraste
 
 ### Recomendados
+
 ```
 Texto escuro (#1A1A1A) + Fundo branco (#FFFFFF)
 Ratio: 19.5:1 ✅ AAA (Excelente)
@@ -177,6 +195,7 @@ Ratio: 7:1 ✅ AAA (Excelente)
 ```
 
 ### NÃO Use
+
 ```
 ❌ Branco em branco
 ❌ Cinza claro em branco
@@ -204,9 +223,7 @@ export function MoleculaCard({ molecula }) {
       {/* Propriedades */}
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>Propriedades</Text>
-        <Text style={styles.propertyValue}>
-          {molecula.descricao}
-        </Text>
+        <Text style={styles.propertyValue}>{molecula.descricao}</Text>
       </View>
     </View>
   );
@@ -214,57 +231,57 @@ export function MoleculaCard({ molecula }) {
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: Colors.cardBackground,      // Cinza claro
+    backgroundColor: Colors.cardBackground, // Cinza claro
     borderRadius: 12,
     padding: 16,
     marginVertical: 8,
     borderWidth: 1,
-    borderColor: Colors.border,                  // Borda clara
-    shadowColor: Colors.shadowColor,              // Sombra suave
+    borderColor: Colors.border, // Borda clara
+    shadowColor: Colors.shadowColor, // Sombra suave
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.15,
     shadowRadius: 3,
-    elevation: 3
+    elevation: 3,
   },
-  
+
   header: {
     marginBottom: 16,
     borderBottomWidth: 2,
-    borderBottomColor: Colors.primary,           // Azul
-    paddingBottom: 12
+    borderBottomColor: Colors.primary, // Azul
+    paddingBottom: 12,
   },
-  
+
   nome: {
     fontSize: 20,
     fontWeight: '700',
-    color: Colors.text,                          // Texto escuro
-    marginBottom: 4
+    color: Colors.text, // Texto escuro
+    marginBottom: 4,
   },
-  
+
   formula: {
     fontSize: 16,
-    color: Colors.primary,                       // Azul para fórmula
-    fontWeight: '600'
+    color: Colors.primary, // Azul para fórmula
+    fontWeight: '600',
   },
-  
+
   section: {
-    marginBottom: 16
+    marginBottom: 16,
   },
-  
+
   sectionTitle: {
     fontSize: 14,
     fontWeight: '600',
-    color: Colors.text,                          // Texto escuro
+    color: Colors.text, // Texto escuro
     marginBottom: 8,
     textTransform: 'uppercase',
-    letterSpacing: 0.5
+    letterSpacing: 0.5,
   },
-  
+
   propertyValue: {
     fontSize: 14,
-    color: Colors.textSecondary,                 // Texto cinzento
-    lineHeight: 20
-  }
+    color: Colors.textSecondary, // Texto cinzento
+    lineHeight: 20,
+  },
 });
 ```
 
@@ -273,6 +290,7 @@ const styles = StyleSheet.create({
 ## 🚀 Dicas de Desenvolvimento
 
 ### ✅ Fazer
+
 - ✅ Importar `Colors` de `@/constants/Colors`
 - ✅ Usar variáveis de cor em vez de hardcoded
 - ✅ Testar contraste em different iluminações
@@ -280,6 +298,7 @@ const styles = StyleSheet.create({
 - ✅ Verificar acessibilidade com WCAG
 
 ### ❌ NÃO Fazer
+
 - ❌ Hardcoded de cores (exemplo: `backgroundColor: '#FF0000'`)
 - ❌ Criar novas cores fora do `Colors.ts`
 - ❌ Usar contraste fraco
@@ -312,31 +331,31 @@ Se você está atualizando um componente antigo:
 
 ## 📊 Tabela de Referência Rápida
 
-| Uso | Cor | Valor |
-|-----|-----|-------|
-| **BG Principal** | darkBackground | #FFFFFF |
-| **BG Secundário** | background | #F5F7FA |
-| **Cards** | cardBackground | #F5F7FA |
-| **Highlights** | lightBackground | #E3F2FD |
-| **Texto Principal** | text | #1A1A1A |
-| **Texto Secondary** | textSecondary | #616161 |
-| **Bordas** | border | #E0E0E0 |
-| **Primária** | primary | #1976D2 |
-| **Branco** | white | #FFFFFF |
-| **Sombra** | shadowColor | rgba(0,0,0,0.15) |
+| Uso                 | Cor             | Valor            |
+| ------------------- | --------------- | ---------------- |
+| **BG Principal**    | darkBackground  | #FFFFFF          |
+| **BG Secundário**   | background      | #F5F7FA          |
+| **Cards**           | cardBackground  | #F5F7FA          |
+| **Highlights**      | lightBackground | #E3F2FD          |
+| **Texto Principal** | text            | #1A1A1A          |
+| **Texto Secondary** | textSecondary   | #616161          |
+| **Bordas**          | border          | #E0E0E0          |
+| **Primária**        | primary         | #1976D2          |
+| **Branco**          | white           | #FFFFFF          |
+| **Sombra**          | shadowColor     | rgba(0,0,0,0.15) |
 
 ---
 
 ## 🎓 Educação (Moléculas)
 
-| Molécula | Cor | Valor |
-|----------|-----|-------|
-| N₂ | nitrogen | #3498DB |
-| O₂ | oxygen | #E74C3C |
-| Ar | argon | #95A5A6 |
-| C | carbon | #2C3E50 |
-| H | hydrogen | #ECF0F1 |
-| S | sulfur | #F39C12 |
+| Molécula | Cor      | Valor   |
+| -------- | -------- | ------- |
+| N₂       | nitrogen | #3498DB |
+| O₂       | oxygen   | #E74C3C |
+| Ar       | argon    | #95A5A6 |
+| C        | carbon   | #2C3E50 |
+| H        | hydrogen | #ECF0F1 |
+| S        | sulfur   | #F39C12 |
 
 ---
 

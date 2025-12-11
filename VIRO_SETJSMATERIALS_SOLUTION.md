@@ -7,6 +7,7 @@ ERROR: TypeError: Cannot read property 'setJSMaterials' of null
 ```
 
 **Root Cause:** Modal + ViroARSceneNavigator não funcionam bem juntos
+
 - Modal cria um novo contexto React Native
 - Viro precisa do contexto nativo da aplicação
 - Resultado: ViroCore não inicializa corretamente
@@ -38,6 +39,7 @@ return <ScrollView>...</ScrollView>;
 ### Componentes Criados
 
 #### 1. **CompoundARView.tsx** (Novo)
+
 - Renderiza ViroARSceneNavigator sem Modal
 - Usa função lambda para renderizar cena
 - Botão flutuante para fechar (absoluto)
@@ -72,6 +74,7 @@ export function CompoundARView({ objectPath, onClose }: CompoundARViewProps) {
 ```
 
 #### 2. **chapter1.tsx** (Modificado)
+
 - State `showAR` para alternar entre ScrollView e AR
 - Botão azul simples (sem Modal)
 - Quando clica, substitui toda a tela pelo AR View
@@ -83,7 +86,7 @@ export default function Chapter1Screen() {
   // Se AR está visível, mostrar apenas o viewer AR
   if (showAR) {
     return (
-      <CompoundARView 
+      <CompoundARView
         objectPath="assets/models/exemplo.glb"
         onClose={() => setShowAR(false)}
       />
@@ -95,7 +98,7 @@ export default function Chapter1Screen() {
       {/* ScrollView com conteúdo normal */}
       <ScrollView>
         {/* Botão para ativar AR */}
-        <TouchableOpacity 
+        <TouchableOpacity
           style={styles.arButton}
           onPress={() => setShowAR(true)}
         >
@@ -110,13 +113,13 @@ export default function Chapter1Screen() {
 
 ## 📊 Comparação
 
-| Aspecto | Antes (Modal) | Depois (Full-Screen) |
-|---------|---------------|----------------------|
-| **Contexto** | Modal nova | Contexto nativo |
-| **ViroCore** | ❌ Null | ✅ Inicializado |
-| **Performance** | ⚠️ Lento | ✅ Rápido |
-| **UX** | Popup | Tela cheia |
-| **setJSMaterials** | ❌ Erro | ✅ Funciona |
+| Aspecto            | Antes (Modal) | Depois (Full-Screen) |
+| ------------------ | ------------- | -------------------- |
+| **Contexto**       | Modal nova    | Contexto nativo      |
+| **ViroCore**       | ❌ Null       | ✅ Inicializado      |
+| **Performance**    | ⚠️ Lento      | ✅ Rápido            |
+| **UX**             | Popup         | Tela cheia           |
+| **setJSMaterials** | ❌ Erro       | ✅ Funciona          |
 
 ## 🔍 Por Que Funciona Agora
 
@@ -136,7 +139,7 @@ const [showAR, setShowAR] = useState(false);
 
 if (showAR) {
   return (
-    <CompoundARView 
+    <CompoundARView
       objectPath="assets/models/exemplo.glb"
       onClose={() => setShowAR(false)}
     />
@@ -146,7 +149,7 @@ if (showAR) {
 // Botão para ativar
 <TouchableOpacity onPress={() => setShowAR(true)}>
   <Text>Abrir AR</Text>
-</TouchableOpacity>
+</TouchableOpacity>;
 ```
 
 ## ✅ Validação
@@ -181,12 +184,14 @@ Navegue para **Chapter 1** → Clique **VER EM AR** → Modelo 3D deve aparecer 
 ## 📚 Referência
 
 **O que aprendemos:**
+
 - Modal + Viro = incompatível
 - ViroARSceneNavigator precisa contexto nativo
 - Full-screen AR = melhor UX
 - Função lambda para renderScene = tipo correto
 
 **Problema similar resolvido em:**
+
 - Expo + React Native Modal
 - React Navigation + Viro
 - Qualquer native bridge + Modal

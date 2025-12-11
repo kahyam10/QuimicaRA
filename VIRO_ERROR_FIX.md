@@ -3,22 +3,26 @@
 ## Erros Encontrados
 
 ### 1. ❌ TypeError: Cannot read property 'setJSMaterials' of null
+
 **Causa:** `ViroARScene` precisa estar dentro de um `ViroARSceneNavigator`
 
-**Solução:** 
+**Solução:**
+
 - Envolver `ViroARScene` em `ViroARSceneNavigator`
 - Criar componente `ARScene` que retorna a cena
 - Usar função lambda para renderizar a cena
 
 ### 2. ⚠️ WARN Route "./(tabs)/chapter1.tsx" is missing default export
+
 **Causa:** Export default estava correto, mas havia conflito com roteamento
 
 **Status:** ✅ RESOLVIDO - Export default presente em chapter1.tsx
 
 ### 3. ⚠️ WARN No route named "chapter1" exists
+
 **Causa:** Confusão com nomes de rotas no Expo Router
 
-**Status:** ✅ RESOLVIDO - Rotas configuradas corretamente em _layout.tsx
+**Status:** ✅ RESOLVIDO - Rotas configuradas corretamente em \_layout.tsx
 
 ---
 
@@ -27,6 +31,7 @@
 ### ✅ components/ViroARViewer.tsx
 
 **Antes:**
+
 ```tsx
 function ARSceneComponent({ objectPath, onClose }) {
   return (
@@ -38,10 +43,13 @@ function ARSceneComponent({ objectPath, onClose }) {
 ```
 
 **Depois:**
+
 ```tsx
 function ARSceneComponent({ objectPath, onClose }) {
-  const renderScene = () => <ARScene objectPath={objectPath} onClose={onClose} />;
-  
+  const renderScene = () => (
+    <ARScene objectPath={objectPath} onClose={onClose} />
+  );
+
   return (
     <ViroARSceneNavigator
       initialScene={{ scene: renderScene }}
@@ -64,10 +72,12 @@ const ARScene = ({ objectPath, onClose }) => {
 ## Mudanças Técnicas
 
 1. **ViroARSceneNavigator adicionado**
+
    - Necessário para inicializar o contexto Viro corretamente
    - Evita erro "setJSMaterials of null"
 
 2. **ARScene como componente funcional**
+
    - Recebe props (objectPath, onClose)
    - Renderizado via lambda no ViroARSceneNavigator
 
@@ -111,6 +121,7 @@ expo start
 ## Referência
 
 **Documentação Viro:**
+
 - ViroARSceneNavigator: Necessário para criar contexto AR
 - ViroARScene: Cena dentro do navigator
 - Props devem ser passadas via função lambda

@@ -101,6 +101,7 @@ Azul primária     Botões/destaques Azul primária    Botões/destaques
 ## 🖼️ Exemplo Visual - Capítulo 1
 
 ### DARK MODE (Antes)
+
 ```
 ┌──────────────────────────────────────────┐
 │ ◀ Capítulo 1                              │  ← Branco em fundo preto
@@ -128,6 +129,7 @@ Impressão Geral: Escuro, repousa menos visualmente,
 ```
 
 ### LIGHT MODE (Depois) ✅
+
 ```
 ┌──────────────────────────────────────────┐
 │ ◀ Capítulo 1                              │  ← Escuro em fundo branco
@@ -159,12 +161,13 @@ Impressão Geral: Claro, legível, profissional,
 ## 🎯 Impacto nas Funcionalidades
 
 ### Viro AR (Realidade Aumentada)
+
 ```
 ANTES (Dark):
 [AR Scene em fundo preto - menos contraste com ambiente]
  👁️ Mais claro visualmente
  ⚠️ Menos integrado com ambiente real
- 
+
 DEPOIS (Light):
 [AR Scene em fundo claro - melhor contraste]
  👁️ Melhor integração visual
@@ -172,6 +175,7 @@ DEPOIS (Light):
 ```
 
 ### Cards de Moléculas
+
 ```
 ANTES:                          DEPOIS:
 ┌─────────────────────┐        ┌─────────────────────┐
@@ -186,6 +190,7 @@ Contraste médio                 Alto contraste ✅
 ```
 
 ### Seletor de Compostos
+
 ```
 ANTES:                          DEPOIS:
 ┌──────────┐                   ┌──────────┐
@@ -202,6 +207,7 @@ Resultado: Pesado              Resultado: Limpo
 ## 📱 Compatibilidade
 
 ### Light Mode (Novo) ✅
+
 ```
 ☀️  Luz Solar           ✅ Excelente
 💡 Luz Artificial       ✅ Excelente
@@ -211,6 +217,7 @@ Resultado: Pesado              Resultado: Limpo
 ```
 
 ### Dark Mode (Anterior)
+
 ```
 ☀️  Luz Solar           ⚠️ Difícil de ler
 💡 Luz Artificial       ✅ Bom
@@ -224,6 +231,7 @@ Resultado: Pesado              Resultado: Limpo
 ## 🔍 Validação de Cores
 
 ### Contraste WCAG (Acessibilidade)
+
 ```
 DARK MODE:
 #FFFFFF (texto) em #121212 (bg)
@@ -258,6 +266,7 @@ Status Final:             ✅ COMPLETO
 ## 🎨 Paleta de Cores Final
 
 ### Cores Principais
+
 ```
 Branco         #FFFFFF   ░░░░░░░░
 Cinza Claro    #F5F7FA   ░░░░░░░░
@@ -268,6 +277,7 @@ Azul Primária  #1976D2   ████████
 ```
 
 ### Status Colors
+
 ```
 Sucesso   #66BB6A   ██████
 Aviso     #FFA726   ██████
@@ -276,6 +286,7 @@ Info      #42A5F5   ██████
 ```
 
 ### Molecule Colors (Química)
+
 ```
 N₂ (Nitrogênio)  #3498DB   ██ Azul
 O₂ (Oxigênio)    #E74C3C   ██ Vermelho
@@ -289,25 +300,30 @@ H (Hidrogênio)   #ECF0F1   ██ Branco
 ## ✨ Benefícios da Conversão
 
 ✅ **Legibilidade**
+
 - Contraste superior em qualquer iluminação
 - Fonte escura em fundo branco = padrão web
 
 ✅ **Acessibilidade**
+
 - WCAG AAA compliant
 - Melhor para leitura prolongada
 - Bom para usuários com sensibilidade de luz
 
 ✅ **Profissionalismo**
+
 - Tema educacional moderno
 - Alinhado com padrões web
 - Aparência corporativa
 
 ✅ **Usabilidade**
+
 - Perfeito para ambientes com luz
 - Bateria economizada em OLED (texto preto)
 - Integração com AR melhorada
 
 ✅ **Manutenção**
+
 - Cores bem documentadas
 - Sistema Colors.ts centralizado
 - Fácil alteração futura
