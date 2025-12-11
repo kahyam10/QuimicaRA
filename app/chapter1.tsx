@@ -67,7 +67,7 @@ export default function Chapter1Screen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Colors.darkBackground, // Branco puro
+    backgroundColor: Colors.darkBackground,
   },
   content: {
     flex: 1,

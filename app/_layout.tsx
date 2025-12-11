@@ -54,7 +54,11 @@ export default function RootLayout() {
     >
       <GestureHandlerRootView>
         <Stack screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+          <Stack.Screen name="index" options={{ headerShown: false }} />
+          <Stack.Screen name="chapter1" options={{ headerShown: false }} />
+          <Stack.Screen name="chapter2" options={{ headerShown: false }} />
+          <Stack.Screen name="chapter3" options={{ headerShown: false }} />
+          <Stack.Screen name="introduction" options={{ headerShown: false }} />
           <Stack.Screen name="+not-found" />
         </Stack>
       </GestureHandlerRootView>
