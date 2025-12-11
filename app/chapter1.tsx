@@ -45,21 +45,23 @@ export default function Chapter1Screen() {
         </TouchableOpacity>
       </View>
 
+      {/* Conteúdo scrollável (descrição) */}
       <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
-        <View style={styles.selectorSection}>
-          <View style={styles.selectorContainer}>
-            <MoleculaSelector
-              moleculas={capitulo1.moleculas}
-              selectedId={selectedMolecula?.id}
-              onSelectMolecula={handleSelectMolecula}
-            />
-          </View>
-        </View>
-
         <View style={styles.infoContainer}>
           <MoleculaCard molecula={selectedMolecula} />
         </View>
       </ScrollView>
+
+      {/* Carousel fixo na base */}
+      <View style={styles.selectorSection}>
+        <View style={styles.selectorContainer}>
+          <MoleculaSelector
+            moleculas={capitulo1.moleculas}
+            selectedId={selectedMolecula?.id}
+            onSelectMolecula={handleSelectMolecula}
+          />
+        </View>
+      </View>
     </View>
   );
 }
@@ -68,6 +70,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.darkBackground,
+    flexDirection: 'column',
   },
   content: {
     flex: 1,
@@ -86,6 +89,9 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.darkBackground,
     paddingHorizontal: 16,
     paddingVertical: 12,
+    borderTopWidth: 1,
+    borderTopColor: Colors.border,
+    height: 130,
   },
   selectorContainer: {
     height: 100,

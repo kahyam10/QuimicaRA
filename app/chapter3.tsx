@@ -25,20 +25,20 @@ export default function Chapter3Screen() {
       </View>
 
       <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
-        <View style={styles.selectorSection}>
-          <View style={styles.selectorContainer}>
-            <MoleculaSelector
-              moleculas={capitulo3.moleculas}
-              selectedId={selectedMolecula?.id}
-              onSelectMolecula={handleSelectMolecula}
-            />
-          </View>
-        </View>
-
         <View style={styles.infoContainer}>
           <MoleculaCard molecula={selectedMolecula} />
         </View>
       </ScrollView>
+
+      <View style={styles.selectorSection}>
+        <View style={styles.selectorContainer}>
+          <MoleculaSelector
+            moleculas={capitulo3.moleculas}
+            selectedId={selectedMolecula?.id}
+            onSelectMolecula={handleSelectMolecula}
+          />
+        </View>
+      </View>
     </View>
   );
 }
@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.darkBackground,
+    flexDirection: 'column',
   },
   content: {
     flex: 1,
@@ -64,6 +65,9 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.darkBackground,
     paddingHorizontal: 16,
     paddingVertical: 12,
+    borderTopWidth: 1,
+    borderTopColor: Colors.border,
+    height: 130,
   },
   selectorContainer: {
     height: 100,
