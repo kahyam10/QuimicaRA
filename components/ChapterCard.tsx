@@ -64,9 +64,6 @@ export const ChapterCard = memo(function ChapterCard({
     prevProps.backgroundImage === nextProps.backgroundImage
   );
 });
-    prevProps.onPress === nextProps.onPress
-  );
-});
 
 const styles = StyleSheet.create({
   card: {
