@@ -24,7 +24,7 @@ interface CompoundARViewProps {
  * Usa path de string estática para carregamento correto de arquivos GLB
  */
 export function CompoundARView({ objectPath, onClose }: CompoundARViewProps) {
-  const renderScene = () => <HelloWorldSceneAR onClose={onClose} />;
+  const renderScene = () => <HelloWorldSceneAR onClose={onClose} objectPath={objectPath} />;
 
   return (
     <View style={styles.container}>
@@ -45,12 +45,12 @@ export function CompoundARView({ objectPath, onClose }: CompoundARViewProps) {
  * Cena AR com implementação correta
  * Baseada no exemplo HelloWorldSceneAR oficial
  */
-const HelloWorldSceneAR = ({ onClose }: { onClose: () => void }) => {
+const HelloWorldSceneAR = ({ onClose, objectPath }: { onClose: () => void; objectPath?: string }) => {
   const [text, setText] = useState("Inicializando AR...");
   
   // Usar Asset URI que React Native consegue resolver
   // Viro consegue carregar assets via este URI
-  const objectModel = { uri: 'file:///android_asset/exemplo.glb' };
+  const objectModel = { uri: `file:///android_asset/${objectPath || 'ejemplo.glb'}` };
 
   const onInitialized = (state: any, reason: ViroTrackingReason) => {
     console.log("AR tracking state:", state, reason);

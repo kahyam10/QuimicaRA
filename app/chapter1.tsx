@@ -24,7 +24,7 @@ export default function Chapter1Screen() {
     capitulo1.moleculas[0]
   );
   const [showAR, setShowAR] = useState(false);
- const objectModel = require('@/assets/models/exemplo.glb');
+
   const handleSelectMolecula = useCallback((molecula: Molecula) => {
     setSelectedMolecula(molecula);
   }, []);
@@ -33,7 +33,7 @@ export default function Chapter1Screen() {
   if (showAR) {
     return (
       <CompoundARView
-        objectPath={objectModel}
+        objectPath="assets/models/exemplo.glb"
         onClose={() => setShowAR(false)}
       />
     );
