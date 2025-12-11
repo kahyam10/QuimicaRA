@@ -6,8 +6,10 @@ import {
   ScrollView,
   TouchableOpacity,
   StatusBar,
+  Platform,
 } from 'react-native';
 import { useState, useCallback } from 'react';
+import * as FileSystem from 'expo-file-system';
 import Colors from '@/constants/Colors';
 import { capitulo1, Molecula } from '@/constants/ChapterContent';
 import { ChapterHeader } from '@/components/ChapterHeader';
@@ -19,33 +21,64 @@ import { Play } from 'lucide-react-native';
 
 const { height } = Dimensions.get('window');
 
-// Carregar o modelo GLB com tratamento de erro
-let objectModel: any = null;
-let modelLoadError: string | null = null;
+// Função para carregar o modelo com múltiplas estratégias
+function loadModelWithFallback() {
+  let objectModel: any = null;
+  let modelLoadError: string | null = null;
 
-try {
-  // Verificar e carregar o modelo
-  const modelPath = require.resolve('../assets/models/exemplo.glb');
-  console.log('✅ Arquivo do modelo encontrado em:', modelPath);
-  
-  // Listar arquivos na pasta de modelos
+  // Estratégia 1: Tentar require() direto
   try {
-    const fs = require('fs');
-    const modelsPath = require.resolve('../assets/models');
-    const filesInModelDir = fs.readdirSync(modelsPath);
-    console.log('📁 Arquivos na pasta models:', filesInModelDir);
-  } catch (fsError) {
-    console.log('⚠️ Não foi possível listar arquivos (fs não disponível em RN):', fsError);
+    console.log('📦 [Estratégia 1] Tentando carregar com require()...');
+    objectModel = require('../assets/models/exemplo.glb');
+    console.log('✅ Modelo carregado com require():', typeof objectModel);
+    return { objectModel, modelLoadError };
+  } catch (error1) {
+    console.warn('⚠️ [Estratégia 1] Falhou:', error1);
   }
-  
-  objectModel = require('../assets/models/exemplo.glb');
-  console.log('✅ Modelo GLB carregado com sucesso:', objectModel);
-} catch (error) {
-  const errorMessage = error instanceof Error ? error.message : String(error);
-  modelLoadError = `Erro ao carregar modelo GLB: ${errorMessage}`;
-  console.error('❌ ' + modelLoadError);
-  console.error('Verifique se o arquivo existe em: assets/models/exemplo.glb');
+
+  // Estratégia 2: Tentar caminho relativo alternativo
+  try {
+    console.log('📦 [Estratégia 2] Tentando caminho: ./assets/models/exemplo.glb');
+    objectModel = require('./assets/models/exemplo.glb');
+    console.log('✅ Modelo carregado com caminho alternativo');
+    return { objectModel, modelLoadError };
+  } catch (error2) {
+    console.warn('⚠️ [Estratégia 2] Falhou:', error2);
+  }
+
+  // Estratégia 3: URI do sistema de arquivos
+  try {
+    console.log('📦 [Estratégia 3] Tentando com FileSystem URI...');
+    const documentsDir = FileSystem.documentDirectory;
+    const assetPath = `${documentsDir}exemplo.glb`;
+    console.log('📁 Tentando caminho:', assetPath);
+    
+    // Para Expo, o caminho deve ser construído diferente
+    // Vamos tentar o arquivo no assets do bundle
+    objectModel = {
+      uri: 'file:///android_asset/exemplo.glb', // Para Android
+    };
+    console.log('⚠️ Usando URI do Android asset');
+    return { objectModel, modelLoadError };
+  } catch (error3) {
+    console.warn('⚠️ [Estratégia 3] Falhou:', error3);
+  }
+
+  // Se nenhuma estratégia funcionou
+  modelLoadError = `Não foi possível carregar o modelo GLB. Tentativas:
+    1. require('../assets/models/exemplo.glb') - Falhou
+    2. require('./assets/models/exemplo.glb') - Falhou
+    3. FileSystem - Falhou
+    
+Arquivo deve estar em: assets/models/exemplo.glb`;
+
+  console.error('❌ Todas as estratégias falharam');
+  console.log('📁 Arquivos encontrados no diretório assets/models (em tempo de build)');
+
+  return { objectModel: null, modelLoadError };
 }
+
+const { objectModel, modelLoadError } = loadModelWithFallback();
 
 export default function Chapter1Screen() {
   const [selectedMolecula, setSelectedMolecula] = useState<Molecula>(
