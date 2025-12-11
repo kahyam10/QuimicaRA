@@ -51,10 +51,10 @@ const HelloWorldSceneAR = ({ onClose, objectPath }: { onClose: () => void; objec
   // Carregar o modelo usando require() - funciona melhor com Viro
   let objectModel;
   try {
-    objectModel = require('../assets/models/ejemplo.glb');
+    objectModel = require('../assets/models/exemplo.glb');
   } catch (e) {
     console.warn('Modelo não encontrado:', e);
-    objectModel = require('../assets/models/ejemplo.glb');
+    objectModel = require('../assets/models/exemplo.glb');
   }
 
   const onInitialized = (state: any, reason: ViroTrackingReason) => {
