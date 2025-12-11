@@ -21,7 +21,7 @@ interface CompoundARViewProps {
  * Renderiza diretamente sem Modal para compatibilidade com Viro
  * 
  * Implementação baseada em exemplo oficial Viro
- * Usa require() para carregamento correto de arquivos GLB
+ * Usa path de string estática para carregamento correto de arquivos GLB
  */
 export function CompoundARView({ objectPath, onClose }: CompoundARViewProps) {
   const renderScene = () => <HelloWorldSceneAR onClose={onClose} />;
@@ -48,9 +48,9 @@ export function CompoundARView({ objectPath, onClose }: CompoundARViewProps) {
 const HelloWorldSceneAR = ({ onClose }: { onClose: () => void }) => {
   const [text, setText] = useState("Inicializando AR...");
   
-  // Usar require() com path relativo para carregamento correto do arquivo GLB
-  // Path relativo: components -> .. (root) -> assets/models/exemplo.glb
-  const objectModel = require('../assets/models/exemplo.glb');
+  // Usar path como string estática para carregamento de arquivo GLB
+  // Viro aceita paths relativos ao asset root
+  const objectModel = { uri: 'assets/models/exemplo.glb' };
 
   const onInitialized = (state: any, reason: ViroTrackingReason) => {
     console.log("AR tracking state:", state, reason);
