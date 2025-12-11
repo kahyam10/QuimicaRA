@@ -33,7 +33,8 @@ export default function Chapter1Screen() {
   if (showAR) {
     return (
       <CompoundARView
-        objectPath="assets/models/exemplo.glb"
+        objectPath="src/obj/exemplo.glb"
+        // objectPath="assets/models/exemplo.glb"
         onClose={() => setShowAR(false)}
       />
     );

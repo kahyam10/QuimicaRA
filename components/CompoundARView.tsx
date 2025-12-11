@@ -48,9 +48,14 @@ export function CompoundARView({ objectPath, onClose }: CompoundARViewProps) {
 const HelloWorldSceneAR = ({ onClose, objectPath }: { onClose: () => void; objectPath?: string }) => {
   const [text, setText] = useState("Inicializando AR...");
   
-  // Usar Asset URI que React Native consegue resolver
-  // Viro consegue carregar assets via este URI
-  const objectModel = { uri: `file:///android_asset/${objectPath || 'ejemplo.glb'}` };
+  // Carregar o modelo usando require() - funciona melhor com Viro
+  let objectModel;
+  try {
+    objectModel = require('../assets/models/ejemplo.glb');
+  } catch (e) {
+    console.warn('Modelo não encontrado:', e);
+    objectModel = require('../assets/models/ejemplo.glb');
+  }
 
   const onInitialized = (state: any, reason: ViroTrackingReason) => {
     console.log("AR tracking state:", state, reason);
