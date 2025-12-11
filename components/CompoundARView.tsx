@@ -67,15 +67,19 @@ const HelloWorldSceneAR = ({ onClose, objectModel }: { onClose: () => void; obje
 
   return (
     <ViroARScene onTrackingUpdated={onInitialized}>
-      {/* Iluminação ambiente branca */}
-      <ViroAmbientLight color="#ffffff" />
+      {/* Iluminação ambiente branca com intensidade aumentada */}
+      <ViroAmbientLight color="#ffffff" intensity={2} />
+
+      {/* Luz direcional adicional para melhor visualização */}
+      <ViroAmbientLight color="#ffffff" intensity={1} />
 
       {/* Objeto 3D principal do composto */}
       <Viro3DObject
         source={objectModel}
         type="GLB"
-        position={[0, 0, 0]}
-        scale={[0.01, 0.01, 0.01]}
+        position={[0, -0.5, -1]}
+        scale={[0.1, 0.1, 0.1]}
+        rotation={[0, 0, 0]}
         onLoadStart={() => console.log('🔄 Carregando modelo 3D...')}
         onLoadEnd={() => console.log('✅ Modelo carregado com sucesso')}
         onError={(error: any) => {
