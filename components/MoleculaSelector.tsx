@@ -1,4 +1,4 @@
-import { StyleSheet, View, ScrollView, TouchableOpacity, Text } from 'react-native';
+import { StyleSheet, View, TouchableOpacity, Text } from 'react-native';
 import { memo, useState, useCallback } from 'react';
 import Colors from '@/constants/Colors';
 import { Molecula } from '@/constants/ChapterContent';
@@ -15,12 +15,7 @@ export const MoleculaSelector = memo(function MoleculaSelector({
   selectedId,
 }: MoleculaSelectorProps) {
   return (
-    <ScrollView
-      horizontal
-      showsHorizontalScrollIndicator={false}
-      style={styles.container}
-      contentContainerStyle={styles.content}
-    >
+    <View style={styles.container}>
       {moleculas.map((molecula) => (
         <MoleculaButton
           key={molecula.id}
@@ -29,7 +24,7 @@ export const MoleculaSelector = memo(function MoleculaSelector({
           onPress={() => onSelectMolecula(molecula)}
         />
       ))}
-    </ScrollView>
+    </View>
   );
 });
 
@@ -63,28 +58,23 @@ const MoleculaButton = memo(function MoleculaButton({
 const styles = StyleSheet.create({
   container: {
     backgroundColor: Colors.primary, // Fundo azul
-    height: 'auto',
-  },
-
-  content: {
-    paddingHorizontal: 0,
-    paddingVertical: 0,
-    gap: 0,
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'stretch',
+    paddingHorizontal: 0,
+    paddingVertical: 0,
+    gap: 0,
   },
 
   button: {
-    paddingHorizontal: 12,
-    paddingVertical: 14,
+    paddingHorizontal: 8,
+    paddingVertical: 12,
     borderRadius: 0,
     borderWidth: 0,
     borderColor: 'transparent',
     backgroundColor: '#D3D3D3', // Cinza claro (não selecionado)
     marginRight: 0,
-    minWidth: 0,
-    flex: 1, // Cada botão ocupa espaço igual
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     shadowColor: 'transparent',
@@ -115,7 +105,7 @@ const styles = StyleSheet.create({
   },
 
   buttonFormula: {
-    fontSize: 14,
+    fontSize: 13,
     fontWeight: '700',
     color: '#999999', // Cinza escuro (não selecionado)
     fontFamily: 'Inter-Bold',

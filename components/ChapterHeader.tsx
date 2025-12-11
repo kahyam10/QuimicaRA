@@ -31,7 +31,7 @@ export const ChapterHeader = memo(function ChapterHeader({
   return (
     <View style={styles.header}>
       <TouchableOpacity onPress={handleGoBack} style={styles.backButton}>
-        <ChevronLeft color={Colors.text} size={24} />
+        <ChevronLeft color={Colors.white} size={24} />
       </TouchableOpacity>
       <View style={styles.titleContainer}>
         <Text style={styles.chapterNumber}>Capítulo {chapterNumber}</Text>
@@ -54,9 +54,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 16,
     paddingVertical: 16,
-    borderBottomWidth: 1,
-    borderBottomColor: Colors.border,
-    backgroundColor: Colors.background,
+    borderBottomWidth: 0,
+    borderBottomColor: 'transparent',
+    backgroundColor: Colors.primary, // Azul
   },
 
   backButton: {
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: Colors.lightBackground,
+    backgroundColor: 'rgba(255, 255, 255, 0.2)', // Branco semi-transparente
     marginRight: 12,
   },
 
@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
   chapterNumber: {
     fontFamily: 'Inter-Bold',
     fontSize: 14,
-    color: Colors.primary,
+    color: Colors.white, // Branco
     marginBottom: 2,
     fontWeight: '600',
   },
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
   title: {
     fontFamily: 'Inter-Bold',
     fontSize: 18,
-    color: Colors.text,
+    color: Colors.white, // Branco
     fontWeight: '600',
   },
 });
