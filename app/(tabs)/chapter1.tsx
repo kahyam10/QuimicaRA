@@ -1,4 +1,4 @@
-import { StyleSheet, View, Dimensions, Text, ScrollView } from 'react-native';
+import { StyleSheet, View, Dimensions, Text, ScrollView, TouchableOpacity } from 'react-native';
 import { useState, useCallback } from 'react';
 import Colors from '@/constants/Colors';
 import { capitulo1, Molecula } from '@/constants/ChapterContent';
@@ -6,16 +6,28 @@ import { ChapterHeader } from '@/components/ChapterHeader';
 import { MoleculaSelector } from '@/components/MoleculaSelector';
 import { MoleculaCard } from '@/components/MoleculaCard';
 import { ModelViewer } from '@/components/ModelViewer';
-import { CompoundModelViewer } from '@/components/CompoundModelViewer';
+import { CompoundARView } from '@/components/CompoundARView';
+import { Play } from 'lucide-react-native';
 
 const { height } = Dimensions.get('window');
 
 export default function Chapter1Screen() {
   const [selectedMolecula, setSelectedMolecula] = useState<Molecula>(capitulo1.moleculas[0]);
+  const [showAR, setShowAR] = useState(false);
 
   const handleSelectMolecula = useCallback((molecula: Molecula) => {
     setSelectedMolecula(molecula);
   }, []);
+
+  // Se AR está visível, mostrar apenas o viewer AR
+  if (showAR) {
+    return (
+      <CompoundARView 
+        objectPath="assets/models/exemplo.glb"
+        onClose={() => setShowAR(false)}
+      />
+    );
+  }
 
   return (
     <View style={styles.container}>
@@ -40,12 +52,13 @@ export default function Chapter1Screen() {
         {/* Visualizador 3D em AR */}
         <View style={styles.arViewerSection}>
           <Text style={styles.arViewerLabel}>Explorar em Realidade Aumentada</Text>
-          <CompoundModelViewer
-            compoundName={selectedMolecula.nome}
-            modelPath="assets/models/exemplo.glb"
-            size="medium"
-            buttonText="🔍 VER EM AR"
-          />
+          <TouchableOpacity 
+            style={styles.arButton}
+            onPress={() => setShowAR(true)}
+          >
+            <Play color={Colors.white} size={24} />
+            <Text style={styles.arButtonText}>VER EM AR</Text>
+          </TouchableOpacity>
         </View>
 
         <View style={styles.infoContainer}>
@@ -105,6 +118,23 @@ const styles = StyleSheet.create({
     color: Colors.text, // Escuro
     marginBottom: 12,
     letterSpacing: 0.3,
+  },
+  arButton: {
+    backgroundColor: Colors.primary, // Azul
+    borderRadius: 12,
+    paddingVertical: 16,
+    paddingHorizontal: 24,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: 8,
+    marginVertical: 8,
+  },
+  arButtonText: {
+    fontSize: 16,
+    fontWeight: '700',
+    color: Colors.white,
+    letterSpacing: 0.5,
   },
   infoContainer: {
     flex: 1,
