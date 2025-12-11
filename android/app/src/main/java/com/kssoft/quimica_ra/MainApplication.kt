@@ -26,11 +26,12 @@ class MainApplication : Application(), ReactApplication {
             val packages = PackageList(this).packages
             // Packages that cannot be autolinked yet can be added manually here, for example:
             // packages.add(MyReactNativePackage())
-            add(ReactViroPackage(ReactViroPackage.ViroPlatform.AR))
-            add(ReactViroPackage(ReactViroPackage.ViroPlatform.GVR))
+             packages.add(ReactViroPackage(ReactViroPackage.ViroPlatform.AR))
+            //add(ReactViroPackage(ReactViroPackage.ViroPlatform.GVR))
 
             return packages
           }
+                   override fun getJSMainModuleName(): String = "index"
 
           override fun getJSMainModuleName(): String = ".expo/.virtual-metro-entry"
 
