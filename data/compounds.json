@@ -112,8 +112,8 @@
           "ordem": 3,
           "ativo": true,
           "modelo3D": {
-            "pathGLB": "assets/models/ejemplo.glb",
-            "nomeArquivo": "argon_atom.glb",
+            "pathGLB": "assets/models/argonio.glb",
+            "nomeArquivo": "argonio.glb",
             "escala": 0.8,
             "rotacaoInicial": {
               "x": 0,

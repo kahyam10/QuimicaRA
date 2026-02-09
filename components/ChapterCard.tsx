@@ -6,10 +6,11 @@ import Colors from '@/constants/Colors';
 interface ChapterCardProps {
   number: number;
   title: string;
-  description: string;
+  description?: string;
   progress: number;
   onPress: () => void;
   backgroundImage?: ImageSourcePropType;
+  showNumber?: boolean;
 }
 
 /**
@@ -26,7 +27,8 @@ export const ChapterCard = memo(function ChapterCard({
   description, 
   progress, 
   onPress,
-  backgroundImage
+  backgroundImage,
+  showNumber = true
 }: ChapterCardProps) {
   return (
     <ImageBackground 
@@ -35,16 +37,17 @@ export const ChapterCard = memo(function ChapterCard({
       imageStyle={styles.cardImage}
       resizeMode="cover"
     >
-      {/* Overlay para melhorar contraste do texto */}
-      <View style={styles.overlay} />
+      {/* Overlay branco semi-transparente para o container de texto */}
+      <View style={styles.textOverlay} />
       
       <TouchableOpacity style={styles.cardContent} onPress={onPress}>
-        <View style={styles.numberCircle}>
-          <Text style={styles.number}>{number}</Text>
-        </View>
+        {showNumber && (
+          <View style={styles.numberCircle}>
+            <Text style={styles.number}>{number}</Text>
+          </View>
+        )}
         <View style={styles.content}>
           <Text style={styles.title}>{title}</Text>
-          <Text style={styles.description}>{description}</Text>
         </View>
         <View style={styles.arrow}>
           <ChevronRight color={Colors.primary} size={24} />
@@ -71,10 +74,6 @@ const styles = StyleSheet.create({
     marginHorizontal: 16,
     marginBottom: 16,
     overflow: 'hidden',
-    borderWidth: 1,
-    borderColor: Colors.border,
-    borderLeftWidth: 4,
-    borderLeftColor: Colors.primary,
     shadowColor: Colors.shadowColor,
     shadowOffset: {
       width: 0,
@@ -89,34 +88,33 @@ const styles = StyleSheet.create({
     borderRadius: 12,
   },
 
-  overlay: {
+  textOverlay: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    backgroundColor: 'rgba(0, 0, 0, 0.3)',
     borderRadius: 12,
   },
 
   cardContent: {
-    padding: 16,
+    padding: 18,
     flexDirection: 'row',
     alignItems: 'center',
     flex: 1,
   },
 
   numberCircle: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
+    width: 46,
+    height: 46,
+    borderRadius: 23,
     backgroundColor: Colors.primary,
     justifyContent: 'center',
     alignItems: 'center',
-    marginRight: 16,
+    marginRight: 18,
   },
 
   number: {
-    fontFamily: 'Inter-Bold',
-    fontSize: 18,
-    color: Colors.text,
-    fontWeight: '700',
+    fontSize: 21,
+    color: '#FFFFFF',
+    fontWeight: '900',
   },
 
   content: {
@@ -125,8 +123,8 @@ const styles = StyleSheet.create({
 
   title: {
     fontFamily: 'Inter-Bold',
-    fontSize: 16,
-    color: Colors.text,
+    fontSize: 18,
+    color: '#FFFFFF',
     marginBottom: 4,
     fontWeight: '600',
   },
@@ -139,6 +137,6 @@ const styles = StyleSheet.create({
   },
 
   arrow: {
-    marginLeft: 12,
+    marginLeft: 14,
   },
 });

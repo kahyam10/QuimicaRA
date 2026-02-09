@@ -13,7 +13,7 @@ import { ChevronRight } from 'lucide-react-native';
 import Colors from '@/constants/Colors';
 import { ChapterCard } from '@/components/ChapterCard';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { backgroundImage, cap1Image, cap2Image, cap3Image } from '@/constants/Images';
+import { backgroundImage, capaImage, cap1Image, cap2Image, cap3Image } from '@/constants/Images';
 
 export default function HomeScreen() {
   const router = useRouter();
@@ -23,7 +23,7 @@ export default function HomeScreen() {
       colors={[Colors.gradientStart, Colors.gradientEnd]}
       style={styles.container}
     >
-      <StatusBar hidden={true} />
+      <StatusBar hidden={true} translucent={true} />
       <SafeAreaView style={styles.safeArea}>
         <ScrollView
           contentContainerStyle={styles.scrollContent}
@@ -31,26 +31,28 @@ export default function HomeScreen() {
         >
           <ImageBackground 
             style={styles.header} 
-            source={backgroundImage} 
+            source={capaImage} 
             resizeMode="cover" 
             imageStyle={styles.headerImage}
           >
+            <View style={styles.headerOverlay} />
             <View style={styles.headerContent}>
-              <Text style={styles.title}>Química Atmosférica</Text>
+              <Text style={styles.title}>Clima Químico AR</Text>
               <Text style={styles.subtitle}>
                 Explorando os compostos e reações da atmosfera terrestre
               </Text>
             </View>
           </ImageBackground>
 
-          <View style={styles.introContainer}>
-            <TouchableOpacity
-              style={styles.startButton}
+          <View style={styles.introSection}>
+            <ChapterCard
+              number={0}
+              title="Introdução"
+              progress={0}
+              backgroundImage={backgroundImage}
+              showNumber={false}
               onPress={() => router.push('/introduction')}
-            >
-              <Text style={styles.startButtonText}>Introdução</Text>
-              <ChevronRight color={Colors.white} size={20} />
-            </TouchableOpacity>
+            />
           </View>
 
           <Text style={styles.chaptersTitle}>Capítulos</Text>
@@ -116,16 +118,24 @@ const styles = StyleSheet.create({
     borderRadius: 0,
   },
 
+  headerOverlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(0, 0, 0, 0.3)',
+  },
+
   headerContent: {
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
   },
 
+  introSection: {
+    marginTop: 16,
+  },
+
   title: {
-    fontFamily: 'Inter-Bold',
     fontSize: 32,
-    fontWeight: '700',
+    fontWeight: '900',
     color: '#FFFFFF',
     marginBottom: 8,
     textAlign: 'center',

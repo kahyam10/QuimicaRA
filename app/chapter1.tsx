@@ -6,6 +6,7 @@ import {
   ScrollView,
   TouchableOpacity,
   StatusBar,
+  ImageBackground,
 } from 'react-native';
 import { useState, useCallback } from 'react';
 import Colors from '@/constants/Colors';
@@ -16,6 +17,7 @@ import { MoleculaCard } from '@/components/MoleculaCard';
 import { ModelViewer } from '@/components/ModelViewer';
 import { CompoundARView } from '@/components/CompoundARView';
 import { Play } from 'lucide-react-native';
+import { enxofreImage } from '@/constants/Images';
 
 const { height } = Dimensions.get('window');
 // Carregar o modelo GLB
@@ -23,7 +25,7 @@ let objectModel: any = null;
 let modelLoadError: string | null = null;
 
 try {
-  objectModel = require('../assets/models/exemplo.glb');
+  objectModel = require('../assets/models/mol2.glb');
   console.log('✅ Modelo GLB carregado com sucesso');
 } catch (error) {
   const errorMessage = error instanceof Error ? error.message : String(error);
@@ -83,7 +85,13 @@ export default function Chapter1Screen() {
         />
 
         {/* Visualizador 3D / Botão AR */}
-        <View style={styles.viewerContainer}>
+        <ImageBackground 
+          source={enxofreImage} 
+          style={styles.viewerContainer}
+          imageStyle={styles.viewerBackgroundImage}
+          resizeMode="cover"
+        >
+          <View style={styles.viewerOverlay} />
           <ModelViewer modelType={selectedMolecula?.id} zoomLevel={1} />
           <TouchableOpacity
             style={styles.arButton}
@@ -92,7 +100,7 @@ export default function Chapter1Screen() {
             <Play color={Colors.white} size={24} />
             <Text style={styles.arButtonText}>VER EM AR</Text>
           </TouchableOpacity>
-        </View>
+        </ImageBackground>
 
         {/* Conteúdo scrollável (descrição) */}
         <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
@@ -128,12 +136,19 @@ const styles = StyleSheet.create({
   },
   viewerContainer: {
     height: height * 0.25,
-    backgroundColor: Colors.background,
+    backgroundColor: '#000000',
     borderBottomWidth: 1,
     borderBottomColor: Colors.border,
     justifyContent: 'center',
     alignItems: 'center',
     position: 'relative',
+  },
+  viewerBackgroundImage: {
+    resizeMode: 'contain',
+  },
+  viewerOverlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(0, 0, 0, 0.2)',
   },
   selectorSection: {
     paddingHorizontal: 0,

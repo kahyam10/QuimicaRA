@@ -11,6 +11,7 @@ export interface Molecula {
   anguloLigacao: string;
   informacoes: string;
   percentualAtmosfera?: string;
+  path?: string;
 }
 
 export interface Capitulo {
@@ -33,6 +34,7 @@ const nitogenio: Molecula = {
   percentualAtmosfera: '78%',
   informacoes:
     'A molécula de gás nitrogênio representa 78% da composição química da atmosfera. É uma molécula diatômica, apresenta uma ligação tripla entre os átomos de nitrogênio.',
+  path: 'assets/models/nitrogenio.glb',
 };
 
 const oxigenio: Molecula = {
@@ -45,6 +47,7 @@ const oxigenio: Molecula = {
   percentualAtmosfera: '21%',
   informacoes:
     'O gás oxigênio é o segundo componente em maior quantidade presente na atmosfera, cerca de 21%. Apresenta-se sob a forma de uma molécula diatômica, formada por uma ligação dupla entre os átomos de oxigênio. O gás oxigênio reage com algumas substâncias dando origem a óxidos como CO₂, SO₂ e NO₂.',
+  path: 'assets/models/oxigenio.glb',
 };
 
 const argonio: Molecula = {
@@ -57,6 +60,7 @@ const argonio: Molecula = {
   percentualAtmosfera: '0,093%',
   informacoes:
     'O argônio é uma substância gasosa presente na atmosfera com 0,093% da sua composição. É um gás nobre e por apresentar camada de valência completa é inerte.',
+  path: 'assets/models/argonio.glb',
 };
 
 export const capitulo1: Capitulo = {
@@ -79,6 +83,7 @@ const dioxidoEnxofre: Molecula = {
   anguloLigacao: '119°',
   informacoes:
     'O dióxido de enxofre gasoso possui concentração variável na atmosfera e é produzido diretamente a partir da queima de combustíveis fósseis como gasolina, assim como de erupções vulcânicas. Apresenta o enxofre como átomo central e liga-se a dois átomos de oxigênio para formar a molécula.',
+  path: 'assets/models/dioxido_enxofre.glb',
 };
 
 const dioxidoNitrogenio: Molecula = {
@@ -90,6 +95,7 @@ const dioxidoNitrogenio: Molecula = {
   anguloLigacao: '134°',
   informacoes:
     'O dióxido de nitrogênio gasoso não possui concentração fixa na atmosfera, sendo maior em áreas urbanas e pode ter origem natural ou artificial. Quando dissolvido na água presente na atmosfera, forma o ácido nítrico (HNO₃).',
+  path: 'assets/models/dioxido_nitrogenio.glb',
 };
 
 export const capitulo2: Capitulo = {
@@ -113,6 +119,7 @@ const dioxidoCarbono: Molecula = {
   anguloLigacao: '180°',
   informacoes:
     'O dióxido de carbono é considerado o principal responsável pelo efeito estufa e é oriundo da combustão do carvão, lenha e petróleo além de erupções vulcânicas. Sua concentração global tem aumentado trazendo, como consequência, o aumento da temperatura da Terra e modificações climáticas. Sua molécula apresenta o carbono como átomo central e dois átomos de oxigênio nas extremidades com ligações duplas.',
+  path: 'assets/models/dioxido_carbono.glb',
 };
 
 const metano: Molecula = {
@@ -124,6 +131,7 @@ const metano: Molecula = {
   anguloLigacao: '109,5°',
   informacoes:
     'O metano também é considerado um causador do efeito estufa. Esse composto forma-se a partir da ligação de um átomo central de carbono com 4 átomos de hidrogênio por meio de ligações simples.',
+  path: 'assets/models/metano.glb',
 };
 
 const oxidoNitroso: Molecula = {
@@ -135,6 +143,7 @@ const oxidoNitroso: Molecula = {
   anguloLigacao: '180° (N-N-O)',
   informacoes:
     'O óxido nitroso é um gás estufa e também um dos antecessores da destruição da camada de ozônio. É um gás emitido principalmente por fontes naturais através de ações bacterianas.',
+  path: 'assets/models/oxido_nitroso.glb',
 };
 
 const agua: Molecula = {
@@ -146,6 +155,7 @@ const agua: Molecula = {
   anguloLigacao: '104,5°',
   informacoes:
     'Água em fase vapor é também considerada um gás estufa e também participa do ciclo hidrológico. Formada a partir da ligação de um átomo de oxigênio central com dois átomos de hidrogênio através de ligações simples.',
+  path: 'assets/models/agua.glb',
 };
 
 // Compostos da Camada de Ozônio
@@ -158,6 +168,7 @@ const ozonio: Molecula = {
   anguloLigacao: '116,8°',
   informacoes:
     'O ozônio é uma substância gasosa formada a partir da ligação de 3 átomos de oxigênio por meio de ligações simples e dupla. O ozônio forma uma camada protetora pois impede que 95% da radiação ultravioleta atinja a superfície da Terra.',
+  path: 'assets/models/ozonio.glb',
 };
 
 const clorofluorcarbonos: Molecula = {
@@ -169,6 +180,7 @@ const clorofluorcarbonos: Molecula = {
   anguloLigacao: '109,5°',
   informacoes:
     'Substância gasosa responsável pela depleção da camada de ozônio na estratosfera. Ela é formada a partir de ligações simples do carbono que é o átomo central, com 3 átomos de cloro e 1 de flúor.',
+  path: 'assets/models/clorofluorcarbono.glb',
 };
 
 export const capitulo3: Capitulo = {

@@ -7,6 +7,7 @@ import {
   ViroARSceneNavigator,
   ViroTrackingStateConstants,
   ViroTrackingReason,
+  ViroText,
 } from '@reactvision/react-viro';
 import { X, ZoomIn, ZoomOut, RotateCcw } from 'lucide-react-native';
 import Colors from '@/constants/Colors';
@@ -30,13 +31,15 @@ interface CompoundARViewProps {
  * Carrega o modelo GLB passado como prop
  */
 export function CompoundARView({ objectModel, onClose }: CompoundARViewProps) {
-  const [scale, setScale] = useState<[number, number, number]>([0.1, 0.1, 0.1]);
-  const [rotation, setRotation] = useState<[number, number, number]>([0, 0, 0]);
+  const [scale, setScale] = useState<[number, number, number]>([1.1, 1.1, 1.1]);
+  const [rotation, setRotation] = useState<[number, number, number]>([0, -65, 0]);
 
   const renderScene = () => (
     <HelloWorldSceneAR 
       onClose={onClose} 
       objectModel={objectModel}
+      scale={scale}
+      rotation={rotation}
     />
   );
 
@@ -68,6 +71,8 @@ export function CompoundARView({ objectModel, onClose }: CompoundARViewProps) {
       <ViroARSceneNavigator
         initialScene={{ scene: renderScene }}
         style={styles.navigator}
+        key={`ar-scene-${scale[0]}-${rotation[1]}`}
+        viroAppProps={{ scale, rotation, objectModel, onClose }}
       />
       
       {/* Botão flutuante para fechar */}
@@ -101,10 +106,18 @@ export function CompoundARView({ objectModel, onClose }: CompoundARViewProps) {
  * Cena AR com controles por botões
  * Botões para aumentar/diminuir zoom e rotacionar
  */
-const HelloWorldSceneAR = ({ onClose, objectModel }: { onClose: () => void; objectModel: any }) => {
+const HelloWorldSceneAR = ({ 
+  onClose, 
+  objectModel,
+  scale,
+  rotation
+}: { 
+  onClose: () => void; 
+  objectModel: any;
+  scale: [number, number, number];
+  rotation: [number, number, number];
+}) => {
   const [text, setText] = useState("Inicializando AR...");
-  const [scale, setScale] = useState<[number, number, number]>([0.1, 0.1, 0.1]);
-  const [rotation, setRotation] = useState<[number, number, number]>([0, 0, 0]);
 
   const onInitialized = (state: any, reason: ViroTrackingReason) => {
     console.log("AR tracking state:", state, reason);
@@ -117,36 +130,13 @@ const HelloWorldSceneAR = ({ onClose, objectModel }: { onClose: () => void; obje
     }
   };
 
-  const handleZoomIn = () => {
-    setScale(prev => {
-      const newScale = Math.min(0.5, prev[0] * 1.2);
-      return [newScale, newScale, newScale];
-    });
-  };
-
-  const handleZoomOut = () => {
-    setScale(prev => {
-      const newScale = Math.max(0.05, prev[0] * 0.8);
-      return [newScale, newScale, newScale];
-    });
-  };
-
-  const handleRotate = () => {
-    setRotation(prev => [prev[0], prev[1] + 30, prev[2]]);
-  };
-
-  const handleReset = () => {
-    setScale([0.1, 0.1, 0.1]);
-    setRotation([0, 0, 0]);
-  };
-
   return (
     <ViroARScene onTrackingUpdated={onInitialized}>
       {/* Iluminação ambiente branca com intensidade aumentada */}
-      <ViroAmbientLight color="#ffffff" intensity={2} />
+      <ViroAmbientLight color="#ffffff" intensity={200} />
 
       {/* Luz direcional adicional para melhor visualização */}
-      <ViroAmbientLight color="#ffffff" intensity={1} />
+      {/* <ViroAmbientLight color="#ffffff" intensity={1} /> */}
 
       {/* Objeto 3D principal do composto */}
       <Viro3DObject
@@ -161,6 +151,10 @@ const HelloWorldSceneAR = ({ onClose, objectModel }: { onClose: () => void; obje
           console.error('❌ Erro ao carregar modelo:', error);
         }}
       />
+           <ViroText
+        text="Auto Plane"
+        scale={[0.5, 0.5, 0.5]}
+        position={[0, 1, -2]}      />
     </ViroARScene>
   );
 };
