@@ -1,4 +1,4 @@
-# QuímicaApp - Aplicativo Educacional de Realidade Aumentada
+# Química RA - Aplicativo Educacional de Realidade Aumentada
 
 ![Expo](https://img.shields.io/badge/Expo-53.0.19-blue)
 ![React Native](https://img.shields.io/badge/React%20Native-0.79.5-blue)
@@ -7,7 +7,7 @@
 
 ## 📋 Sobre o Projeto
 
-O **QuímicaApp** é um aplicativo educacional desenvolvido como parte de um Trabalho de Conclusão de Curso (TCC) que utiliza **Realidade Aumentada (RA)** para ensinar conceitos de química de forma interativa e imersiva. O aplicativo permite que estudantes visualizem modelos 3D de compostos químicos e moléculas em ambiente AR através da câmera do celular.
+O **Química RA** é um aplicativo educacional desenvolvido como parte de um Trabalho de Conclusão de Curso (TCC) que utiliza **Realidade Aumentada (RA)** para ensinar conceitos de química de forma interativa e imersiva. O aplicativo permite que estudantes visualizem modelos 3D de compostos químicos e moléculas em ambiente AR através da câmera do celular.
 
 ### 🎯 Objetivos
 
@@ -21,21 +21,27 @@ O **QuímicaApp** é um aplicativo educacional desenvolvido como parte de um Tra
 ### Framework Principal
 
 #### **Expo SDK 53.0.19**
+
 Framework que facilita o desenvolvimento React Native, fornecendo:
+
 - Build automatizado para Android/iOS
 - Hot reload durante desenvolvimento
 - Gerenciamento de dependências nativas
 - APIs simplificadas para câmera, sensores e permissões
 
 #### **React Native 0.79.5**
+
 Biblioteca JavaScript para criar aplicativos nativos:
+
 - Componentes nativos (View, Text, TouchableOpacity)
 - Ponte JavaScript-Native para performance
 - Nova arquitetura com Fabric e TurboModules
 - Suporte a gestos nativos via PanResponder
 
 #### **TypeScript 5.x**
+
 Superset de JavaScript que adiciona tipagem estática:
+
 - Detecção de erros em tempo de desenvolvimento
 - Autocompletar inteligente
 - Refatoração segura
@@ -44,9 +50,11 @@ Superset de JavaScript que adiciona tipagem estática:
 ### SDK de Realidade Aumentada
 
 #### **@reactvision/react-viro 2.43.3**
+
 SDK especializado em AR/VR para React Native:
 
 **Componentes Principais:**
+
 - `ViroARSceneNavigator`: Container principal que gerencia cenas AR
 - `ViroARScene`: Cena individual onde objetos 3D são renderizados
 - `ViroNode`: Nó de transformação (posição, rotação, escala) para objetos 3D
@@ -54,6 +62,7 @@ SDK especializado em AR/VR para React Native:
 - `ViroAmbientLight`: Iluminação ambiente para realismo dos modelos
 
 **Funcionalidades:**
+
 - Detecção automática de superfícies planas (ARPlaneDetection)
 - Sistema de coordenadas 3D cartesiano
 - Suporte a texturas e materiais PBR (Physically Based Rendering)
@@ -61,6 +70,7 @@ SDK especializado em AR/VR para React Native:
 - Gestos nativos (pinça para zoom, rotação com 1-2 dedos)
 
 **Sistema de Rotação:**
+
 ```typescript
 // Rotação em graus [X, Y, Z]
 <ViroNode rotation={[rotationX, rotationY, 0]}>
@@ -71,7 +81,9 @@ SDK especializado em AR/VR para React Native:
 ### UI e Ícones
 
 #### **lucide-react-native 0.475.0**
+
 Biblioteca de ícones vetoriais otimizados:
+
 - Ícones usados: ChevronUp, ChevronDown, ChevronLeft, ChevronRight
 - SVG renderizado como componente React Native
 - Personalização de tamanho e cor
@@ -80,14 +92,15 @@ Biblioteca de ícones vetoriais otimizados:
 ### Detecção de Dispositivos
 
 #### **Platform API (React Native)**
+
 Sistema nativo para identificar fabricante do dispositivo:
 
 ```typescript
-const isXiaomiDevice = Platform.OS === 'android' && (
-  Platform.constants?.Brand?.toLowerCase().includes('xiaomi') ||
-  Platform.constants?.Manufacturer?.toLowerCase().includes('xiaomi') ||
-  Platform.constants?.Model?.toLowerCase().includes('redmi')
-);
+const isXiaomiDevice =
+  Platform.OS === 'android' &&
+  (Platform.constants?.Brand?.toLowerCase().includes('xiaomi') ||
+    Platform.constants?.Manufacturer?.toLowerCase().includes('xiaomi') ||
+    Platform.constants?.Model?.toLowerCase().includes('redmi'));
 ```
 
 **Razão:** Dispositivos Xiaomi/MIUI têm comportamento diferente para gestos multi-toque, exigindo controles por botões ao invés de gestos nativos.
@@ -134,9 +147,11 @@ QuimicaAPp/
 ## 🎮 Sistema de Controles Adaptativos
 
 ### Dispositivos Xiaomi/MIUI
+
 **Problema:** Gestos multi-toque não funcionam corretamente devido a otimizações da MIUI.
 
 **Solução:** Botões direcionais visíveis para controle manual:
+
 - 🔼 Rotação vertical +15° (eixo X)
 - 🔽 Rotação vertical -15° (eixo X)
 - ◀️ Rotação horizontal -15° (eixo Y)
@@ -144,7 +159,9 @@ QuimicaAPp/
 - 🤏 Pinça com 2 dedos: Zoom (todos os dispositivos)
 
 ### Outros Dispositivos Android
+
 **Controles nativos via PanResponder:**
+
 - Pinça com 2 dedos: Zoom in/out (escala)
 - Arrastar 2 dedos: Rotação livre no eixo Y
 - Interface limpa sem botões extras
@@ -155,17 +172,17 @@ QuimicaAPp/
 
 ```typescript
 interface Compound {
-  id: string;                    // Identificador único
-  name: string;                  // Nome do composto (ex: "Água")
-  formula: string;               // Fórmula química (ex: "H₂O")
-  description: string;           // Descrição educacional
-  modelPath: string;             // Caminho do modelo 3D
+  id: string; // Identificador único
+  name: string; // Nome do composto (ex: "Água")
+  formula: string; // Fórmula química (ex: "H₂O")
+  description: string; // Descrição educacional
+  modelPath: string; // Caminho do modelo 3D
   category: 'organic' | 'inorganic' | 'molecule';
   properties: {
-    molarMass: number;           // Massa molar (g/mol)
-    boilingPoint?: number;       // Ponto de ebulição (°C)
-    meltingPoint?: number;       // Ponto de fusão (°C)
-    density?: number;            // Densidade (g/cm³)
+    molarMass: number; // Massa molar (g/mol)
+    boilingPoint?: number; // Ponto de ebulição (°C)
+    meltingPoint?: number; // Ponto de fusão (°C)
+    density?: number; // Densidade (g/cm³)
   };
 }
 ```
@@ -230,7 +247,7 @@ eas build --platform android --profile production
 2. **Introdução:** Tutorial sobre como usar os controles AR
 3. **Seleção de Capítulo:** Escolha entre Compostos, Moléculas ou Simulações
 4. **Seleção de Composto:** Lista de compostos químicos disponíveis
-5. **Visualização AR:** 
+5. **Visualização AR:**
    - Aponte a câmera para uma superfície plana
    - Aguarde detecção automática do plano
    - Modelo 3D aparece na tela
@@ -240,18 +257,21 @@ eas build --platform android --profile production
 ## 🧪 Capítulos Disponíveis
 
 ### Capítulo 1: Compostos Inorgânicos
+
 - Água (H₂O)
 - Gás Carbônico (CO₂)
 - Amônia (NH₃)
 - Ácido Sulfúrico (H₂SO₄)
 
 ### Capítulo 2: Moléculas Orgânicas
+
 - Metano (CH₄)
 - Etanol (C₂H₅OH)
 - Glicose (C₆H₁₂O₆)
 - Benzeno (C₆H₆)
 
 ### Capítulo 3: Simulações Interativas
+
 - Reações químicas animadas
 - Ligações moleculares em tempo real
 
@@ -268,7 +288,7 @@ npx expo start --clear
 ### Permissões de Câmera
 
 O app solicita automaticamente permissão de câmera. Se negada, vá em:
-**Configurações > Apps > QuímicaApp > Permissões > Câmera**
+**Configurações > Apps > Química RA > Permissões > Câmera**
 
 ### Modelos 3D não carregam
 

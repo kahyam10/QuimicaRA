@@ -2,7 +2,7 @@ import Colors from '@/constants/Colors';
 import { StyleSheet } from 'react-native';
 
 /**
- * ESTILOS GLOBAIS - QuímicaAPp
+ * ESTILOS GLOBAIS - Química RA
  *
  * Tema light com branco e azul
  * Otimizado para educação e leitura

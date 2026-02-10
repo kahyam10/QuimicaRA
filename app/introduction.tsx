@@ -30,7 +30,7 @@ export default function IntroductionScreen() {
       <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
         <View style={styles.infoContainer}>
           <View style={styles.card}>
-            <Text style={styles.cardTitle}>Bem-vindo ao Clima Químico RA</Text>
+            <Text style={styles.cardTitle}>Bem-vindo ao Química RA</Text>
             <Text style={styles.cardText}>
               Este aplicativo integrado ao livreto permite a observação de compostos atmosféricos de forma dinâmica, interativa e imersiva por meio da Realidade Aumentada.
             </Text>

@@ -35,7 +35,7 @@ export default function HomeScreen() {
           >
             <View style={styles.headerOverlay} />
             <View style={styles.headerContent}>
-              <Text style={styles.title}>Clima Químico RA</Text>
+              <Text style={styles.title}>Química RA</Text>
               <Text style={styles.subtitle}>
                 Explorando os compostos e reações da atmosfera terrestre
               </Text>

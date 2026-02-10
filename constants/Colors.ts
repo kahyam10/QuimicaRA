@@ -1,5 +1,5 @@
 /**
- * TEMA BRANCO E AZUL - QuímicaAPp
+ * TEMA BRANCO E AZUL - Química RA
  *
  * Paleta de cores profissional e moderna
  * Tema light com azul como cor primária

@@ -3,9 +3,11 @@
 ## 📖 Documentação Principal
 
 ### README.md (Raiz)
+
 **Propósito:** Documentação completa do projeto para avaliação acadêmica (TCC)
 
 **Conteúdo:**
+
 - Visão geral do projeto e objetivos educacionais
 - Tecnologias utilizadas com explicações detalhadas
 - Arquitetura do código e estrutura de pastas
@@ -23,9 +25,11 @@
 ## 🔧 Documentação Técnica (/docs)
 
 ### VIRO_AR_IMPLEMENTATION.md
+
 **Propósito:** Guia técnico de implementação do SDK Viro React
 
 **Conteúdo:**
+
 - Componentes principais do Viro SDK
 - Sistema de coordenadas 3D
 - Configuração de cenas AR
@@ -37,9 +41,11 @@
 ---
 
 ### VIRO_INTEGRATION_EXAMPLES.md
+
 **Propósito:** Exemplos práticos de código com Viro SDK
 
 **Conteúdo:**
+
 - Snippets de código comentados
 - Casos de uso comuns
 - Padrões de implementação
@@ -50,9 +56,11 @@
 ---
 
 ### VIRO_SUMMARY.md
+
 **Propósito:** Resumo executivo das funcionalidades do Viro SDK
 
 **Conteúdo:**
+
 - Capacidades principais do SDK
 - Limitações e restrições
 - Comparação com outras soluções AR
@@ -65,18 +73,23 @@
 ## 🗂️ Arquivos de Configuração
 
 ### app.json
+
 Configuração do Expo (nome, versão, permissões, ícone)
 
 ### package.json
+
 Dependências do projeto e scripts npm
 
 ### tsconfig.json
+
 Configuração do TypeScript (strict mode, paths, target ES2020)
 
 ### metro.config.js
+
 Configuração do bundler Metro (assets, transformers)
 
 ### eas.json
+
 Configuração de build (profiles development/production)
 
 ---
@@ -84,6 +97,7 @@ Configuração de build (profiles development/production)
 ## 📝 Histórico de Arquivos Removidos
 
 ### Temporários de Desenvolvimento (Removidos)
+
 - `VIRO_ERROR_FIX.md` - Correções pontuais durante desenvolvimento
 - `THEME_CONVERSION_SUMMARY.md` - Migração de temas (concluída)
 - `ANDROID_BUILD_FIX_PLATFORM_CLASH.md` - Correção de build (resolvida)
@@ -91,6 +105,7 @@ Configuração de build (profiles development/production)
 - `CHANGES_SUMMARY_DEC_11.md` - Changelog temporário
 
 ### Arquivos de Fases (Removidos de docs/)
+
 - `FASE2_PROGRESS.md`, `FASE2_SUMMARY.txt` - Logs de desenvolvimento
 - `PROJECT_STATUS_*.md` - Status reports temporários
 - `FINAL_IMPROVEMENTS.md` - Checklist de melhorias (implementadas)
@@ -133,4 +148,4 @@ Configuração de build (profiles development/production)
 ---
 
 **Última atualização:** Fevereiro 2024  
-**Responsável:** Equipe de desenvolvimento QuímicaApp
+**Responsável:** Equipe de desenvolvimento Química RA
