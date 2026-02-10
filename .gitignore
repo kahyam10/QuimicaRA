@@ -33,3 +33,26 @@ yarn-error.*
 
 # typescript
 *.tsbuildinfo
+
+# build artifacts
+*.apk
+*.aab
+*.ipa
+build/
+android/app/build/
+
+# temporary files
+*.tmp
+*.temp
+*.log
+*.swp
+*~
+
+# 3D model temporary files
+*.fbx
+tripo_convert_*
+
+# documentation (temporary/outdated - keep only /docs folder)
+*_TEMP.md
+*_OLD.md
+*_BACKUP.md

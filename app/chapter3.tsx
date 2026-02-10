@@ -1,44 +1,64 @@
-import { StyleSheet, View, Dimensions, ScrollView } from 'react-native';
-import { useState, useCallback } from 'react';
+import {
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  ImageBackground,
+} from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
+import { useRouter } from 'expo-router';
 import Colors from '@/constants/Colors';
-import { capitulo3, Molecula } from '@/constants/ChapterContent';
+import { ChapterCard } from '@/components/ChapterCard';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { ChapterHeader } from '@/components/ChapterHeader';
-import { MoleculaSelector } from '@/components/MoleculaSelector';
-import { MoleculaCard } from '@/components/MoleculaCard';
-import { ModelViewer } from '@/components/ModelViewer';
-
-const { height } = Dimensions.get('window');
+import { cap3Image, backgroundImage } from '@/constants/Images';
 
 export default function Chapter3Screen() {
-  const [selectedMolecula, setSelectedMolecula] = useState<Molecula>(capitulo3.moleculas[0]);
-
-  const handleSelectMolecula = useCallback((molecula: Molecula) => {
-    setSelectedMolecula(molecula);
-  }, []);
+  const router = useRouter();
 
   return (
     <View style={styles.container}>
-      <ChapterHeader chapterNumber={capitulo3.numero} title={capitulo3.titulo} />
+      <ChapterHeader
+        chapterNumber={3}
+        title="Efeitos na Atmosfera"
+      />
+      
+      <LinearGradient
+        colors={[Colors.gradientStart, Colors.gradientEnd]}
+        style={styles.gradientContainer}
+      >
+        <ScrollView
+          contentContainerStyle={styles.scrollContent}
+          showsVerticalScrollIndicator={false}
+        >
+          <View style={styles.header}>
+            <Text style={styles.title}>Selecione um Tema</Text>
+            <Text style={styles.subtitle}>
+              Explore os diferentes aspectos dos efeitos atmosféricos
+            </Text>
+          </View>
 
-      <View style={styles.viewerContainer}>
-        <ModelViewer modelType={selectedMolecula?.id} zoomLevel={1} />
-      </View>
+          <Text style={styles.themesTitle}>Temas</Text>
 
-      <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
-        <View style={styles.infoContainer}>
-          <MoleculaCard molecula={selectedMolecula} />
-        </View>
-      </ScrollView>
-
-      <View style={styles.selectorSection}>
-        <View style={styles.selectorContainer}>
-          <MoleculaSelector
-            moleculas={capitulo3.moleculas}
-            selectedId={selectedMolecula?.id}
-            onSelectMolecula={handleSelectMolecula}
+          <ChapterCard
+            number={1}
+            title="Efeito Estufa"
+            description="Conheça os principais gases responsáveis pelo efeito estufa."
+            progress={0}
+            backgroundImage={cap3Image}
+            onPress={() => router.push('/chapter3a')}
           />
-        </View>
-      </View>
+
+          <ChapterCard
+            number={2}
+            title="Camada de Ozônio"
+            description="Estude os compostos que afetam a camada protetora de ozônio."
+            progress={0}
+            backgroundImage={backgroundImage}
+            onPress={() => router.push('/chapter3b')}
+          />
+        </ScrollView>
+      </LinearGradient>
     </View>
   );
 }
@@ -47,36 +67,39 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.darkBackground,
-    flexDirection: 'column',
   },
-  content: {
+  gradientContainer: {
     flex: 1,
-    flexDirection: 'column',
   },
-  viewerContainer: {
-    height: height * 0.25,
-    backgroundColor: Colors.background,
-    borderBottomWidth: 1,
-    borderBottomColor: Colors.border,
-    justifyContent: 'center',
+  scrollContent: {
+    paddingBottom: 40,
+  },
+  header: {
+    paddingHorizontal: 20,
+    paddingVertical: 32,
     alignItems: 'center',
   },
-  selectorSection: {
-    backgroundColor: Colors.primary,
-    paddingHorizontal: 0,
-    paddingVertical: 0,
-    marginBottom: 0,
-    borderTopWidth: 0,
-    borderTopColor: 'transparent',
-    minHeight: 85,
+  title: {
+    fontSize: 28,
+    fontWeight: '900',
+    color: '#FFFFFF',
+    marginBottom: 8,
+    textAlign: 'center',
   },
-  selectorContainer: {
-    minHeight: 85,
+  subtitle: {
+    fontSize: 16,
+    fontWeight: '400',
+    color: '#FFFFFF',
+    lineHeight: 22,
+    textAlign: 'center',
+    opacity: 0.9,
   },
-  infoContainer: {
-    flex: 1,
-    backgroundColor: Colors.darkBackground,
-    paddingHorizontal: 16,
-    paddingVertical: 16,
+  themesTitle: {
+    fontSize: 20,
+    fontWeight: '700',
+    color: '#FFFFFF',
+    marginLeft: 20,
+    marginBottom: 16,
+    letterSpacing: 0.5,
   },
 });

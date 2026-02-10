@@ -5,7 +5,6 @@ import {
   ScrollView,
   TouchableOpacity,
   ImageBackground,
-  StatusBar,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
@@ -23,7 +22,6 @@ export default function HomeScreen() {
       colors={[Colors.gradientStart, Colors.gradientEnd]}
       style={styles.container}
     >
-      <StatusBar hidden={true} translucent={true} />
       <SafeAreaView style={styles.safeArea}>
         <ScrollView
           contentContainerStyle={styles.scrollContent}
@@ -37,7 +35,7 @@ export default function HomeScreen() {
           >
             <View style={styles.headerOverlay} />
             <View style={styles.headerContent}>
-              <Text style={styles.title}>Clima Químico AR</Text>
+              <Text style={styles.title}>Clima Químico RA</Text>
               <Text style={styles.subtitle}>
                 Explorando os compostos e reações da atmosfera terrestre
               </Text>
@@ -68,7 +66,7 @@ export default function HomeScreen() {
 
           <ChapterCard
             number={2}
-            title="Compostos Químicos e Impactos"
+            title="Compostos Químicos e seus Impactos"
             description="Análise dos principais compostos químicos e seus efeitos."
             progress={0}
             backgroundImage={cap2Image}
@@ -82,6 +80,15 @@ export default function HomeScreen() {
             progress={0}
             backgroundImage={cap3Image}
             onPress={() => router.push('/chapter3')}
+          />
+
+          <ChapterCard
+            number={4}
+            title="Preservação e Possíveis Soluções"
+            description="Estratégias para mitigar emissões e proteger o meio ambiente."
+            progress={0}
+            backgroundImage={backgroundImage}
+            onPress={() => router.push('/chapter4')}
           />
         </ScrollView>
       </SafeAreaView>

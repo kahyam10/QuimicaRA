@@ -26,7 +26,7 @@ interface CompoundModelViewerProps {
 
   /**
    * Texto customizado do botão (opcional)
-   * @default "VER EM AR"
+   * @default "VER EM RA"
    */
   buttonText?: string;
 }
@@ -50,7 +50,7 @@ export function CompoundModelViewer({
   compoundName,
   modelPath,
   size = 'medium',
-  buttonText = 'VER EM AR',
+  buttonText = 'VER EM RA',
 }: CompoundModelViewerProps) {
   const [arVisible, setArVisible] = useState(false);
 

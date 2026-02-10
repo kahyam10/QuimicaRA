@@ -6,7 +6,7 @@ import Colors from '@/constants/Colors';
 
 interface ChapterHeaderProps {
   title: string;
-  chapterNumber: number;
+  chapterNumber: number | string;
 }
 
 /**

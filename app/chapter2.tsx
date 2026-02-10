@@ -1,4 +1,5 @@
 import { StyleSheet, View, Dimensions, ScrollView, TouchableOpacity, Text, ImageBackground } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useState, useCallback } from 'react';
 import Colors from '@/constants/Colors';
 import { capitulo2, Molecula } from '@/constants/ChapterContent';
@@ -12,56 +13,73 @@ import { enxofreImage } from '@/constants/Images';
 
 const { height } = Dimensions.get('window');
 
-// Carregar o modelo GLB para AR
-let objectModel: any = null;
-let modelLoadError: string | null = null;
+// ===== Carregar TODOS os modelos GLB do capítulo 2 (com variantes) =====
+interface ModelEntry { primary: any; variant?: any; }
+const modelRegistry: Record<string, ModelEntry> = {};
 
+// SO₂ - Dióxido de Enxofre (com variante)
 try {
-  objectModel = require('../assets/models/argonio.glb');
-  console.log('✅ Modelo GLB carregado com sucesso (Chapter 2)');
-} catch (error) {
-  const errorMessage = error instanceof Error ? error.message : String(error);
-  modelLoadError = `Erro ao carregar modelo GLB: ${errorMessage}`;
-  console.error('❌ ' + modelLoadError);
-}
+  const primary = require('../assets/models/dioxido_enxofre.glb');
+  let variant = null;
+  try { variant = require('../assets/models/dioxido_enxofre_2.glb'); } catch(e) {}
+  modelRegistry['so2'] = { primary, variant };
+} catch(e) { console.error('❌ Erro ao carregar modelo SO₂'); }
+
+// NO₂ - Dióxido de Nitrogênio (com variante)
+try {
+  const primary = require('../assets/models/dioxido_nitrogenio.glb');
+  let variant = null;
+  try { variant = require('../assets/models/dioxido_nitrogenio_2.glb'); } catch(e) {}
+  modelRegistry['no2'] = { primary, variant };
+} catch(e) { console.error('❌ Erro ao carregar modelo NO₂'); }
 
 export default function Chapter2Screen() {
   const [selectedMolecula, setSelectedMolecula] = useState<Molecula>(capitulo2.moleculas[0]);
   const [showAR, setShowAR] = useState(false);
+  const [arModelVersion, setArModelVersion] = useState<'primary' | 'variant'>('primary');
 
   const handleSelectMolecula = useCallback((molecula: Molecula) => {
     setSelectedMolecula(molecula);
   }, []);
 
-  // Se AR está visível, mostrar apenas o viewer AR
+  const currentModels = modelRegistry[selectedMolecula?.id];
+  const hasVariant = !!currentModels?.variant;
+
+  const openAR = (version: 'primary' | 'variant') => {
+    setArModelVersion(version);
+    setShowAR(true);
+  };
+
+  // Se AR está visível
   if (showAR) {
-    if (modelLoadError || !objectModel) {
+    const model = arModelVersion === 'variant' && currentModels?.variant
+      ? currentModels.variant
+      : currentModels?.primary;
+
+    if (!model) {
       return (
         <View style={styles.container}>
-          <ChapterHeader
-            chapterNumber={capitulo2.numero}
-            title={capitulo2.titulo}
-          />
+          <ChapterHeader chapterNumber={capitulo2.numero} title={capitulo2.titulo} />
           <View style={styles.errorContainer}>
-            <Text style={styles.errorTitle}>⚠️ Erro ao carregar modelo AR</Text>
-            <Text style={styles.errorMessage}>
-              {modelLoadError || 'Modelo GLB não disponível'}
-            </Text>
-            <TouchableOpacity 
-              style={styles.errorButton}
-              onPress={() => setShowAR(false)}
-            >
+            <Text style={styles.errorTitle}>⚠️ Erro ao carregar modelo RA</Text>
+            <Text style={styles.errorMessage}>Modelo GLB não disponível para {selectedMolecula?.nome}</Text>
+            <TouchableOpacity style={styles.errorButton} onPress={() => setShowAR(false)}>
               <Text style={styles.errorButtonText}>Fechar</Text>
             </TouchableOpacity>
           </View>
         </View>
       );
     }
-    
+
+    const versionLabel = hasVariant
+      ? `${selectedMolecula.nome} — ${arModelVersion === 'primary' ? 'Modelo 1' : 'Modelo 2'}`
+      : selectedMolecula.nome;
+
     return (
       <CompoundARView
-        objectModel={objectModel}
+        objectModel={model}
         onClose={() => setShowAR(false)}
+        modelLabel={versionLabel}
       />
     );
   }
@@ -70,7 +88,7 @@ export default function Chapter2Screen() {
     <View style={styles.container}>
       <ChapterHeader chapterNumber={capitulo2.numero} title={capitulo2.titulo} />
 
-      {/* Visualizador 3D / Botão AR com imagem de fundo */}
+      {/* Visualizador 3D / Botões AR com imagem de fundo */}
       <ImageBackground 
         source={enxofreImage} 
         style={styles.viewerContainer}
@@ -79,13 +97,25 @@ export default function Chapter2Screen() {
       >
         <View style={styles.viewerOverlay} />
         <ModelViewer modelType={selectedMolecula?.id} zoomLevel={1} />
-        <TouchableOpacity
-          style={styles.arButton}
-          onPress={() => setShowAR(true)}
-        >
-          <Play color={Colors.white} size={24} />
-          <Text style={styles.arButtonText}>VER EM AR</Text>
-        </TouchableOpacity>
+
+        {/* Botões AR: 2 quando há variante, 1 quando não há */}
+        {hasVariant ? (
+          <View style={styles.arButtonsRow}>
+            <TouchableOpacity style={styles.arButtonSmall} onPress={() => openAR('primary')}>
+              <Play color={Colors.white} size={18} />
+              <Text style={styles.arButtonSmallText}>MODELO 1</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={[styles.arButtonSmall, styles.arButtonVariant]} onPress={() => openAR('variant')}>
+              <Play color={Colors.white} size={18} />
+              <Text style={styles.arButtonSmallText}>MODELO 2</Text>
+            </TouchableOpacity>
+          </View>
+        ) : (
+          <TouchableOpacity style={styles.arButton} onPress={() => openAR('primary')}>
+            <Play color={Colors.white} size={24} />
+            <Text style={styles.arButtonText}>VER EM RA</Text>
+          </TouchableOpacity>
+        )}
       </ImageBackground>
 
       <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
@@ -94,7 +124,7 @@ export default function Chapter2Screen() {
         </View>
       </ScrollView>
 
-      <View style={styles.selectorSection}>
+      <SafeAreaView edges={['bottom']} style={styles.selectorSection}>
         <View style={styles.selectorContainer}>
           <MoleculaSelector
             moleculas={capitulo2.moleculas}
@@ -102,7 +132,7 @@ export default function Chapter2Screen() {
             onSelectMolecula={handleSelectMolecula}
           />
         </View>
-      </View>
+      </SafeAreaView>
     </View>
   );
 }
@@ -170,6 +200,33 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     color: Colors.white,
     marginLeft: 8,
+  },
+  arButtonsRow: {
+    position: 'absolute',
+    bottom: 12,
+    right: 12,
+    flexDirection: 'row',
+    gap: 8,
+    zIndex: 10,
+  },
+  arButtonSmall: {
+    backgroundColor: Colors.primary,
+    borderRadius: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 14,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: 6,
+  },
+  arButtonVariant: {
+    backgroundColor: Colors.accent,
+  },
+  arButtonSmallText: {
+    fontSize: 12,
+    fontWeight: '700',
+    color: Colors.white,
+    letterSpacing: 0.3,
   },
   errorContainer: {
     flex: 1,

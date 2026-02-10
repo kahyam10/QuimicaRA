@@ -6,7 +6,7 @@ import { ChapterHeader } from '@/components/ChapterHeader';
 import { MoleculaSelector } from '@/components/MoleculaSelector';
 import { MoleculaCard } from '@/components/MoleculaCard';
 import { ModelViewer } from '@/components/ModelViewer';
-import { CompoundARView } from '@/components/CompoundARView';
+import { CompoundModelViewer } from '@/components/CompoundModelViewer';
 import { Play } from 'lucide-react-native';
 
 const { height } = Dimensions.get('window');
@@ -23,18 +23,18 @@ export default function Chapter1Screen() {
   const getModelPath = (moleculaId: string): string => {
     const modelMap: Record<string, string> = {
       'ar': 'assets/models/argonio.glb',
-      'n2': 'assets/models/exemplo.glb',
-      'o2': 'assets/models/exemplo.glb',
+      'n2': 'assets/models/nitrogenio.glb',
+      'o2': 'assets/models/oxigenio.glb',
     };
-    return modelMap[moleculaId] || 'assets/models/exemplo.glb';
+    return modelMap[moleculaId] || 'assets/models/nitrogenio.glb';
   };
 
   // Se AR está visível, mostrar apenas o viewer AR
   if (showAR) {
     return (
-      <CompoundARView 
-        objectPath={getModelPath(selectedMolecula?.id)}
-        onClose={() => setShowAR(false)}
+      <CompoundModelViewer 
+        modelPath={getModelPath(selectedMolecula?.id)}
+        compoundName={selectedMolecula?.nome || 'Composto'}
       />
     );
   }

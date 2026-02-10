@@ -61,6 +61,9 @@ export default function RootLayout() {
           <Stack.Screen name="chapter1" options={{ headerShown: false }} />
           <Stack.Screen name="chapter2" options={{ headerShown: false }} />
           <Stack.Screen name="chapter3" options={{ headerShown: false }} />
+          <Stack.Screen name="chapter3a" options={{ headerShown: false }} />
+          <Stack.Screen name="chapter3b" options={{ headerShown: false }} />
+          <Stack.Screen name="chapter4" options={{ headerShown: false }} />
           <Stack.Screen name="introduction" options={{ headerShown: false }} />
           <Stack.Screen name="+not-found" />
         </Stack>

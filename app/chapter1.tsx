@@ -5,9 +5,9 @@ import {
   Text,
   ScrollView,
   TouchableOpacity,
-  StatusBar,
   ImageBackground,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useState, useCallback } from 'react';
 import Colors from '@/constants/Colors';
 import { capitulo1, Molecula } from '@/constants/ChapterContent';
@@ -20,18 +20,19 @@ import { Play } from 'lucide-react-native';
 import { enxofreImage } from '@/constants/Images';
 
 const { height } = Dimensions.get('window');
-// Carregar o modelo GLB
-let objectModel: any = null;
-let modelLoadError: string | null = null;
 
-try {
-  objectModel = require('../assets/models/mol2.glb');
-  console.log('✅ Modelo GLB carregado com sucesso');
-} catch (error) {
-  const errorMessage = error instanceof Error ? error.message : String(error);
-  modelLoadError = `Erro ao carregar modelo GLB: ${errorMessage}`;
-  console.error('❌ ' + modelLoadError);
-}
+// ===== Carregar TODOS os modelos GLB do capítulo 1 =====
+interface ModelEntry { primary: any; variant?: any; }
+const modelRegistry: Record<string, ModelEntry> = {};
+
+// N₂ - Nitrogênio
+try { modelRegistry['n2'] = { primary: require('../assets/models/nitrogenio.glb') }; } catch(e) { console.error('❌ Erro ao carregar modelo N₂'); }
+
+// O₂ - Oxigênio
+try { modelRegistry['o2'] = { primary: require('../assets/models/oxigenio.glb') }; } catch(e) { console.error('❌ Erro ao carregar modelo O₂'); }
+
+// Ar - Argônio
+try { modelRegistry['ar'] = { primary: require('../assets/models/argonio.glb') }; } catch(e) { console.error('❌ Erro ao carregar modelo Ar'); }
 
 export default function Chapter1Screen() {
   const [selectedMolecula, setSelectedMolecula] = useState<Molecula>(
@@ -43,9 +44,13 @@ export default function Chapter1Screen() {
     setSelectedMolecula(molecula);
   }, []);
 
+  const currentModels = modelRegistry[selectedMolecula?.id];
+
   // Se AR está visível, mostrar apenas o viewer AR
   if (showAR) {
-    if (modelLoadError || !objectModel) {
+    const model = currentModels?.primary;
+
+    if (!model) {
       return (
         <View style={styles.container}>
           <ChapterHeader
@@ -53,10 +58,8 @@ export default function Chapter1Screen() {
             title={capitulo1.titulo}
           />
           <View style={styles.errorContainer}>
-            <Text style={styles.errorTitle}>⚠️ Erro ao carregar modelo AR</Text>
-            <Text style={styles.errorMessage}>
-              {modelLoadError || 'Modelo GLB não disponível'}
-            </Text>
+            <Text style={styles.errorTitle}>⚠️ Erro ao carregar modelo RA</Text>
+            <Text style={styles.errorMessage}>Modelo GLB não disponível para {selectedMolecula?.nome}</Text>
             <TouchableOpacity 
               style={styles.errorButton}
               onPress={() => setShowAR(false)}
@@ -70,8 +73,9 @@ export default function Chapter1Screen() {
     
     return (
       <CompoundARView
-        objectModel={objectModel}
+        objectModel={model}
         onClose={() => setShowAR(false)}
+        modelLabel={selectedMolecula.nome}
       />
     );
   }
@@ -98,7 +102,7 @@ export default function Chapter1Screen() {
             onPress={() => setShowAR(true)}
           >
             <Play color={Colors.white} size={24} />
-            <Text style={styles.arButtonText}>VER EM AR</Text>
+            <Text style={styles.arButtonText}>VER EM RA</Text>
           </TouchableOpacity>
         </ImageBackground>
 
@@ -110,7 +114,7 @@ export default function Chapter1Screen() {
         </ScrollView>
 
         {/* Carousel fixo na base */}
-        <View style={styles.selectorSection}>
+        <SafeAreaView edges={['bottom']} style={styles.selectorSection}>
           <View style={styles.selectorContainer}>
             <MoleculaSelector
               moleculas={capitulo1.moleculas}
@@ -118,7 +122,7 @@ export default function Chapter1Screen() {
               onSelectMolecula={handleSelectMolecula}
             />
           </View>
-        </View>
+        </SafeAreaView>
       </View>
     </>
   );
@@ -151,6 +155,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0, 0, 0, 0.2)',
   },
   selectorSection: {
+    backgroundColor: Colors.primary,
     paddingHorizontal: 0,
     paddingVertical: 0,
     marginBottom: 0,

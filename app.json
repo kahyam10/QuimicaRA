@@ -10,14 +10,25 @@
     "newArchEnabled": true,
     "jsEngine": "hermes",
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSPhotoLibraryUsageDescription": "Allow $(PRODUCT_NAME) to access your photos",
+        "NSPhotoLibraryAddUsageDescription": "Allow $(PRODUCT_NAME) to save photos",
+        "NSCameraUsageDescription": "Allow $(PRODUCT_NAME) to use your camera",
+        "NSMicrophoneUsageDescription": "Allow $(PRODUCT_NAME) to use your microphone"
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.kssoft.quimica_ra"
+      "package": "com.kssoft.quimica_ra",
+      "navigationBar": {
+        "visible": "immersive"
+      },
+      "softwareKeyboardLayoutMode": "pan",
+      "userInterfaceStyle": "dark"
     },
     "web": {
       "bundler": "metro",
@@ -45,7 +56,7 @@
     "extra": {
       "router": {},
       "eas": {
-        "projectId": "cb06550b-5b4c-418f-bb1d-af634f8b5d96"
+        "projectId": "6dc5d92e-a340-4261-ac9f-f0ba5d96a265"
       }
     }
   }

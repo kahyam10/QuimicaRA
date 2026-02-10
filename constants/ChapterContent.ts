@@ -12,6 +12,8 @@ export interface Molecula {
   informacoes: string;
   percentualAtmosfera?: string;
   path?: string;
+  /** Caminho para modelo 3D variante (representação alternativa) */
+  variantPath?: string;
 }
 
 export interface Capitulo {
@@ -84,6 +86,7 @@ const dioxidoEnxofre: Molecula = {
   informacoes:
     'O dióxido de enxofre gasoso possui concentração variável na atmosfera e é produzido diretamente a partir da queima de combustíveis fósseis como gasolina, assim como de erupções vulcânicas. Apresenta o enxofre como átomo central e liga-se a dois átomos de oxigênio para formar a molécula.',
   path: 'assets/models/dioxido_enxofre.glb',
+  variantPath: 'assets/models/dioxido_enxofre_2.glb',
 };
 
 const dioxidoNitrogenio: Molecula = {
@@ -96,6 +99,7 @@ const dioxidoNitrogenio: Molecula = {
   informacoes:
     'O dióxido de nitrogênio gasoso não possui concentração fixa na atmosfera, sendo maior em áreas urbanas e pode ter origem natural ou artificial. Quando dissolvido na água presente na atmosfera, forma o ácido nítrico (HNO₃).',
   path: 'assets/models/dioxido_nitrogenio.glb',
+  variantPath: 'assets/models/dioxido_nitrogenio_2.glb',
 };
 
 export const capitulo2: Capitulo = {
@@ -169,6 +173,7 @@ const ozonio: Molecula = {
   informacoes:
     'O ozônio é uma substância gasosa formada a partir da ligação de 3 átomos de oxigênio por meio de ligações simples e dupla. O ozônio forma uma camada protetora pois impede que 95% da radiação ultravioleta atinja a superfície da Terra.',
   path: 'assets/models/ozonio.glb',
+  variantPath: 'assets/models/ozonio2.glb',
 };
 
 const clorofluorcarbonos: Molecula = {
@@ -196,6 +201,83 @@ export const capitulo3: Capitulo = {
     agua,
     ozonio,
     clorofluorcarbonos,
+  ],
+};
+
+// ====== SUBCAPÍTULOS DO CAPÍTULO 3 ======
+
+export const capitulo3a: Capitulo = {
+  id: 'cap3a',
+  numero: 3,
+  titulo: 'Efeito Estufa',
+  descricao: 'Conheça os principais gases responsáveis pelo efeito estufa.',
+  moleculas: [dioxidoCarbono, metano, oxidoNitroso, agua],
+};
+
+export const capitulo3b: Capitulo = {
+  id: 'cap3b',
+  numero: 3,
+  titulo: 'Camada de Ozônio',
+  descricao: 'Estude os compostos que afetam a camada protetora de ozônio.',
+  moleculas: [ozonio, clorofluorcarbonos],
+};
+
+// ====== CAPÍTULO 4: Preservação e Possíveis Soluções ======
+
+export interface Solucao {
+  id: string;
+  texto: string;
+}
+
+export interface CapituloTexto {
+  id: string;
+  numero: number;
+  titulo: string;
+  descricao: string;
+  introducao: string;
+  solucoes: Solucao[];
+}
+
+export const capitulo4: CapituloTexto = {
+  id: 'cap4',
+  numero: 4,
+  titulo: 'Preservação e Possíveis Soluções',
+  descricao:
+    'Estratégias e ações para mitigar a emissão de compostos poluentes e proteger o meio ambiente.',
+  introducao:
+    'Algumas soluções podem ser utilizadas com o objetivo de mitigar a emissão de compostos poluentes que trazem consequências devastadoras para o meio ambiente:',
+  solucoes: [
+    {
+      id: 'sol1',
+      texto:
+        'A diminuição e/ou substituição de combustíveis fósseis por alternativas de fontes de energias limpas e renováveis',
+    },
+    {
+      id: 'sol2',
+      texto:
+        'Redução da utilização de meios de transportes movidos a combustíveis fósseis por transportes menos poluentes como veículos elétricos ou bicicletas',
+    },
+    {
+      id: 'sol3',
+      texto: 'Incentivo à utilização de transportes coletivos',
+    },
+    {
+      id: 'sol4',
+      texto: 'Incentivo a redução de emissões de CO₂, como créditos de carbono',
+    },
+    {
+      id: 'sol5',
+      texto: 'Reflorestamento e conservação florestal',
+    },
+    {
+      id: 'sol6',
+      texto: 'Incentivos a práticas cotidianas individuais',
+    },
+    {
+      id: 'sol7',
+      texto:
+        'Criação e adoção de políticas públicas assim como conscientização coletiva para diminuição de compostos poluentes',
+    },
   ],
 };
 
