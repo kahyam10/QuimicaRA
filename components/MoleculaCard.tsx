@@ -11,8 +11,13 @@ interface MoleculaCardProps {
 export const MoleculaCard = memo(function MoleculaCard({ molecula }: MoleculaCardProps) {
   const [expandedProperty, setExpandedProperty] = useState<string | null>(null);
 
+  const formulaMolecularValue =
+    molecula.id === 'ar'
+      ? 'Não aplicável. Símbolo Ar, elementos químicos isolados não formam moléculas. Portanto, não possuem fórmula molecular.'
+      : molecula.formula;
+
   const properties = [
-    { label: "Fórmula Molecular", value: molecula.formula },
+    { label: "Fórmula Molecular", value: formulaMolecularValue },
     { label: "Geometria Molecular", value: molecula.geometria },
     { label: "Polaridade", value: molecula.polaridade },
     { label: "Ângulos de Ligação", value: molecula.anguloLigacao },

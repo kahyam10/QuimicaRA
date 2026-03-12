@@ -122,7 +122,7 @@ const dioxidoCarbono: Molecula = {
   polaridade: 'Apolar',
   anguloLigacao: '180°',
   informacoes:
-    'O dióxido de carbono é considerado o principal responsável pelo efeito estufa e é oriundo da combustão do carvão, lenha e petróleo além de erupções vulcânicas. Sua concentração global tem aumentado trazendo, como consequência, o aumento da temperatura da Terra e modificações climáticas. Sua molécula apresenta o carbono como átomo central e dois átomos de oxigênio nas extremidades com ligações duplas.',
+    'O dióxido de carbono é considerado o principal responsável pelo efeito estufa e é oriundo da combustão do carvão, lenha e petróleo além de erupções vulcânicas. Sua concentração global tem aumentado trazendo, como consequência, o aumento da temperatura da Terra e modificações climáticas. Sua molécula apresenta o carbono como átomo central e dois átomos de oxigênio formando ligações duplas nas extremidades.',
   path: 'assets/models/dioxido_carbono.glb',
 };
 
