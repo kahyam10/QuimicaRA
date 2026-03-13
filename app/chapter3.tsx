@@ -11,7 +11,7 @@ import Colors from '@/constants/Colors';
 import { ChapterCard } from '@/components/ChapterCard';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ChapterHeader } from '@/components/ChapterHeader';
-import { cap3Image, backgroundImage } from '@/constants/Images';
+import { cap3Image } from '@/constants/Images';
 
 export default function Chapter3Screen() {
   const router = useRouter();
@@ -54,7 +54,7 @@ export default function Chapter3Screen() {
             title="Camada de Ozônio"
             description="Estude os compostos que afetam a camada protetora de ozônio."
             progress={0}
-            backgroundImage={backgroundImage}
+            backgroundImage={cap3Image}
             onPress={() => router.push('/chapter3b')}
           />
         </ScrollView>

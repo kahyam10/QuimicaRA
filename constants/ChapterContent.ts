@@ -86,7 +86,7 @@ const dioxidoEnxofre: Molecula = {
   informacoes:
     'O dióxido de enxofre gasoso possui concentração variável na atmosfera e é produzido diretamente a partir da queima de combustíveis fósseis como gasolina, assim como de erupções vulcânicas. Apresenta o enxofre como átomo central e liga-se a dois átomos de oxigênio para formar a molécula.',
   path: 'assets/models/dioxido_enxofre.glb',
-  variantPath: 'assets/models/dioxido_enxofre_2.glb',
+  // variantPath: 'assets/models/dioxido_enxofre_2.glb', // Modelo 2 desabilitado
 };
 
 const dioxidoNitrogenio: Molecula = {
@@ -99,7 +99,7 @@ const dioxidoNitrogenio: Molecula = {
   informacoes:
     'O dióxido de nitrogênio gasoso não possui concentração fixa na atmosfera, sendo maior em áreas urbanas e pode ter origem natural ou artificial. Quando dissolvido na água presente na atmosfera, forma o ácido nítrico (HNO₃).',
   path: 'assets/models/dioxido_nitrogenio.glb',
-  variantPath: 'assets/models/dioxido_nitrogenio_2.glb',
+  // variantPath: 'assets/models/dioxido_nitrogenio_2.glb', // Modelo 2 desabilitado
 };
 
 export const capitulo2: Capitulo = {
@@ -173,7 +173,7 @@ const ozonio: Molecula = {
   informacoes:
     'O ozônio é uma substância gasosa formada a partir da ligação de 3 átomos de oxigênio por meio de ligações simples e dupla. O ozônio forma uma camada protetora pois impede que 95% da radiação ultravioleta atinja a superfície da Terra.',
   path: 'assets/models/ozonio.glb',
-  variantPath: 'assets/models/ozonio2.glb',
+  // variantPath: 'assets/models/ozonio2.glb', // Modelo 2 desabilitado
 };
 
 const clorofluorcarbonos: Molecula = {
@@ -250,33 +250,33 @@ export const capitulo4: CapituloTexto = {
     {
       id: 'sol1',
       texto:
-        'A diminuição e/ou substituição de combustíveis fósseis por alternativas de fontes de energias limpas e renováveis',
+        'A diminuição e/ou substituição de combustíveis fósseis por fontes de energias limpas e renováveis;',
     },
     {
       id: 'sol2',
       texto:
-        'Redução da utilização de meios de transportes movidos a combustíveis fósseis por transportes menos poluentes como veículos elétricos ou bicicletas',
+        'Redução da utilização de meios de transportes movidos a combustíveis fósseis por transportes menos poluentes como veículos elétricos ou bicicletas;',
     },
     {
       id: 'sol3',
-      texto: 'Incentivo à utilização de transportes coletivos',
+      texto: 'Incentivo à utilização de transportes coletivos;',
     },
     {
       id: 'sol4',
-      texto: 'Incentivo a redução de emissões de CO₂, como créditos de carbono',
+      texto: 'Incentivo a redução de emissões de CO₂, como créditos de carbono;',
     },
     {
       id: 'sol5',
-      texto: 'Reflorestamento e conservação florestal',
+      texto: 'Reflorestamento e conservação florestal;',
     },
     {
       id: 'sol6',
-      texto: 'Incentivos a práticas cotidianas individuais',
+      texto: 'Incentivos a práticas cotidianas individuais;',
     },
     {
       id: 'sol7',
       texto:
-        'Criação e adoção de políticas públicas assim como conscientização coletiva para diminuição de compostos poluentes',
+        'Criação e adoção de políticas públicas assim como conscientização coletiva para diminuição de compostos poluentes.',
     },
   ],
 };

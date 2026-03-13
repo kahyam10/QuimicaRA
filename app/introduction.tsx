@@ -27,7 +27,7 @@ export default function IntroductionScreen() {
       </ImageBackground>
 
       {/* Conteúdo scrollável */}
-      <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
+      <ScrollView style={styles.content} showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 45 }}>
         <View style={styles.infoContainer}>
           <View style={styles.card}>
             <Text style={styles.cardTitle}>Bem-vindo ao Química RA</Text>
@@ -39,7 +39,7 @@ export default function IntroductionScreen() {
           <View style={styles.card}>
             <Text style={styles.cardSubtitle}>Visualização Tridimensional</Text>
             <Text style={styles.cardText}>
-              Nele, é possível visualizar e estudar compostos presentes na atmosfera de forma tridimensional, tornando a experiência educacional mais criativa e tangível, superando obstáculos de abstração e tornando a aprendizagem mais envolvente e eficaz.
+              Sua utilização permite visualizar e estudar compostos presentes na atmosfera de forma tridimensional, tornando a experiência educacional mais criativa e tangível, superando obstáculos de abstração e tornando a aprendizagem mais envolvente e eficaz.
             </Text>
           </View>
 
@@ -58,10 +58,6 @@ export default function IntroductionScreen() {
         </View>
       </ScrollView>
 
-      {/* Rodapé fixo (simulando o selector) */}
-      <SafeAreaView edges={['bottom']} style={styles.footerSection}>
-        <Text style={styles.footerText}>Deslize para começar sua jornada</Text>
-      </SafeAreaView>
     </View>
   );
 }

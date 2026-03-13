@@ -17,7 +17,7 @@ export default function Chapter4Screen() {
       />
 
       {/* Conteúdo scrollável */}
-      <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
+      <ScrollView style={styles.content} showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 45 }}>
         <View style={styles.infoContainer}>
           <View style={styles.card}>
             <Text style={styles.cardTitle}>Sobre Preservação</Text>

@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { useRouter } from 'expo-router';
 import { ChevronLeft } from 'lucide-react-native';
 import Colors from '@/constants/Colors';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 interface ChapterHeaderProps {
   title: string;
@@ -22,6 +23,7 @@ export const ChapterHeader = memo(function ChapterHeader({
   chapterNumber 
 }: ChapterHeaderProps) {
   const router = useRouter();
+  const insets = useSafeAreaInsets();
 
   // Memoized callback to prevent creating new function on each render
   const handleGoBack = useCallback(() => {
@@ -29,7 +31,7 @@ export const ChapterHeader = memo(function ChapterHeader({
   }, [router]);
 
   return (
-    <View style={styles.header}>
+    <View style={[styles.header, { paddingTop: insets.top + 12 }]}>
       <TouchableOpacity onPress={handleGoBack} style={styles.backButton}>
         <ChevronLeft color={Colors.white} size={24} />
       </TouchableOpacity>
@@ -53,7 +55,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 16,
-    paddingVertical: 16,
+    paddingBottom: 16,
     borderBottomWidth: 0,
     borderBottomColor: 'transparent',
     backgroundColor: Colors.primary, // Azul

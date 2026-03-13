@@ -17,7 +17,7 @@ import { MoleculaCard } from '@/components/MoleculaCard';
 import { ModelViewer } from '@/components/ModelViewer';
 import { CompoundARView } from '@/components/CompoundARView';
 import { Play } from 'lucide-react-native';
-import { enxofreImage } from '@/constants/Images';
+import { cap1FullImage } from '@/constants/Images';
 
 const { height } = Dimensions.get('window');
 
@@ -90,7 +90,7 @@ export default function Chapter1Screen() {
 
         {/* Visualizador 3D / Botão AR */}
         <ImageBackground 
-          source={enxofreImage} 
+          source={cap1FullImage} 
           style={styles.viewerContainer}
           imageStyle={styles.viewerBackgroundImage}
           resizeMode="cover"
@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
     position: 'relative',
   },
   viewerBackgroundImage: {
-    resizeMode: 'contain',
+    width: '100%',
   },
   viewerOverlay: {
     ...StyleSheet.absoluteFillObject,

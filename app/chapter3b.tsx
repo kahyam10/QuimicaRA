@@ -9,20 +9,20 @@ import { MoleculaCard } from '@/components/MoleculaCard';
 import { ModelViewer } from '@/components/ModelViewer';
 import { CompoundARView } from '@/components/CompoundARView';
 import { Play } from 'lucide-react-native';
-import { enxofreImage } from '@/constants/Images';
+import { cap3FullImage } from '@/constants/Images';
 
 const { height } = Dimensions.get('window');
 
 // ===== Carregar modelos GLB da Camada de Ozônio =====
-interface ModelEntry { primary: any; variant?: any; }
+interface ModelEntry { primary: any; /* variant?: any; */ }
 const modelRegistry: Record<string, ModelEntry> = {};
 
 // O₃ - Ozônio (com variante)
 try {
   const primary = require('../assets/models/ozonio.glb');
-  let variant = null;
-  try { variant = require('../assets/models/ozonio2.glb'); } catch(e) {}
-  modelRegistry['o3'] = { primary, variant };
+  // let variant = null;
+  // try { variant = require('../assets/models/ozonio2.glb'); } catch(e) {}
+  modelRegistry['o3'] = { primary };
 } catch(e) { console.error('❌ Erro ao carregar modelo O₃'); }
 
 // CFC-11 - Clorofluorcarbonos
@@ -31,25 +31,26 @@ try { modelRegistry['cfc11'] = { primary: require('../assets/models/clorofluorca
 export default function Chapter3bScreen() {
   const [selectedMolecula, setSelectedMolecula] = useState<Molecula>(capitulo3b.moleculas[0]);
   const [showAR, setShowAR] = useState(false);
-  const [arModelVersion, setArModelVersion] = useState<'primary' | 'variant'>('primary');
+  // const [arModelVersion, setArModelVersion] = useState<'primary' | 'variant'>('primary');
 
   const handleSelectMolecula = useCallback((molecula: Molecula) => {
     setSelectedMolecula(molecula);
   }, []);
 
   const currentModels = modelRegistry[selectedMolecula?.id];
-  const hasVariant = !!currentModels?.variant;
+  // const hasVariant = !!currentModels?.variant;
 
-  const openAR = (version: 'primary' | 'variant') => {
-    setArModelVersion(version);
+  const openAR = () => {
+    // setArModelVersion(version); // Modelo 2 desabilitado
     setShowAR(true);
   };
 
   // Se AR está visível
   if (showAR) {
-    const model = arModelVersion === 'variant' && currentModels?.variant
-      ? currentModels.variant
-      : currentModels?.primary;
+    const model = currentModels?.primary;
+    // const model = arModelVersion === 'variant' && currentModels?.variant
+    //   ? currentModels.variant
+    //   : currentModels?.primary;
 
     if (!model) {
       return (
@@ -66,9 +67,10 @@ export default function Chapter3bScreen() {
       );
     }
 
-    const versionLabel = hasVariant
-      ? `${selectedMolecula.nome} — ${arModelVersion === 'primary' ? 'Modelo 1' : 'Modelo 2'}`
-      : selectedMolecula.nome;
+    const versionLabel = selectedMolecula.nome;
+    // const versionLabel = hasVariant
+    //   ? `${selectedMolecula.nome} — ${arModelVersion === 'primary' ? 'Modelo 1' : 'Modelo 2'}`
+    //   : selectedMolecula.nome;
 
     return (
       <CompoundARView
@@ -85,7 +87,7 @@ export default function Chapter3bScreen() {
 
       {/* Visualizador 3D / Botões AR */}
       <ImageBackground
-        source={enxofreImage}
+        source={cap3FullImage}
         style={styles.viewerContainer}
         imageStyle={styles.viewerBackgroundImage}
         resizeMode="cover"
@@ -93,8 +95,8 @@ export default function Chapter3bScreen() {
         <View style={styles.viewerOverlay} />
         <ModelViewer modelType={selectedMolecula?.id} zoomLevel={1} />
 
-        {/* Botões AR: 2 quando há variante (O₃), 1 quando não há */}
-        {hasVariant ? (
+        {/* Botão AR único (Modelo 2 desabilitado) */}
+        {/* {hasVariant ? (
           <View style={styles.arButtonsRow}>
             <TouchableOpacity style={styles.arButtonSmall} onPress={() => openAR('primary')}>
               <Play color={Colors.white} size={18} />
@@ -105,12 +107,12 @@ export default function Chapter3bScreen() {
               <Text style={styles.arButtonSmallText}>MODELO 2</Text>
             </TouchableOpacity>
           </View>
-        ) : (
-          <TouchableOpacity style={styles.arButton} onPress={() => openAR('primary')}>
+        ) : ( */}
+          <TouchableOpacity style={styles.arButton} onPress={() => openAR()}>
             <Play color={Colors.white} size={24} />
             <Text style={styles.arButtonText}>VER EM RA</Text>
           </TouchableOpacity>
-        )}
+        {/* )} */}
       </ImageBackground>
 
       <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
@@ -152,7 +154,7 @@ const styles = StyleSheet.create({
     position: 'relative',
   },
   viewerBackgroundImage: {
-    resizeMode: 'contain',
+    width: '100%',
   },
   viewerOverlay: {
     ...StyleSheet.absoluteFillObject,

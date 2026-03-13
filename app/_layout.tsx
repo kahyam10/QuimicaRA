@@ -7,7 +7,6 @@ import { SplashScreen } from 'expo-router';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { initErrorTracking } from '@/utils/sentry';
-import { StatusBar } from 'react-native';
 
 // Prevent splash screen from auto-hiding
 SplashScreen.preventAutoHideAsync();
@@ -53,8 +52,6 @@ export default function RootLayout() {
         }
       }}
     >
-
-            <StatusBar hidden={true} />
       <GestureHandlerRootView>
         <Stack screenOptions={{ headerShown: false }}>
           <Stack.Screen name="index" options={{ headerShown: false }} />
@@ -65,6 +62,9 @@ export default function RootLayout() {
           <Stack.Screen name="chapter3b" options={{ headerShown: false }} />
           <Stack.Screen name="chapter4" options={{ headerShown: false }} />
           <Stack.Screen name="introduction" options={{ headerShown: false }} />
+          <Stack.Screen name="sobre" options={{ headerShown: false }} />
+          <Stack.Screen name="desenvolvedores" options={{ headerShown: false }} />
+          <Stack.Screen name="referencias" options={{ headerShown: false }} />
           <Stack.Screen name="+not-found" />
         </Stack>
       </GestureHandlerRootView>

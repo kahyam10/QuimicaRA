@@ -8,11 +8,11 @@ import {
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
-import { ChevronRight } from 'lucide-react-native';
+import { ChevronRight, Info } from 'lucide-react-native';
 import Colors from '@/constants/Colors';
 import { ChapterCard } from '@/components/ChapterCard';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { backgroundImage, capaImage, cap1Image, cap2Image, cap3Image } from '@/constants/Images';
+import { backgroundImage, capaImage, cap1Image, cap2Image, cap3Image, cap4Image, aboutImage } from '@/constants/Images';
 
 export default function HomeScreen() {
   const router = useRouter();
@@ -35,7 +35,7 @@ export default function HomeScreen() {
           >
             <View style={styles.headerOverlay} />
             <View style={styles.headerContent}>
-              <Text style={styles.title}>Química RA</Text>
+              <Text style={styles.title}>Clima Químico RA</Text>
               <Text style={styles.subtitle}>
                 Explorando os compostos e reações da atmosfera terrestre
               </Text>
@@ -87,9 +87,31 @@ export default function HomeScreen() {
             title="Preservação e Possíveis Soluções"
             description="Estratégias para mitigar emissões e proteger o meio ambiente."
             progress={0}
-            backgroundImage={backgroundImage}
+            backgroundImage={cap4Image}
             onPress={() => router.push('/chapter4')}
           />
+
+          {/* Botão Sobre */}
+          <TouchableOpacity style={{ marginTop: 8 }} onPress={() => router.push('/sobre')}>
+          <ImageBackground
+            source={aboutImage}
+            style={styles.sobreCard}
+            imageStyle={styles.sobreCardImage}
+            resizeMode="cover"
+          >
+            <View style={styles.sobreOverlay} />
+            <View style={styles.sobreIconContainer}>
+              <Info color={Colors.white} size={28} strokeWidth={1.8} />
+            </View>
+            <View style={styles.sobreTextContainer}>
+              <Text style={[styles.sobreTitle, { color: Colors.white }]}>Sobre</Text>
+              <Text style={[styles.sobreSubtitle, { color: 'rgba(255,255,255,0.85)' }]}>Desenvolvedores e referências</Text>
+            </View>
+            <View style={styles.sobreButton} >
+              <ChevronRight color={Colors.white} size={22} />
+            </View>
+            </ImageBackground>
+            </TouchableOpacity>
         </ScrollView>
       </SafeAreaView>
     </LinearGradient>
@@ -217,5 +239,50 @@ const styles = StyleSheet.create({
     marginBottom: 12,
     marginHorizontal: 16,
     fontWeight: '600',
+  },
+  sobreCard: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderRadius: 16,
+    marginHorizontal: 16,
+    marginTop: 8,
+    marginBottom: 8,
+    padding: 18,
+    overflow: 'hidden',
+    gap: 14,
+  },
+  sobreCardImage: {
+    borderRadius: 16,
+  },
+  sobreOverlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(0, 0, 0, 0.45)',
+    borderRadius: 16,
+  },
+  sobreIconContainer: {
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+    backgroundColor: 'rgba(255,255,255,0.2)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  sobreTextContainer: {
+    flex: 1,
+  },
+  sobreTitle: {
+    fontFamily: 'Inter-Bold',
+    fontSize: 16,
+    fontWeight: '700',
+    color: Colors.text,
+    marginBottom: 2,
+  },
+  sobreSubtitle: {
+    fontFamily: 'Inter-Regular',
+    fontSize: 13,
+    color: Colors.textSecondary,
+  },
+  sobreButton: {
+    padding: 4,
   },
 });
