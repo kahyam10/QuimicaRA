@@ -120,7 +120,7 @@ export default function Chapter2Screen() {
         {/* )} */}
       </ImageBackground>
 
-      <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
+      <ScrollView style={styles.content} contentContainerStyle={{ flexGrow: 1 }} showsVerticalScrollIndicator={false}>
         <View style={styles.infoContainer}>
           <MoleculaCard molecula={selectedMolecula} />
         </View>
@@ -166,7 +166,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0, 0, 0, 0.2)',
   },
   selectorSection: {
-    backgroundColor: Colors.primary,
+    backgroundColor: Colors.darkBackground,
     paddingHorizontal: 0,
     paddingVertical: 0,
     marginBottom: 0,
