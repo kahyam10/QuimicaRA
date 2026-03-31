@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
-import { ChevronRight, Info } from 'lucide-react-native';
+import { ChevronRight, Info, Download } from 'lucide-react-native';
 import Colors from '@/constants/Colors';
 import { ChapterCard } from '@/components/ChapterCard';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -52,6 +52,27 @@ export default function HomeScreen() {
               onPress={() => router.push('/introduction')}
             />
           </View>
+
+          <TouchableOpacity onPress={() => router.push('/download')}>
+            <ImageBackground
+              source={backgroundImage}
+              style={styles.downloadCard}
+              imageStyle={styles.downloadCardImage}
+              resizeMode="cover"
+            >
+              <View style={styles.downloadOverlay} />
+              <View style={styles.downloadIconContainer}>
+                <Download color={Colors.white} size={28} strokeWidth={1.8} />
+              </View>
+              <View style={styles.downloadTextContainer}>
+                <Text style={styles.downloadTitle}>Download</Text>
+                <Text style={styles.downloadSubtitle}>Livreto de marcadores RA</Text>
+              </View>
+              <View style={styles.downloadChevron}>
+                <ChevronRight color={Colors.white} size={22} />
+              </View>
+            </ImageBackground>
+          </TouchableOpacity>
 
           <Text style={styles.chaptersTitle}>Capítulos</Text>
 
@@ -283,6 +304,50 @@ const styles = StyleSheet.create({
     color: Colors.textSecondary,
   },
   sobreButton: {
+    padding: 4,
+  },
+  downloadCard: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderRadius: 16,
+    marginHorizontal: 16,
+    marginTop: 8,
+    padding: 18,
+    overflow: 'hidden',
+    gap: 14,
+  },
+  downloadCardImage: {
+    borderRadius: 16,
+  },
+  downloadOverlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(0, 0, 0, 0.55)',
+    borderRadius: 16,
+  },
+  downloadIconContainer: {
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+    backgroundColor: 'rgba(255,255,255,0.2)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  downloadTextContainer: {
+    flex: 1,
+  },
+  downloadTitle: {
+    fontFamily: 'Inter-Bold',
+    fontSize: 16,
+    fontWeight: '700',
+    color: Colors.white,
+    marginBottom: 2,
+  },
+  downloadSubtitle: {
+    fontFamily: 'Inter-Regular',
+    fontSize: 13,
+    color: 'rgba(255,255,255,0.85)',
+  },
+  downloadChevron: {
     padding: 4,
   },
 });
