@@ -80,7 +80,7 @@ export function ViroARViewer({
         {/* Footer com instruções */}
         <View style={styles.footer}>
           <Text style={styles.instructionText}>
-            💡 Mova seu dispositivo para explorar o composto em 3D
+            Mova seu dispositivo para explorar o composto em 3D
           </Text>
         </View>
       </SafeAreaView>

@@ -1,5 +1,4 @@
 import { StyleSheet, View, Dimensions, ScrollView, TouchableOpacity, Text, ImageBackground } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { useState, useCallback } from 'react';
 import Colors from '@/constants/Colors';
 import { capitulo3b, Molecula } from '@/constants/ChapterContent';
@@ -8,6 +7,7 @@ import { MoleculaSelector } from '@/components/MoleculaSelector';
 import { MoleculaCard } from '@/components/MoleculaCard';
 import { ModelViewer } from '@/components/ModelViewer';
 import { CompoundARView } from '@/components/CompoundARView';
+import { QRScannerModal } from '@/components/QRScannerModal';
 import { Play } from 'lucide-react-native';
 import { cap3FullImage } from '@/constants/Images';
 
@@ -23,14 +23,15 @@ try {
   // let variant = null;
   // try { variant = require('../assets/models/ozonio2.glb'); } catch(e) {}
   modelRegistry['o3'] = { primary };
-} catch(e) { console.error('❌ Erro ao carregar modelo O₃'); }
+} catch(e) { console.error('Erro ao carregar modelo O₃'); }
 
 // CFC-11 - Clorofluorcarbonos
-try { modelRegistry['cfc11'] = { primary: require('../assets/models/clorofluorcarbono.glb') }; } catch(e) { console.error('❌ Erro ao carregar modelo CFC-11'); }
+try { modelRegistry['cfc11'] = { primary: require('../assets/models/clorofluorcarbono.glb') }; } catch(e) { console.error('Erro ao carregar modelo CFC-11'); }
 
 export default function Chapter3bScreen() {
   const [selectedMolecula, setSelectedMolecula] = useState<Molecula>(capitulo3b.moleculas[0]);
   const [showAR, setShowAR] = useState(false);
+  const [showScanner, setShowScanner] = useState(false);
   // const [arModelVersion, setArModelVersion] = useState<'primary' | 'variant'>('primary');
 
   const handleSelectMolecula = useCallback((molecula: Molecula) => {
@@ -42,8 +43,13 @@ export default function Chapter3bScreen() {
 
   const openAR = () => {
     // setArModelVersion(version); // Modelo 2 desabilitado
-    setShowAR(true);
+    setShowScanner(true);
   };
+
+  const handleScanSuccess = useCallback(() => {
+    setShowScanner(false);
+    setShowAR(true);
+  }, []);
 
   // Se AR está visível
   if (showAR) {
@@ -57,7 +63,7 @@ export default function Chapter3bScreen() {
         <View style={styles.container}>
           <ChapterHeader chapterNumber={capitulo3b.numero} title={capitulo3b.titulo} />
           <View style={styles.errorContainer}>
-            <Text style={styles.errorTitle}>⚠️ Erro ao carregar modelo RA</Text>
+            <Text style={styles.errorTitle}>Erro ao carregar modelo RA</Text>
             <Text style={styles.errorMessage}>Modelo GLB não disponível para {selectedMolecula?.nome}</Text>
             <TouchableOpacity style={styles.errorButton} onPress={() => setShowAR(false)}>
               <Text style={styles.errorButtonText}>Fechar</Text>
@@ -115,13 +121,20 @@ export default function Chapter3bScreen() {
         {/* )} */}
       </ImageBackground>
 
+      <QRScannerModal
+        visible={showScanner}
+        expectedName={selectedMolecula?.nome || ''}
+        onSuccess={handleScanSuccess}
+        onClose={() => setShowScanner(false)}
+      />
+
       <ScrollView style={styles.content} contentContainerStyle={{ flexGrow: 1 }} showsVerticalScrollIndicator={false}>
         <View style={styles.infoContainer}>
           <MoleculaCard molecula={selectedMolecula} />
         </View>
       </ScrollView>
 
-      <SafeAreaView edges={['bottom']} style={styles.selectorSection}>
+      <View style={styles.selectorSection}>
         <View style={styles.selectorContainer}>
           <MoleculaSelector
             moleculas={capitulo3b.moleculas}
@@ -129,7 +142,7 @@ export default function Chapter3bScreen() {
             onSelectMolecula={handleSelectMolecula}
           />
         </View>
-      </SafeAreaView>
+      </View>
     </View>
   );
 }

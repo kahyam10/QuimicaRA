@@ -7,6 +7,7 @@ import { MoleculaSelector } from '@/components/MoleculaSelector';
 import { MoleculaCard } from '@/components/MoleculaCard';
 import { ModelViewer } from '@/components/ModelViewer';
 import { CompoundModelViewer } from '@/components/CompoundModelViewer';
+import { QRScannerModal } from '@/components/QRScannerModal';
 import { Play } from 'lucide-react-native';
 
 const { height } = Dimensions.get('window');
@@ -14,9 +15,15 @@ const { height } = Dimensions.get('window');
 export default function Chapter1Screen() {
   const [selectedMolecula, setSelectedMolecula] = useState<Molecula>(capitulo1.moleculas[0]);
   const [showAR, setShowAR] = useState(false);
+  const [showScanner, setShowScanner] = useState(false);
 
   const handleSelectMolecula = useCallback((molecula: Molecula) => {
     setSelectedMolecula(molecula);
+  }, []);
+
+  const handleScanSuccess = useCallback(() => {
+    setShowScanner(false);
+    setShowAR(true);
   }, []);
 
   // Mapeia o id da molécula para o caminho do modelo GLB
@@ -48,12 +55,19 @@ export default function Chapter1Screen() {
         <ModelViewer modelType={selectedMolecula?.id} zoomLevel={1} />
         <TouchableOpacity 
           style={styles.arButton}
-          onPress={() => setShowAR(true)}
+          onPress={() => setShowScanner(true)}
         >
           <Play color={Colors.white} size={24} />
           <Text style={styles.arButtonText}>VER EM AR</Text>
         </TouchableOpacity>
       </View>
+
+      <QRScannerModal
+        visible={showScanner}
+        expectedName={selectedMolecula?.nome || ''}
+        onSuccess={handleScanSuccess}
+        onClose={() => setShowScanner(false)}
+      />
 
       <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
         <View style={styles.selectorSection}>

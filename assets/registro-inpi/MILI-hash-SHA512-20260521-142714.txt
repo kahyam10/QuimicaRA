@@ -1,0 +1,17 @@
+==============================================================
+REGISTRO DE SOFTWARE - RESUMO DIGITAL HASH (SHA-512)
+==============================================================
+Projeto       : MILI - Aplicativo TCC
+Arquivo       : MILI-codigo-fonte-20260521-142714.zip
+Tamanho       : 12.88 MB
+Data/Hora     : 21/05/2026 14:27:14
+Algoritmo     : SHA-512
+Total arquivos: 53
+
+Hash SHA-512:
+9FF6736FF64BBCC560D42E6337367FC1E8F9DE47C37A444CD2A4E935838F0397BB6904608BF7BADB02B5D450EA2B03C517D9A30C731F5D04A209469A3895D35F
+
+==============================================================
+Este hash deve ser informado no formulario do INPI (e-INPI)
+no campo "Resumo Digital Hash".
+==============================================================

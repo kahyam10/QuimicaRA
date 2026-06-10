@@ -1,5 +1,4 @@
 import { StyleSheet, View, Dimensions, ScrollView, TouchableOpacity, Text, ImageBackground } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { useState, useCallback } from 'react';
 import Colors from '@/constants/Colors';
 import { capitulo2, Molecula } from '@/constants/ChapterContent';
@@ -23,7 +22,7 @@ try {
   // let variant = null;
   // try { variant = require('../assets/models/dioxido_enxofre_2.glb'); } catch(e) {}
   modelRegistry['so2'] = { primary };
-} catch(e) { console.error('❌ Erro ao carregar modelo SO₂'); }
+} catch(e) { console.error('Erro ao carregar modelo SO₂'); }
 
 // NO₂ - Dióxido de Nitrogênio (com variante)
 try {
@@ -31,7 +30,7 @@ try {
   // let variant = null;
   // try { variant = require('../assets/models/dioxido_nitrogenio_2.glb'); } catch(e) {}
   modelRegistry['no2'] = { primary };
-} catch(e) { console.error('❌ Erro ao carregar modelo NO₂'); }
+} catch(e) { console.error('Erro ao carregar modelo NO₂'); }
 
 export default function Chapter2Screen() {
   const [selectedMolecula, setSelectedMolecula] = useState<Molecula>(capitulo2.moleculas[0]);
@@ -62,7 +61,7 @@ export default function Chapter2Screen() {
         <View style={styles.container}>
           <ChapterHeader chapterNumber={capitulo2.numero} title={capitulo2.titulo} />
           <View style={styles.errorContainer}>
-            <Text style={styles.errorTitle}>⚠️ Erro ao carregar modelo RA</Text>
+            <Text style={styles.errorTitle}>Erro ao carregar modelo RA</Text>
             <Text style={styles.errorMessage}>Modelo GLB não disponível para {selectedMolecula?.nome}</Text>
             <TouchableOpacity style={styles.errorButton} onPress={() => setShowAR(false)}>
               <Text style={styles.errorButtonText}>Fechar</Text>
@@ -126,7 +125,7 @@ export default function Chapter2Screen() {
         </View>
       </ScrollView>
 
-      <SafeAreaView edges={['bottom']} style={styles.selectorSection}>
+      <View style={styles.selectorSection}>
         <View style={styles.selectorContainer}>
           <MoleculaSelector
             moleculas={capitulo2.moleculas}
@@ -134,7 +133,7 @@ export default function Chapter2Screen() {
             onSelectMolecula={handleSelectMolecula}
           />
         </View>
-      </SafeAreaView>
+      </View>
     </View>
   );
 }

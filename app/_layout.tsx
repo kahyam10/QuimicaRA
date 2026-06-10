@@ -5,6 +5,7 @@ import { useFonts, Inter_400Regular, Inter_700Bold } from '@expo-google-fonts/in
 import { SpaceMono_400Regular, SpaceMono_700Bold } from '@expo-google-fonts/space-mono';
 import { SplashScreen } from 'expo-router';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { StatusBar } from 'expo-status-bar';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { initErrorTracking } from '@/utils/sentry';
 
@@ -53,6 +54,7 @@ export default function RootLayout() {
       }}
     >
       <GestureHandlerRootView>
+        <StatusBar hidden />
         <Stack screenOptions={{ headerShown: false }}>
           <Stack.Screen name="index" options={{ headerShown: false }} />
           <Stack.Screen name="chapter1" options={{ headerShown: false }} />

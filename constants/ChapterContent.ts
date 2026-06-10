@@ -59,9 +59,9 @@ const argonio: Molecula = {
   geometria: 'Átomo único, portanto não forma molécula. (Não aplicável)',
   polaridade: 'Não aplicável',
   anguloLigacao: 'Não aplicável',
-  percentualAtmosfera: '0,093%',
+  percentualAtmosfera: '0,93%',
   informacoes:
-    'O argônio é uma substância gasosa presente na atmosfera com 0,093% da sua composição. É um gás nobre e por apresentar camada de valência completa é inerte.',
+    'O argônio é uma substância gasosa presente na atmosfera com 0,93% da sua composição. É um gás nobre e por apresentar camada de valência completa é inerte.',
   path: 'assets/models/argonio.glb',
 };
 
@@ -263,7 +263,8 @@ export const capitulo4: CapituloTexto = {
     },
     {
       id: 'sol4',
-      texto: 'Incentivo a redução de emissões de CO₂, como créditos de carbono;',
+      texto:
+        'Incentivo a redução de emissões de CO₂, como créditos de carbono;',
     },
     {
       id: 'sol5',

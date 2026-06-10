@@ -22,7 +22,7 @@ export default function HomeScreen() {
       colors={[Colors.gradientStart, Colors.gradientEnd]}
       style={styles.container}
     >
-      <SafeAreaView style={styles.safeArea}>
+      <SafeAreaView style={styles.safeArea} edges={['bottom']}>
         <ScrollView
           contentContainerStyle={styles.scrollContent}
           showsVerticalScrollIndicator={false}

@@ -1,4 +1,19 @@
-import { StyleSheet, View, Dimensions, Text, ScrollView, ImageBackground } from 'react-native';
+import { useState } from 'react';
+import {
+  StyleSheet,
+  View,
+  Dimensions,
+  Text,
+  ScrollView,
+  ImageBackground,
+  TouchableOpacity,
+  ActivityIndicator,
+  Alert,
+  Platform,
+} from 'react-native';
+import { Asset } from 'expo-asset';
+import * as FileSystem from 'expo-file-system';
+import * as Sharing from 'expo-sharing';
 import Colors from '@/constants/Colors';
 import { ChapterHeader } from '@/components/ChapterHeader';
 import { backgroundImage } from '@/constants/Images';
@@ -6,7 +21,51 @@ import { Download } from 'lucide-react-native';
 
 const { height } = Dimensions.get('window');
 
+const livretoPdf = require('@/assets/data/LIVRETO.pdf');
+
 export default function DownloadScreen() {
+  const [downloading, setDownloading] = useState(false);
+
+  const handleDownload = async () => {
+    if (downloading) return;
+    try {
+      setDownloading(true);
+
+      const asset = Asset.fromModule(livretoPdf);
+      await asset.downloadAsync();
+      const sourceUri = asset.localUri ?? asset.uri;
+
+      const destUri = `${FileSystem.cacheDirectory}Livreto-Clima-Quimico-RA.pdf`;
+      const existing = await FileSystem.getInfoAsync(destUri);
+      if (existing.exists) {
+        await FileSystem.deleteAsync(destUri, { idempotent: true });
+      }
+      await FileSystem.copyAsync({ from: sourceUri, to: destUri });
+
+      if (await Sharing.isAvailableAsync()) {
+        await Sharing.shareAsync(destUri, {
+          mimeType: 'application/pdf',
+          dialogTitle: 'Baixar Livreto de Marcadores',
+          UTI: 'com.adobe.pdf',
+        });
+      } else {
+        Alert.alert(
+          'Download concluído',
+          Platform.OS === 'web'
+            ? 'O livreto foi preparado para download.'
+            : `O livreto foi salvo em:\n${destUri}`
+        );
+      }
+    } catch (error) {
+      Alert.alert(
+        'Erro no download',
+        'Não foi possível baixar o livreto. Tente novamente.'
+      );
+    } finally {
+      setDownloading(false);
+    }
+  };
+
   return (
     <View style={styles.container}>
       <ChapterHeader chapterNumber="" title="Download" />
@@ -40,6 +99,22 @@ export default function DownloadScreen() {
               Após realizar o download, imprima o livreto e aponte a câmera do dispositivo para os marcadores indicados em cada capítulo. Os compostos químicos serão exibidos em 3D diretamente na tela.
             </Text>
           </View>
+
+          <TouchableOpacity
+            style={[styles.downloadButton, downloading && styles.downloadButtonDisabled]}
+            onPress={handleDownload}
+            activeOpacity={0.85}
+            disabled={downloading}
+          >
+            {downloading ? (
+              <ActivityIndicator color={Colors.white} />
+            ) : (
+              <>
+                <Download color={Colors.white} size={22} strokeWidth={2} />
+                <Text style={styles.downloadButtonText}>Baixar Livreto (PDF)</Text>
+              </>
+            )}
+          </TouchableOpacity>
 
           <View style={styles.card}>
             <Text style={styles.cardHighlight}>
@@ -115,5 +190,23 @@ const styles = StyleSheet.create({
     color: Colors.primary,
     lineHeight: 26,
     textAlign: 'center',
+  },
+  downloadButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 10,
+    backgroundColor: Colors.primary,
+    borderRadius: 16,
+    paddingVertical: 18,
+    paddingHorizontal: 20,
+  },
+  downloadButtonDisabled: {
+    opacity: 0.7,
+  },
+  downloadButtonText: {
+    fontSize: 17,
+    fontWeight: '700',
+    color: Colors.white,
   },
 });

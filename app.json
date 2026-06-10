@@ -40,6 +40,13 @@
       "expo-font",
       "expo-web-browser",
       [
+        "expo-camera",
+        {
+          "cameraPermission": "O app precisa da câmera para ler o QR code e exibir a Realidade Aumentada.",
+          "recordAudioAndroid": false
+        }
+      ],
+      [
         "@reactvision/react-viro",
         {
           "cameraPermission": "This app needs access to camera to take photos of real world for AR",

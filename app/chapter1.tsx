@@ -7,7 +7,6 @@ import {
   TouchableOpacity,
   ImageBackground,
 } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { useState, useCallback } from 'react';
 import Colors from '@/constants/Colors';
 import { capitulo1, Molecula } from '@/constants/ChapterContent';
@@ -26,13 +25,13 @@ interface ModelEntry { primary: any; variant?: any; }
 const modelRegistry: Record<string, ModelEntry> = {};
 
 // N₂ - Nitrogênio
-try { modelRegistry['n2'] = { primary: require('../assets/models/nitrogenio.glb') }; } catch(e) { console.error('❌ Erro ao carregar modelo N₂'); }
+try { modelRegistry['n2'] = { primary: require('../assets/models/nitrogenio.glb') }; } catch(e) { console.error('Erro ao carregar modelo N₂'); }
 
 // O₂ - Oxigênio
-try { modelRegistry['o2'] = { primary: require('../assets/models/oxigenio.glb') }; } catch(e) { console.error('❌ Erro ao carregar modelo O₂'); }
+try { modelRegistry['o2'] = { primary: require('../assets/models/oxigenio.glb') }; } catch(e) { console.error('Erro ao carregar modelo O₂'); }
 
 // Ar - Argônio
-try { modelRegistry['ar'] = { primary: require('../assets/models/argonio.glb') }; } catch(e) { console.error('❌ Erro ao carregar modelo Ar'); }
+try { modelRegistry['ar'] = { primary: require('../assets/models/argonio.glb') }; } catch(e) { console.error('Erro ao carregar modelo Ar'); }
 
 export default function Chapter1Screen() {
   const [selectedMolecula, setSelectedMolecula] = useState<Molecula>(
@@ -58,7 +57,7 @@ export default function Chapter1Screen() {
             title={capitulo1.titulo}
           />
           <View style={styles.errorContainer}>
-            <Text style={styles.errorTitle}>⚠️ Erro ao carregar modelo RA</Text>
+            <Text style={styles.errorTitle}>Erro ao carregar modelo RA</Text>
             <Text style={styles.errorMessage}>Modelo GLB não disponível para {selectedMolecula?.nome}</Text>
             <TouchableOpacity 
               style={styles.errorButton}
@@ -114,7 +113,7 @@ export default function Chapter1Screen() {
         </ScrollView>
 
         {/* Carousel fixo na base */}
-        <SafeAreaView edges={['bottom']} style={styles.selectorSection}>
+        <View style={styles.selectorSection}>
           <View style={styles.selectorContainer}>
             <MoleculaSelector
               moleculas={capitulo1.moleculas}
@@ -122,7 +121,7 @@ export default function Chapter1Screen() {
               onSelectMolecula={handleSelectMolecula}
             />
           </View>
-        </SafeAreaView>
+        </View>
       </View>
     </>
   );

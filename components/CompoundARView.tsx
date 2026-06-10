@@ -349,9 +349,9 @@ function InteractiveARScene(props?: any) {
           position={[0, 0, 0]}
           scale={[1, 1, 1]}
           rotation={[0, 0, 0]}
-          onLoadStart={() => console.log('🔄 Carregando modelo 3D...')}
-          onLoadEnd={() => console.log('✅ Modelo carregado com sucesso')}
-          onError={(error: any) => console.error('❌ Erro ao carregar modelo:', error)}
+          onLoadStart={() => console.log('Carregando modelo 3D...')}
+          onLoadEnd={() => console.log('Modelo carregado com sucesso')}
+          onError={(error: any) => console.error('Erro ao carregar modelo:', error)}
         />
       </ViroNode>
     </ViroARScene>

@@ -8,34 +8,44 @@ const { height } = Dimensions.get('window');
 
 const referencias = [
   {
-    autores: 'ATKINS, P.; DE PAULA, J.',
-    titulo: 'Físico-Química',
-    detalhes: '10. ed. Rio de Janeiro: LTC, 2017.',
+    autores: 'DUARTE, Hélio A.',
+    titulo: 'Ligações Químicas: Ligação Iônica, Covalente e Metálica',
+    detalhes: 'Cadernos Temáticos de Química Nova na Escola, São Paulo, n. 4, maio 2001.',
   },
   {
-    autores: 'BRASIL. Ministério do Meio Ambiente.',
-    titulo: 'Qualidade do Ar no Brasil',
-    detalhes: 'Brasília: MMA, 2022. Disponível em: www.gov.br/mma.',
+    autores: 'ERBE, Margarete Casagrande Lass.',
+    titulo: 'Química Ambiental',
+    detalhes: 'Curitiba: Instituto Federal do Paraná, 2016.',
   },
   {
-    autores: 'CHANG, R.; GOLDSBY, K.',
-    titulo: 'Química',
-    detalhes: '12. ed. Porto Alegre: AMGH, 2016.',
+    autores: '',
+    titulo: 'Geometria Molecular: confeccionando moléculas',
+    detalhes: 'In: EPELQUI. São Mateus: UFES, [s.d.].',
   },
   {
-    autores: 'IPCC.',
-    titulo: 'Climate Change 2021: The Physical Science Basis',
-    detalhes: 'Contribution of Working Group I to the Sixth Assessment Report. Cambridge University Press, 2021.',
+    autores: 'MOZETO, Antonio Aparecido.',
+    titulo: 'Química Atmosférica: a química sobre nossas cabeças',
+    detalhes: 'Cadernos Temáticos de Química Nova na Escola, São Paulo, n. 1, p. 41-49, maio 2001.',
   },
   {
-    autores: 'USBERCO, J.; SALVADOR, E.',
-    titulo: 'Química',
-    detalhes: '10. ed. São Paulo: Saraiva, 2014.',
+    autores: 'SCHIRMER, Wilson N.',
+    titulo: 'Química da atmosfera: constituintes naturais, poluentes e suas reações',
+    detalhes: '[S.l.: s.n.], [s.d.].',
   },
   {
-    autores: 'WMO — World Meteorological Organization.',
-    titulo: 'Scientific Assessment of Ozone Depletion: 2022',
-    detalhes: 'Geneva: WMO, 2022.',
+    autores: 'UNIVERSIDADE ESTADUAL PAULISTA (UNESP). Secretaria da Educação do Estado de São Paulo (SEESP).',
+    titulo: 'Formação docente: cursos de especialização para o quadro do magistério da SEESP, ensino fundamental II e ensino médio: a química da biosfera',
+    detalhes: 'São Paulo: UNESP, [s.d.].',
+  },
+  {
+    autores: 'UNIVERSIDADE FEDERAL DE SERGIPE (UFS). Centro de Educação a Distância (CESAD).',
+    titulo: 'Química da atmosfera — Parte I',
+    detalhes: '[S.l.: s.n.], [s.d.].',
+  },
+  {
+    autores: 'UNIVERSIDADE FEDERAL DE SERGIPE (UFS). Centro de Educação a Distância (CESAD).',
+    titulo: 'Química da atmosfera — Parte II',
+    detalhes: '[S.l.: s.n.], [s.d.].',
   },
 ];
 
@@ -74,7 +84,7 @@ export default function ReferenciasScreen() {
                 <Text style={styles.refIndexText}>{index + 1}</Text>
               </View>
               <View style={styles.refContent}>
-                <Text style={styles.refAutores}>{ref.autores}</Text>
+                {ref.autores ? <Text style={styles.refAutores}>{ref.autores}</Text> : null}
                 <Text style={styles.refTitulo}>{ref.titulo}.</Text>
                 <Text style={styles.refDetalhes}>{ref.detalhes}</Text>
               </View>

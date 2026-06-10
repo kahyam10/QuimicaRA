@@ -113,7 +113,7 @@ export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoun
                 {this.state.errorCount > 2 && (
                   <View style={styles.warningContainer}>
                     <Text style={styles.warningText}>
-                      ⚠️ Este erro ocorreu {this.state.errorCount} vezes. Pode haver um problema persistente.
+                      Este erro ocorreu {this.state.errorCount} vezes. Pode haver um problema persistente.
                     </Text>
                   </View>
                 )}

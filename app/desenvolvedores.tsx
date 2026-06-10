@@ -18,7 +18,7 @@ const desenvolvedores = [
     nome: 'Dr. André Gustavo de Araujo Fernandes',
     papel: 'Professor Orientador',
     especialidade: 'Doutor em Química Analítica e Inorgânica (USP)',
-    foto: require('@/assets/photos/andre.jpeg'),
+    foto: require('@/assets/photos/andre.JPG'),
     descricao: 'Orientou o desenvolvimento do projeto desde a sua concepção, contribuindo com sua experiência em química para embasar o conteúdo científico do aplicativo.',
   },
   {

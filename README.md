@@ -5,22 +5,22 @@
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)
 ![Viro React](https://img.shields.io/badge/Viro%20React-2.43.3-orange)
 
-## 📋 Sobre o Projeto
+## Sobre o Projeto
 
-O **Química RA** é um aplicativo educacional desenvolvido como parte de um Trabalho de Conclusão de Curso (TCC) que utiliza **Realidade Aumentada (RA)** para ensinar conceitos de química de forma interativa e imersiva. O aplicativo permite que estudantes visualizem modelos 3D de compostos químicos e moléculas em ambiente AR através da câmera do celular.
+O **Química RA** é um aplicativo educacional desenvolvido como parte de um Trabalho de Conclusão de Curso (TCC) que utiliza Realidade Aumentada (RA) para ensinar conceitos de química de forma interativa e imersiva. O aplicativo permite que estudantes visualizem modelos 3D de compostos químicos e moléculas em ambiente AR através da câmera do celular.
 
-### 🎯 Objetivos
+### Objetivos
 
 - Facilitar o aprendizado de química através de visualização 3D interativa
 - Utilizar tecnologia AR para tornar conceitos abstratos mais tangíveis
 - Proporcionar experiência educacional acessível em dispositivos móveis Android
 - Adaptar controles de interface para diferentes fabricantes de smartphones
 
-## 🛠️ Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 ### Framework Principal
 
-#### **Expo SDK 53.0.19**
+#### Expo SDK 53.0.19
 
 Framework que facilita o desenvolvimento React Native, fornecendo:
 
@@ -29,7 +29,7 @@ Framework que facilita o desenvolvimento React Native, fornecendo:
 - Gerenciamento de dependências nativas
 - APIs simplificadas para câmera, sensores e permissões
 
-#### **React Native 0.79.5**
+#### React Native 0.79.5
 
 Biblioteca JavaScript para criar aplicativos nativos:
 
@@ -38,7 +38,7 @@ Biblioteca JavaScript para criar aplicativos nativos:
 - Nova arquitetura com Fabric e TurboModules
 - Suporte a gestos nativos via PanResponder
 
-#### **TypeScript 5.x**
+#### TypeScript 5.x
 
 Superset de JavaScript que adiciona tipagem estática:
 
@@ -49,9 +49,9 @@ Superset de JavaScript que adiciona tipagem estática:
 
 ### SDK de Realidade Aumentada
 
-#### **@reactvision/react-viro 2.43.3**
+#### @reactvision/react-viro 2.43.3
 
-SDK especializado em AR/VR para React Native:
+SDK especializado em AR/VR para React Native.
 
 **Componentes Principais:**
 
@@ -80,7 +80,7 @@ SDK especializado em AR/VR para React Native:
 
 ### UI e Ícones
 
-#### **lucide-react-native 0.475.0**
+#### lucide-react-native 0.475.0
 
 Biblioteca de ícones vetoriais otimizados:
 
@@ -91,7 +91,7 @@ Biblioteca de ícones vetoriais otimizados:
 
 ### Detecção de Dispositivos
 
-#### **Platform API (React Native)**
+#### Platform API (React Native)
 
 Sistema nativo para identificar fabricante do dispositivo:
 
@@ -105,7 +105,7 @@ const isXiaomiDevice =
 
 **Razão:** Dispositivos Xiaomi/MIUI têm comportamento diferente para gestos multi-toque, exigindo controles por botões ao invés de gestos nativos.
 
-## 🏗️ Arquitetura do Projeto
+## Arquitetura do Projeto
 
 ```
 QuimicaAPp/
@@ -118,7 +118,7 @@ QuimicaAPp/
 │   └── chapter3.tsx             # Capítulo 3 - Simulações
 │
 ├── components/                   # Componentes reutilizáveis
-│   ├── CompoundARView.tsx       # ⭐ Visualizador AR principal
+│   ├── CompoundARView.tsx       # Visualizador AR principal
 │   ├── CompoundSelector.tsx     # Seletor de compostos químicos
 │   ├── InfoPanel.tsx            # Painel de informações do composto
 │   ├── LoadingScreen.tsx        # Tela de carregamento
@@ -144,7 +144,7 @@ QuimicaAPp/
     └── VIRO_SUMMARY.md
 ```
 
-## 🎮 Sistema de Controles Adaptativos
+## Sistema de Controles Adaptativos
 
 ### Dispositivos Xiaomi/MIUI
 
@@ -152,11 +152,11 @@ QuimicaAPp/
 
 **Solução:** Botões direcionais visíveis para controle manual:
 
-- 🔼 Rotação vertical +15° (eixo X)
-- 🔽 Rotação vertical -15° (eixo X)
-- ◀️ Rotação horizontal -15° (eixo Y)
-- ▶️ Rotação horizontal +15° (eixo Y)
-- 🤏 Pinça com 2 dedos: Zoom (todos os dispositivos)
+- Rotação vertical +15° (eixo X)
+- Rotação vertical -15° (eixo X)
+- Rotação horizontal -15° (eixo Y)
+- Rotação horizontal +15° (eixo Y)
+- Pinça com 2 dedos: Zoom (todos os dispositivos)
 
 ### Outros Dispositivos Android
 
@@ -166,7 +166,7 @@ QuimicaAPp/
 - Arrastar 2 dedos: Rotação livre no eixo Y
 - Interface limpa sem botões extras
 
-## 📊 Estrutura de Dados
+## Estrutura de Dados
 
 ### Interface de Composto Químico
 
@@ -206,7 +206,7 @@ interface Compound {
 }
 ```
 
-## 🚀 Instalação e Execução
+## Instalação e Execução
 
 ### Pré-requisitos
 
@@ -241,7 +241,7 @@ npx expo build:android
 eas build --platform android --profile production
 ```
 
-## 📱 Fluxo de Uso
+## Fluxo de Uso
 
 1. **Tela Inicial:** Apresentação do app e objetivos educacionais
 2. **Introdução:** Tutorial sobre como usar os controles AR
@@ -254,7 +254,7 @@ eas build --platform android --profile production
    - Use controles para rotacionar e explorar
 6. **Painel de Informações:** Dados científicos do composto selecionado
 
-## 🧪 Capítulos Disponíveis
+## Capítulos Disponíveis
 
 ### Capítulo 1: Compostos Inorgânicos
 
@@ -275,7 +275,7 @@ eas build --platform android --profile production
 - Reações químicas animadas
 - Ligações moleculares em tempo real
 
-## 🔧 Resolução de Problemas
+## Resolução de Problemas
 
 ### Metro Bundler Cache
 
@@ -296,7 +296,7 @@ O app solicita automaticamente permissão de câmera. Se negada, vá em:
 - Confirme formato do arquivo (.glb recomendado)
 - Verifique caminho em `compounds.json`
 
-## 📚 Documentação Técnica
+## Documentação Técnica
 
 Para detalhes de implementação, consulte:
 
@@ -304,9 +304,9 @@ Para detalhes de implementação, consulte:
 - [docs/VIRO_INTEGRATION_EXAMPLES.md](docs/VIRO_INTEGRATION_EXAMPLES.md) - Exemplos de código
 - [docs/VIRO_SUMMARY.md](docs/VIRO_SUMMARY.md) - Resumo das funcionalidades
 
-## 🎓 Contexto Acadêmico
+## Contexto Acadêmico
 
-Este projeto foi desenvolvido como **Trabalho de Conclusão de Curso (TCC)** com os seguintes objetivos acadêmicos:
+Este projeto foi desenvolvido como Trabalho de Conclusão de Curso (TCC) com os seguintes objetivos acadêmicos:
 
 1. Demonstrar viabilidade de AR em educação científica
 2. Comparar eficácia de aprendizado com métodos tradicionais
@@ -321,7 +321,7 @@ Este projeto foi desenvolvido como **Trabalho de Conclusão de Curso (TCC)** com
 - **Fase 4:** Otimização de performance e cache de modelos
 - **Fase 5:** Testes de usabilidade com estudantes
 
-## 👥 Contribuindo
+## Contribuindo
 
 Este é um projeto acadêmico, mas sugestões são bem-vindas:
 
@@ -331,17 +331,13 @@ Este é um projeto acadêmico, mas sugestões são bem-vindas:
 4. Push para a branch (`git push origin feature/nova-funcionalidade`)
 5. Abra um Pull Request
 
-## 📄 Licença
+## Licença
 
 Este projeto está sob licença MIT. Veja o arquivo LICENSE para mais detalhes.
 
-## 📞 Contato
+## Contato
 
-Desenvolvedor: [Seu Nome]  
-Email: [seu.email@exemplo.com]  
-Universidade: [Nome da Universidade]  
+Desenvolvedor: [Seu Nome]
+Email: [seu.email@exemplo.com]
+Universidade: [Nome da Universidade]
 Orientador: [Nome do Orientador]
-
----
-
-**Desenvolvido com ❤️ usando Expo + Viro React**
