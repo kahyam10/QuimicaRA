@@ -7,6 +7,7 @@ import { MoleculaSelector } from '@/components/MoleculaSelector';
 import { MoleculaCard } from '@/components/MoleculaCard';
 import { ModelViewer } from '@/components/ModelViewer';
 import { CompoundARView } from '@/components/CompoundARView';
+import { QRScannerModal } from '@/components/QRScannerModal';
 import { Play } from 'lucide-react-native';
 import { cap2FullImage } from '@/constants/Images';
 
@@ -35,6 +36,7 @@ try {
 export default function Chapter2Screen() {
   const [selectedMolecula, setSelectedMolecula] = useState<Molecula>(capitulo2.moleculas[0]);
   const [showAR, setShowAR] = useState(false);
+  const [showScanner, setShowScanner] = useState(false);
   // const [arModelVersion, setArModelVersion] = useState<'primary' | 'variant'>('primary');
 
   const handleSelectMolecula = useCallback((molecula: Molecula) => {
@@ -46,8 +48,13 @@ export default function Chapter2Screen() {
 
   const openAR = () => {
     // setArModelVersion(version); // Modelo 2 desabilitado
-    setShowAR(true);
+    setShowScanner(true);
   };
+
+  const handleScanSuccess = useCallback(() => {
+    setShowScanner(false);
+    setShowAR(true);
+  }, []);
 
   // Se AR está visível
   if (showAR) {
@@ -118,6 +125,14 @@ export default function Chapter2Screen() {
           </TouchableOpacity>
         {/* )} */}
       </ImageBackground>
+
+      <QRScannerModal
+        visible={showScanner}
+        expectedName={selectedMolecula?.nome || ''}
+        acceptedAliases={selectedMolecula?.qrAliases}
+        onSuccess={handleScanSuccess}
+        onClose={() => setShowScanner(false)}
+      />
 
       <ScrollView style={styles.content} contentContainerStyle={{ flexGrow: 1 }} showsVerticalScrollIndicator={false}>
         <View style={styles.infoContainer}>

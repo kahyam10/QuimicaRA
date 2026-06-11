@@ -96,6 +96,7 @@ export default function Chapter3aScreen() {
       <QRScannerModal
         visible={showScanner}
         expectedName={selectedMolecula?.nome || ''}
+        acceptedAliases={selectedMolecula?.qrAliases}
         onSuccess={handleScanSuccess}
         onClose={() => setShowScanner(false)}
       />

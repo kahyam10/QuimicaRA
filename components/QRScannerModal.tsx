@@ -20,6 +20,8 @@ interface QRScannerModalProps {
   visible: boolean;
   /** Nome do elemento esperado (ex.: "Dióxido de Carbono"). */
   expectedName: string;
+  /** Textos alternativos também aceitos como QR válido (ex.: variações de grafia). */
+  acceptedAliases?: string[];
   /** Chamado quando o QR code lido corresponde ao elemento. */
   onSuccess: () => void;
   /** Chamado quando o usuário fecha a câmera sem ler o QR correto. */
@@ -27,10 +29,11 @@ interface QRScannerModalProps {
 }
 
 /**
- * Normaliza um texto para comparação: minúsculas, sem acentos e sem espaços extras.
+ * Normaliza um texto para comparação: remove BOM, minúsculas, sem acentos e sem espaços extras.
  */
 function normalize(value: string): string {
   return value
+    .replace(/^\ufeff/, '')
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
     .toLowerCase()
@@ -41,6 +44,7 @@ function normalize(value: string): string {
 export function QRScannerModal({
   visible,
   expectedName,
+  acceptedAliases,
   onSuccess,
   onClose,
 }: QRScannerModalProps) {
@@ -62,9 +66,9 @@ export function QRScannerModal({
     lockedRef.current = true;
 
     const scanned = normalize(result.data ?? '');
-    const expected = normalize(expectedName);
+    const accepted = [expectedName, ...(acceptedAliases ?? [])].map(normalize);
 
-    if (scanned === expected) {
+    if (accepted.includes(scanned)) {
       // Vibração curta de confirmação.
       Vibration.vibrate(120);
       onSuccess();

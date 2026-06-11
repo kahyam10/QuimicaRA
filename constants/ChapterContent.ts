@@ -14,6 +14,8 @@ export interface Molecula {
   path?: string;
   /** Caminho para modelo 3D variante (representação alternativa) */
   variantPath?: string;
+  /** Textos alternativos aceitos na leitura do QR code (além de `nome`). */
+  qrAliases?: string[];
 }
 
 export interface Capitulo {
@@ -186,6 +188,7 @@ const clorofluorcarbonos: Molecula = {
   informacoes:
     'Substância gasosa responsável pela depleção da camada de ozônio na estratosfera. Ela é formada a partir de ligações simples do carbono que é o átomo central, com 3 átomos de cloro e 1 de flúor.',
   path: 'assets/models/clorofluorcarbono.glb',
+  qrAliases: ['Clorofluorcarbonetos'],
 };
 
 export const capitulo3: Capitulo = {
